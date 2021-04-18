@@ -1,19 +1,38 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 // react-pro-sidebar components
 // code demo reference: https://github.com/azouaoui-med/react-pro-sidebar/blob/master/demo/src/Aside.js
 import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 // Icons
-import { FaGithub, FaDonate } from 'react-icons/fa';
-import { IoDocumentOutline } from 'react-icons/io5';
 import { CgProfile } from 'react-icons/cg';
-import { AiOutlineHome, AiOutlineDownload } from 'react-icons/ai';
-import { BiHelpCircle } from 'react-icons/bi';
 
 function Sidebar() {
+  const [userList, setUserList] = useState([]);
+  const tempObj = {
+    name: "Chunlok Lo",
+    bio: "Master's CS, Reinforcement Learning specialist",
+    metThrough: "Jon Shee's Badminton",
+  }
+  const fetchCreateUser = () => {
+    fetch('/api/createUser', {
+      method: 'POST',
+      'Content-Type': 'application/json',
+      body: JSON.stringify(tempObj)
+    })
+      .then(res => res.json())
+      .then((res) => {
+        console.log(res)
+        setUserList(oldArray => [...oldArray, res]);
+      })
+  }
+
+  useEffect(() => {
+    console.log(userList)
+  }, [userList])
+
   return (
     <ProSidebar>
-
       <SidebarHeader>
         <div
           style={{
@@ -27,23 +46,21 @@ function Sidebar() {
             whiteSpace: 'nowrap',
           }}
         >
-          EPIC INSTALLER
+          CONTACT MANAGER
         </div>
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape="square">
-          <MenuItem icon={<AiOutlineHome />}>
-            <Link href="/">Home</Link>
-          </MenuItem>
-          <MenuItem icon={<AiOutlineDownload />}>
-            <Link href="/download">Download</Link>
-          </MenuItem>
-          <MenuItem icon={<IoDocumentOutline />}>
-            <Link href="/resources">Resources</Link>
-          </MenuItem>
-          <MenuItem icon={<BiHelpCircle />}>
-            <Link href="/contact">Contact Developers</Link>
-          </MenuItem>
+          {
+            userList.map((user, idx) => {
+              const link = `/user/${user.id}`
+              return (
+                <MenuItem key={user.id} icon={<CgProfile />}>
+                  <Link href={link}>{user.name}</Link>
+                </MenuItem>
+              )
+            })
+          }
         </Menu>
       </SidebarContent>
 
@@ -54,20 +71,17 @@ function Sidebar() {
             padding: '20px 24px',
           }}
         >
-          <a
-            href="https://github.com/Borghese-Gladiator/next-installer-site"
-            target="_blank"
-            className="sidebar-btn"
-            rel="noopener noreferrer"
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          >
-            <FaGithub />
-            <span style={{ paddingLeft: '5px' }}>{"View Source"}</span>
-          </a>
+          <div onClick={fetchCreateUser}>
+            <span style={{
+              backgroundColor: 'green',
+              color: 'white',
+              padding: '1em 1.5em',
+              textDecoration: 'none',
+              textTransform: 'uppercase'
+            }}>
+              Create User
+            </span>
+          </div>
         </div>
       </SidebarFooter>
     </ProSidebar>
