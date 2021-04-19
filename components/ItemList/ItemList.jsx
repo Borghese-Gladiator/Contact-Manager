@@ -3,10 +3,12 @@ import { useRef} from 'react'
 import InlineEdit from './InlineEdit';
 // generate unique IDs for items
 import { v4 as uuidv4 } from 'uuid';
+// styling
+import styles from './ItemList.module.css'
 
 export default function ItemListContainer({ itemList, setItemList }) {
   return (
-    <div className="song-list">
+    <div className={styles.song_list}>
       <ItemList itemList={itemList} setItemList={setItemList} />
       <AddItem itemList={itemList} setItemList={setItemList} />
     </div>
@@ -56,11 +58,11 @@ function ItemList({ itemList, setItemList }) {
     <div>
       {itemList.map((item, index) => (
         <div
-          className="song-item"
+          className={styles.song_item}
           key={item.id}
           style={{ textDecoration: item.isCompleted ? "line-through" : "" }}
         >
-          <span className="song-item-link">
+          <span>
             <InlineEdit
               text={item.text}
               onSetText={text => updateItem(item.id, text)}
