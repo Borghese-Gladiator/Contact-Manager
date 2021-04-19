@@ -17,8 +17,8 @@ export default (req, res) => {
         { id: 3, text: "Take shower", done: false }
       ],
       onlineAccountsObj: {},
-      dateLastTalked: new Date(),
-      dateCreated: new Date()
+      dateLastTalked: JSON.stringify(new Date()),
+      dateCreated: JSON.stringify(new Date())
     })
   } else {
     res.status(400).json({
