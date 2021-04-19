@@ -1,1 +1,1 @@
-export { default } from './NotesList';
+export { default } from './ItemList';
