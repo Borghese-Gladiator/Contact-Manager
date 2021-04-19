@@ -44,6 +44,9 @@ export default function UserPage({ userList, setUserList }) {
     })
     setUserList(newUserList)
   }
+  // REST API turns dates into strings - I parse string and create date from dateString
+  const dateLastTalked = new Date(JSON.parse(user.dateLastTalked))
+  const dateCreated = new Date(JSON.parse(user.dateLastTalked))
 
   return (
     <div>
