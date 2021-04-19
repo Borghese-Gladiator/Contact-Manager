@@ -11,7 +11,12 @@ export default (req, res) => {
       name: name,
       bio: bio,
       metThrough: metThrough,
-      notes: {},
+      notesList: [
+        { id: 1, text: "Wash dishes", done: false },
+        { id: 2, text: "Do laundry", done: false },
+        { id: 3, text: "Take shower", done: false }
+      ],
+      onlineAccountsObj: {},
       dateLastTalked: new Date(),
       dateCreated: new Date()
     })
