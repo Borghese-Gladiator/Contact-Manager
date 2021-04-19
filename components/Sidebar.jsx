@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+// Next.js routing
 import Link from 'next/link';
 // react-pro-sidebar components
 // code demo reference: https://github.com/azouaoui-med/react-pro-sidebar/blob/master/demo/src/Aside.js
@@ -7,8 +7,7 @@ import 'react-pro-sidebar/dist/css/styles.css';
 // Icons
 import { CgProfile } from 'react-icons/cg';
 
-function Sidebar() {
-  const [userList, setUserList] = useState([]);
+function Sidebar({ userList, setUserList }) {
   const tempObj = {
     name: "Chunlok Lo",
     bio: "Master's CS, Reinforcement Learning specialist",
@@ -26,10 +25,6 @@ function Sidebar() {
         setUserList(oldArray => [...oldArray, res]);
       })
   }
-
-  useEffect(() => {
-    console.log(userList)
-  }, [userList])
 
   return (
     <ProSidebar>
@@ -71,17 +66,19 @@ function Sidebar() {
             padding: '20px 24px',
           }}
         >
-          <div onClick={fetchCreateUser}>
-            <span style={{
-              backgroundColor: 'green',
-              color: 'white',
-              padding: '1em 1.5em',
-              textDecoration: 'none',
-              textTransform: 'uppercase'
-            }}>
+          <button
+          onClick={fetchCreateUser}
+          style={{
+            backgroundColor: 'green',
+            color: 'white',
+            padding: '1em 1.5em',
+            textDecoration: 'none',
+            textTransform: 'uppercase'
+          }}>
+            <span>
               Create User
             </span>
-          </div>
+          </button>
         </div>
       </SidebarFooter>
     </ProSidebar>

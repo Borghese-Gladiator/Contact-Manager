@@ -1,12 +1,12 @@
 import Sidebar from '../Sidebar';
 
-const DefaultLayout = ({ children }) => (
+const DefaultLayout = ({ userList, setUserList, children }) => (
   <div className="root-container">
     <nav>
-      <Sidebar />
+      <Sidebar userList={userList} setUserList={setUserList} />
     </nav>
     <div style={{flexGrow: 1}}>
-    {children}
+      {children}
     </div>
   </div>
 );
