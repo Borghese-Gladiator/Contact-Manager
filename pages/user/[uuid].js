@@ -1,11 +1,8 @@
-import { useEffect } from 'react'
-
-
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 // custom components
-import NotesList from '../../components/NotesList';
+import ItemList from '../../components/ItemList';
 
 const UserNotFound = ({ uuid }) => (
   <div>
@@ -47,17 +44,6 @@ export default function UserPage({ userList, setUserList }) {
     })
     setUserList(newUserList)
   }
-  console.log(user)
-  console.log(typeof user.dateLastTalked)
-  // REST API turns dates into strings - I parse string and create date from dateString
-  const dateLastTalked = new Date(JSON.parse(user.dateLastTalked))
-  const dateCreated = new Date(JSON.parse(user.dateLastTalked))
-  console.log(dateLastTalked)
-  console.log(dateCreated)
-  // console.log(user.dateLastTalked.toLocaleDateString('us-US', {  year: 'numeric', month: 'short', day: 'numeric' }))
-  useEffect(() => {
-    console.log(userList)
-  }, [userList])
 
   return (
     <div>
@@ -74,7 +60,7 @@ export default function UserPage({ userList, setUserList }) {
         <h5>Met Through: {user.metThrough}</h5>
         <h5>Date Created: {dateCreated.toLocaleDateString('us-US', {  year: 'numeric', month: 'short', day: 'numeric' })}</h5>
         <h3>Notes</h3>
-        <NotesList notesList={user.notesList} setNotesList={updateUserNotes} />        
+        <ItemList itemList={user.notesList} setItemList={updateUserNotes} />        
         <h3>Online Accounts</h3>
       </main>
     </div>
