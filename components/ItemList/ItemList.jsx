@@ -29,7 +29,7 @@ function AddItem({ itemList, setItemList }) {
     inputRef.current.value = "";
   }
   return (
-    <form onSubmit={addItem}>
+    <form onSubmit={addItem} className={styles.add_item_form}>
       <input name="addItem" placeholder="Add item" ref={inputRef} />
       <button type="submit">Submit</button>
     </form>
