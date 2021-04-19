@@ -1,7 +1,8 @@
 import { useRef} from 'react'
 // custom components
 import InlineEdit from './InlineEdit';
-
+// generate unique IDs for notes
+import { v4 as uuidv4 } from 'uuid';
 
 export default function NotesContainer({ notesList, setNotesList }) {
   return (
@@ -18,7 +19,7 @@ function AddItem({ notesList, setNotesList }) {
     event.preventDefault()
     const text = event.target.elements.addItem.value;
     const note = {
-      id: 4,
+      id: uuidv4(),
       text,
       done: false
     };
