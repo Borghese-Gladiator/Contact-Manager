@@ -4,7 +4,7 @@ import InlineEdit from './InlineEdit';
 // generate unique IDs for items
 import { v4 as uuidv4 } from 'uuid';
 
-export default function NotesContainer({ itemList, setItemList }) {
+export default function ItemListContainer({ itemList, setItemList }) {
   return (
     <div className="song-list">
       <ItemList itemList={itemList} setItemList={setItemList} />
