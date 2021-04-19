@@ -12,9 +12,9 @@ export default (req, res) => {
       bio: bio,
       metThrough: metThrough,
       notesList: [
-        { id: 1, text: "Wash dishes", done: false },
-        { id: 2, text: "Do laundry", done: false },
-        { id: 3, text: "Take shower", done: false }
+        { id: uuidv4(), text: "Wash dishes", done: false },
+        { id: uuidv4(), text: "Do laundry", done: false },
+        { id: uuidv4(), text: "Take shower", done: false }
       ],
       onlineAccountsObj: {},
       dateLastTalked: JSON.stringify(new Date()),
