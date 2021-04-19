@@ -1,7 +1,7 @@
 /* InlineEdit component - overlays title over input element */
 /* these make sure it can work in any text element */
-.inline-text_copy--active,
-.inline-text_input--active {
+.inline_text_copy_active,
+.inline_text_input_active {
   font: inherit;
   color: inherit;
   text-align: inherit;
@@ -12,16 +12,16 @@
   outline: none;
 }
 
-.inline-text_copy--active {
+.inline_text_copy_active {
   cursor: pointer;
 }
 
-.inline-text_copy--hidden,
-.inline-text_input--hidden {
+.inline_text_copy_hidden,
+.inline_text_input_hidden {
   display: none;
 }
 
-.inline-text_input--active {
+.inline_text_input_active {
   border-bottom: 1px solid #666666;
   text-align: left;
 }

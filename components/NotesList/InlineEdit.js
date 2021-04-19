@@ -71,13 +71,11 @@ function InlineEdit(props) {
   ]);
 
   return (
-    <span className="inline-text" ref={wrapperRef}>
+    <span className={styles.inline_text} ref={wrapperRef}>
       <span
         ref={textRef}
         onClick={handleSpanClick}
-        className={`inline-text_copy inline-text_copy--${
-          !isInputActive ? "active" : "hidden"
-        }`}
+        className={`${styles.inline_text_copy} ${!isInputActive ? styles.inline_text_copy_active : styles.inline_text_copy_hidden}`}
       >
         {props.text}
       </span>
@@ -88,11 +86,9 @@ function InlineEdit(props) {
         style={{ minWidth: Math.ceil(inputValue.length) + "ch" }}
         value={inputValue}
         onChange={handleInputChange}
-        className={`inline-text_input inline-text_input--${
-          isInputActive ? "active" : "hidden"
-        }`}
+        className={`${styles.inline_text_input} ${isInputActive ? styles.inline_text_input_active : styles.inline_text_input_hidden}`}
       />
-    </span>
+    </span >
   );
 }
 
