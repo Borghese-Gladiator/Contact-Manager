@@ -117,6 +117,10 @@ export default function UserPage({ userList, setUserList }) {
         <h4>"{user.friendGroup}" Friend</h4>
         <div className={styles.content_row}>
           <FlexGrowBox>
+            <div style={{ display: 'flex' }}>
+              <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Last Talked</span>
+              <span>{dateLastTalked.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            </div>
             <ItemList itemList={user.notesList} setItemList={updateUserNotes} />
           </FlexGrowBox>
           <div className={styles.content_col} style={{ flexGrow: 0.5 }}>
@@ -139,22 +143,15 @@ export default function UserPage({ userList, setUserList }) {
                     )
                   })
                 }
+                <div style={{ display: 'flex' }}>
+                  <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Date Met</span>
+                  <span>{dateMet.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                </div>
               </div>
             </FlexGrowBox>
             <FlexGrowBox>
-              <h3>Contact</h3>
-              <table>
-                <tbody>
-                  <tr>
-                    <td style={{ fontWeight: 'bold' }}>Date Last Talked</td>
-                    <td>{dateLastTalked.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
-                  </tr>
-                  <tr>
-                    <td style={{ fontWeight: 'bold' }}>Date Met</td>
-                    <td>{dateMet.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <h3>Contact Info</h3>
+              <br />
               <ItemList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
             </FlexGrowBox>
           </div>
