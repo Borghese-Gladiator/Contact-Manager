@@ -5,6 +5,8 @@ import InlineEdit from '../InlineEdit';
 import { v4 as uuidv4 } from 'uuid';
 // styling
 import styles from './ItemList.module.css'
+// icons
+import { AiOutlineEnter } from 'react-icons/ai';
 
 export default function ItemListContainer({ itemList, setItemList }) {
   return (
@@ -30,8 +32,8 @@ function AddItem({ itemList, setItemList }) {
   }
   return (
     <form onSubmit={addItem} className={styles.add_item_form}>
-      <input name="addItem" placeholder="Add item" ref={inputRef} />
-      <button type="submit">Submit</button>
+      <input name="addItem" placeholder="Add item" ref={inputRef} style={{flexGrow: 1}} />
+      <button type="submit"><AiOutlineEnter /></button>
     </form>
   )
 }

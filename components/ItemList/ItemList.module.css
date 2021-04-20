@@ -40,7 +40,9 @@
 
 .add_item_form {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
+}
+
+.add_item_form > button {
+  min-width: 50px;
+  background-color: green;
 }
