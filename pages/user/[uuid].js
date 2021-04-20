@@ -3,6 +3,10 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 // custom components
 import ItemList from '../../components/ItemList';
+// DatePicker package
+import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css";
+
 
 //capitalize only the first letter of the string. 
 function capitalizeFirstLetter(string) {
@@ -71,28 +75,21 @@ export default function UserPage({ userList, setUserList }) {
     })
     setUserList(newUserList)
   }
+  // same methodology as above function with different key (notesList)
   const updateUserNotes = (newNotesList) => {
-    const newUserList = userList.map((tempUser, idx) => {
-      if (user.id === tempUser.id) {
-        return {
-          ...tempUser,
-          notesList: newNotesList
-        }
-      }
-      return tempUser
-    })
-    setUserList(newUserList)
+    setUserList(userList.map((tempUser, idx) =>
+      user.id === tempUser.id ? { ...tempUser, notesList: newNotesList } : tempUser
+    ))
   }
   const updateUserOnlineAccountsList = (newNotesList) => {
-    const newUserList = userList.map((tempUser, idx) => {
-      if (user.id === tempUser.id) {
-        return {
-          ...tempUser,
-          onlineAccountsList: newNotesList
-        }
-      }
-      return tempUser
-    })
+    setUserList(userList.map((tempUser, idx) =>
+      user.id === tempUser.id ? { ...tempUser, onlineAccountsList: newNotesList } : tempUser
+    ))
+  }
+  const updateDateLastTalked = (newDate) => {
+    const newUserList = userList.map((tempUser, idx) =>
+      user.id === tempUser.id ? { ...tempUser, dateLastTalked: JSON.stringify(newDate) } : tempUser
+    )
     setUserList(newUserList)
   }
   // REST API turns dates into strings - I parse string and create date from dateString
@@ -115,11 +112,12 @@ export default function UserPage({ userList, setUserList }) {
       }}>
         <h1 style={{ marginBottom: 0 }}>{user.name}</h1>
         <h4>"{user.friendGroup}" Friend</h4>
+        <br />
         <div className={styles.content_row}>
           <FlexGrowBox>
             <div style={{ display: 'flex' }}>
               <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Last Talked</span>
-              <span>{dateLastTalked.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+              <DatePicker selected={dateLastTalked} onChange={date => updateDateLastTalked(date)} />
             </div>
             <ItemList itemList={user.notesList} setItemList={updateUserNotes} />
           </FlexGrowBox>
