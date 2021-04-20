@@ -63,12 +63,13 @@ export default function UserPage({ userList, setUserList }) {
     return <UserNotFound uuid={uuid} />
   }
 
-  const updateUserBioList = (newNotesList) => {
+  // searches list for matching ID && on found object - sets key to newValue
+  const updateUserBioList = (newValue) => {
     const newUserList = userList.map((tempUser, idx) => {
       if (user.id === tempUser.id) {
         return {
           ...tempUser,
-          bioList: newNotesList
+          bioList: newValue
         }
       }
       return tempUser
@@ -76,14 +77,14 @@ export default function UserPage({ userList, setUserList }) {
     setUserList(newUserList)
   }
   // same methodology as above function with different key (notesList)
-  const updateUserNotes = (newNotesList) => {
+  const updateUserNotes = (newValue) => {
     setUserList(userList.map((tempUser, idx) =>
-      user.id === tempUser.id ? { ...tempUser, notesList: newNotesList } : tempUser
+      user.id === tempUser.id ? { ...tempUser, notesList: newValue } : tempUser
     ))
   }
-  const updateUserOnlineAccountsList = (newNotesList) => {
+  const updateUserOnlineAccountsList = (newValue) => {
     setUserList(userList.map((tempUser, idx) =>
-      user.id === tempUser.id ? { ...tempUser, onlineAccountsList: newNotesList } : tempUser
+      user.id === tempUser.id ? { ...tempUser, onlineAccountsList: newValue } : tempUser
     ))
   }
   const updateDateLastTalked = (newDate) => {
