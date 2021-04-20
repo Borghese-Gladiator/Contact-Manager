@@ -19,9 +19,8 @@ export default (req, res) => {
       },
       friendGroup: 'League of Legends',
       notesList: [
-        { id: uuidv4(), text: "Wash dishes", done: false },
-        { id: uuidv4(), text: "Do laundry", done: false },
-        { id: uuidv4(), text: "Take shower", done: false }
+        { id: uuidv4(), text: "Fall 2022 - going study abroad in Trinity College in Ireland", done: false },
+        { id: uuidv4(), text: "Spring 2021 - peer mentor (not even starting Zoom calls, but paid for like 7~ hours of work a week)", done: false },
       ],
       onlineAccountsList: [
         { id: uuidv4(), text: "Discord - Blah#1111" },
