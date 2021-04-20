@@ -5,7 +5,7 @@ export default function Home({ userList, setUserList }) {
   return (
     <div>
       <Head>
-        <title>Home | Installer Site</title>
+        <title>Home | Contact Manager</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>

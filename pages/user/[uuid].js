@@ -100,7 +100,7 @@ export default function UserPage({ userList, setUserList }) {
   return (
     <div>
       <Head>
-        <title>Contact | Installer Site</title>
+        <title>{user.name} | Contact Manager</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main} style={{
