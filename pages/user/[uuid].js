@@ -7,7 +7,7 @@ import ItemList from '../../components/ItemList';
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 // page styling
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/UserPage.module.css'
 // icons
 import { TiDelete } from 'react-icons/ti';
 
@@ -165,7 +165,7 @@ export default function UserPage({ userList, setUserList }) {
           right: '15px',
           bottom: '15px'
         }}>
-          <Link href="/delete"><TiDelete className={styles.kc_fab_main_btn} /></Link>
+          <Link href="/user/delete"><TiDelete className={styles.kc_fab_main_btn} /></Link>
         </div>
       </main>
     </div>
