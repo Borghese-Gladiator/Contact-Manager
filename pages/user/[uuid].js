@@ -1,12 +1,15 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import styles from '../../styles/Home.module.css'
+import Link from 'next/link';
 // custom components
 import ItemList from '../../components/ItemList';
 // DatePicker package
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
-
+// page styling
+import styles from '../../styles/Home.module.css'
+// icons
+import { TiDelete } from 'react-icons/ti';
 
 //capitalize only the first letter of the string. 
 function capitalizeFirstLetter(string) {
@@ -110,6 +113,8 @@ export default function UserPage({ userList, setUserList }) {
         backgroundSize: 'cover',
 
         color: darkTheme.text,
+
+        position: 'relative'
       }}>
         <h1 style={{ marginBottom: 0 }}>{user.name}</h1>
         <h4>"{user.friendGroup}" Friend</h4>
@@ -135,7 +140,7 @@ export default function UserPage({ userList, setUserList }) {
                       : user.bioObject[key]
 
                     return (
-                      <div style={{ display: 'flex' }}>
+                      <div key={`basic_info_${idx}`} style={{ display: 'flex' }}>
                         <span style={{ flexGrow: 1, fontWeight: 'bold' }}>{capitalizeFirstLetter(key)}</span>
                         <span>{displayValue === "" ? "N/A" : displayValue}</span>
                       </div>
@@ -154,6 +159,13 @@ export default function UserPage({ userList, setUserList }) {
               <ItemList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
             </FlexGrowBox>
           </div>
+        </div>
+        <div style={{
+          position: 'absolute',
+          right: '15px',
+          bottom: '15px'
+        }}>
+          <Link href="/delete"><TiDelete className={styles.kc_fab_main_btn} /></Link>
         </div>
       </main>
     </div>
