@@ -33,9 +33,7 @@ function AddItem({ itemList, setItemList }) {
   }
   return (
     <form onSubmit={addItem} className={styles.add_item_form_container}>
-      <textarea id="txtid" name="addItem" rows="4" cols="50" maxlength="200" ref={inputRef} style={{flexGrow: 1}}>
-        A nice day is a nice day.
-        Lao Tseu
+      <textarea id="txtid" name="addItem" rows="4" cols="50" maxlength="200" ref={inputRef} style={{flexGrow: 1}} placeholder="A nice day is a nice day.">
       </textarea>
       <button type="submit"><AiOutlineEnter /></button>
     </form>
