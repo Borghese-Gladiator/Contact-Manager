@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // custom components
 import NoteList from '../../components/NoteList';
 import ContactList from '../../components/ContactList';
+import InlineEdit from '../../components/InlineEdit';
 import Row from '../../components/Flexbox/Row';
 import Col from '../../components/Flexbox/Col';
 // page styling
@@ -51,8 +52,8 @@ export default function UserPage({ userList, setUserList }) {
   const dateLastTalked = new Date(JSON.parse(user.dateLastTalked))
   const dateMet = new Date(JSON.parse(user.dateMet))
 
-  // searches list for matching ID && on found object - sets key to newValue
-  const updateUserBioList = (newValue) => {
+  const updateBioList = (newValue) => {
+    // searches list for matching ID && on found object - sets key to newValue
     const newUserList = userList.map((tempUser, idx) => {
       if (user.id === tempUser.id) {
         return {
@@ -64,22 +65,40 @@ export default function UserPage({ userList, setUserList }) {
     })
     setUserList(newUserList)
   }
-  // same methodology as above function with different key (notesList)
   const updateUserNotes = (newValue) => {
+    // same methodology, different key - notesList
     setUserList(userList.map((tempUser, idx) =>
       user.id === tempUser.id ? { ...tempUser, notesList: newValue } : tempUser
     ))
   }
   const updateUserOnlineAccountsList = (newValue) => {
+    // same methodology, different key - onlineAccountsList
     setUserList(userList.map((tempUser, idx) =>
       user.id === tempUser.id ? { ...tempUser, onlineAccountsList: newValue } : tempUser
     ))
   }
   const updateDateLastTalked = (newDate) => {
+    // same methodology, stringifies newDate for storing
     const newUserList = userList.map((tempUser, idx) =>
       user.id === tempUser.id ? { ...tempUser, dateLastTalked: JSON.stringify(newDate) } : tempUser
     )
     setUserList(newUserList)
+  }
+  const updateUserInfo = (key, newValue) => {
+    // gets key in bioObject & sets that key to newValue
+    setUserList(userList.map((tempUser, idx) => {
+      if (user.id === tempUser.id) {
+        const newBioObject = {
+          ...tempUser.bioObject,
+          [key]: newValue
+        }
+        return {
+          ...tempUser,
+          bioObject: newBioObject
+        }
+      }
+      return tempUser
+    }))
   }
 
   return (
@@ -109,7 +128,12 @@ export default function UserPage({ userList, setUserList }) {
                     return (
                       <div key={`basic_info_${idx}`} style={{ display: 'flex' }}>
                         <span style={{ flexGrow: 1, fontWeight: 'bold' }}>{capitalizeFirstLetter(key)}</span>
-                        <span>{displayValue === "" ? "N/A" : displayValue}</span>
+                        <span>
+                          <InlineEdit
+                            text={displayValue === "" ? "N/A" : displayValue}
+                            onSetText={text => updateUserInfo(key, text)}
+                          />
+                        </span>
                       </div>
                     )
                   })
