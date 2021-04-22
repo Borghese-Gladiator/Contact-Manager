@@ -6,24 +6,45 @@ import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuIte
 import 'react-pro-sidebar/dist/css/styles.css';
 // Icons
 import { CgProfile } from 'react-icons/cg';
+// generate IDs (unique keys for React rendering)
+import { v4 as uuidv4 } from 'uuid';
+
+const getDefaultUser = ({ name, shortBio, friendGroup }) => ({
+  id: uuidv4(),
+  name: name,
+  shortBio: shortBio,
+  bioObject: {
+    age: "25",
+    location: "Belmont, MA, USA",
+    gender: "Male",
+    languages: ["Cantonese", "Mandarin"],
+    occupation: "Student (Master's)",
+    major: "CS (Reinforcement Learning)"
+  },
+  friendGroup: friendGroup,
+  notesList: [
+    { id: uuidv4(), text: "Fall 2022 - going study abroad in Trinity College in Ireland", done: false },
+    { id: uuidv4(), text: "Spring 2021 - peer mentor (not even starting Zoom calls, but paid for like 7~ hours of work a week)", done: false },
+  ],
+  onlineAccountsList: [
+    { id: uuidv4(), text: "Discord - BoxedCube#1111" },
+    { id: uuidv4(), text: "Messenger - Chunlok Lo" },
+    { id: uuidv4(), text: "LinkedIn - Chunlok Lo" },
+  ],
+  dateLastTalked: JSON.stringify(new Date()),
+  dateMet: JSON.stringify(new Date())
+})
+
+const tempObj = {
+  name: "Chunlok Lo",
+  shortBio: "Master's CS, Reinforcement Learning specialist",
+  friendGroup: "League of Legends",
+}
 
 function Sidebar({ userList, setUserList }) {
-  const tempObj = {
-    name: "Chunlok Lo",
-    bio: "Master's CS, Reinforcement Learning specialist",
-    metThrough: "Jon Shee's Badminton",
-  }
-  const fetchCreateUser = () => {
-    fetch('/api/createUser', {
-      method: 'POST',
-      'Content-Type': 'application/json',
-      body: JSON.stringify(tempObj)
-    })
-      .then(res => res.json())
-      .then((res) => {
-        console.log(res)
-        setUserList(oldArray => [...oldArray, res]);
-      })
+  const createUser = () => {
+    const newUser = getDefaultUser(tempObj)
+    setUserList(oldArray => [...oldArray, newUser]);
   }
 
   return (
@@ -67,7 +88,7 @@ function Sidebar({ userList, setUserList }) {
           }}
         >
           <button
-          onClick={fetchCreateUser}
+          onClick={createUser}
           style={{
             backgroundColor: 'green',
             color: 'white',
