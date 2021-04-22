@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link';
 // custom components
 import ItemList from '../../components/ItemList';
+import ContactList from '../../components/ContactList';
 // DatePicker package
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
@@ -111,6 +112,7 @@ export default function UserPage({ userList, setUserList }) {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
+        minHeight: '760px',
 
         color: darkTheme.text,
 
@@ -128,7 +130,7 @@ export default function UserPage({ userList, setUserList }) {
             <br />
             <ItemList itemList={user.notesList} setItemList={updateUserNotes} />
           </FlexGrowBox>
-          <div className={styles.content_col} style={{ flexGrow: 0.5 }}>
+          <div className={styles.content_col} style={{ flexGrow: 1 }}>
             <FlexGrowBox>
               <h3>Basic Info</h3>
               <p style={{ whiteSpace: 'pre' }}>{user.bioDesc}</p>
@@ -157,7 +159,7 @@ export default function UserPage({ userList, setUserList }) {
             <FlexGrowBox>
               <h3>Contact Info</h3>
               <br />
-              <ItemList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
+              <ContactList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
             </FlexGrowBox>
           </div>
         </div>
