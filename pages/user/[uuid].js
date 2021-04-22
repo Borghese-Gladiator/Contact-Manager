@@ -158,7 +158,6 @@ export default function UserPage({ userList, setUserList }) {
             </FlexGrowBox>
             <FlexGrowBox>
               <h3>Contact Info</h3>
-              <br />
               <ContactList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
             </FlexGrowBox>
           </div>
