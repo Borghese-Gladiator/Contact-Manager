@@ -52,13 +52,13 @@ export default function UserPage({ userList, setUserList }) {
   const dateLastTalked = new Date(JSON.parse(user.dateLastTalked))
   const dateMet = new Date(JSON.parse(user.dateMet))
 
-  const updateBioList = (newValue) => {
+  const updateUserFriendGroup = (newValue) => {
     // searches list for matching ID && on found object - sets key to newValue
     const newUserList = userList.map((tempUser, idx) => {
       if (user.id === tempUser.id) {
         return {
           ...tempUser,
-          bioList: newValue
+          friendGroup: newValue
         }
       }
       return tempUser
@@ -109,7 +109,8 @@ export default function UserPage({ userList, setUserList }) {
       </Head>
       <main className={styles.main}>
         <h1>{user.name}</h1>
-        <h4>"{user.friendGroup}" Friend</h4>
+        <h4>
+          "<span><InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)}/></span>" Friend</h4>
         <Row>
           <div className={styles.paper_wrapper}>
             <NoteList itemList={user.notesList} setItemList={updateUserNotes} />
