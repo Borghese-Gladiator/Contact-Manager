@@ -10,7 +10,7 @@ import { AiOutlineEnter } from 'react-icons/ai';
 
 export default function ItemListContainer({ itemList, setItemList }) {
   return (
-    <div className={styles.song_list}>
+    <div className={styles.root_container}>
       <ItemList itemList={itemList} setItemList={setItemList} />
       <br />
       <AddItem itemList={itemList} setItemList={setItemList} />
@@ -32,7 +32,7 @@ function AddItem({ itemList, setItemList }) {
     inputRef.current.value = "";
   }
   return (
-    <form onSubmit={addItem} className={styles.add_item_form} style={{display: 'flex', alignItems: 'stretch' }}>
+    <form onSubmit={addItem} className={styles.add_item_form_container}>
       <textarea id="txtid" name="addItem" rows="4" cols="50" maxlength="200" ref={inputRef} style={{flexGrow: 1}}>
         A nice day is a nice day.
         Lao Tseu
@@ -64,11 +64,13 @@ function ItemList({ itemList, setItemList }) {
     <div>
       {itemList.map((item, index) => (
         <div
-          className={styles.song_item}
           key={item.id}
-          style={{ textDecoration: item.isCompleted ? "line-through" : "", display: 'flex', }}
+          className={styles.item_container}
+          style={{
+            textDecoration: item.isCompleted ? "line-through" : "",
+         }}
         >
-          <span style={{flexGrow: 1, whiteSpace: 'pre' }}>
+          <span style={{ flexGrow: 1 }}>
             <InlineEdit
               text={item.text}
               onSetText={text => updateItem(item.id, text)}
@@ -87,7 +89,7 @@ function DeleteItem({ id, itemList, setItemList }) {
   }
 
   return (
-    <div style={{ margin: '5px' }}>
+    <div>
       <button onClick={deleteItem}>x</button>
     </div>
   )
