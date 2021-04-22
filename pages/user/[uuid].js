@@ -1,12 +1,14 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link';
-// custom components
-import NoteList from '../../components/NoteList';
-import ContactList from '../../components/ContactList';
 // DatePicker package
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
+// custom components
+import NoteList from '../../components/NoteList';
+import ContactList from '../../components/ContactList';
+import Row from '../../components/Flexbox/Row';
+import Col from '../../components/Flexbox/Col';
 // page styling
 import styles from '../../styles/UserPage.module.css'
 // icons
@@ -17,39 +19,17 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const darkTheme = {
-  text: "#b4a5a5",
-  background: "#151515",
-  secondaryBackground: "#301b3f"
-}
-
-const FlexGrowBox = ({ children }) => (
-  <div style={{
-    flexGrow: 1,
-    padding: '10px',
-    margin: '5px',
-
-    background: darkTheme.secondaryBackground,
-
-    border: '#999 solid 1px',
-    borderRadius: '10px',
-    boxShadow: '0px 0px 0px 1px #fff inset'
-  }}>
-    {children}
-  </div>
-)
-
 const UserNotFound = ({ uuid }) => (
   <div>
     <Head>
       <title>User Not Found | Installer Site</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <main className={"main-content"}>
-      <h1 className={styles.title}>
+    <main>
+      <h1>
         User Not Found
       </h1>
-      <p className={styles.description}>
+      <p>
         You searched for user id: {uuid}
       </p>
     </main>
@@ -66,6 +46,10 @@ export default function UserPage({ userList, setUserList }) {
   if (!user) {
     return <UserNotFound uuid={uuid} />
   }
+
+  // REST API turns dates into strings - I parse string and create date from dateString
+  const dateLastTalked = new Date(JSON.parse(user.dateLastTalked))
+  const dateMet = new Date(JSON.parse(user.dateMet))
 
   // searches list for matching ID && on found object - sets key to newValue
   const updateUserBioList = (newValue) => {
@@ -97,9 +81,6 @@ export default function UserPage({ userList, setUserList }) {
     )
     setUserList(newUserList)
   }
-  // REST API turns dates into strings - I parse string and create date from dateString
-  const dateLastTalked = new Date(JSON.parse(user.dateLastTalked))
-  const dateMet = new Date(JSON.parse(user.dateMet))
 
   return (
     <div>
@@ -107,34 +88,17 @@ export default function UserPage({ userList, setUserList }) {
         <title>{user.name} | Contact Manager</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main} style={{
-        backgroundImage: "url('/Suisei_Wallpaper.png')",
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        minHeight: '760px',
-
-        color: darkTheme.text,
-
-        position: 'relative'
-      }}>
-        <h1 style={{ marginBottom: 0 }}>{user.name}</h1>
+      <main className={styles.main}>
+        <h1>{user.name}</h1>
         <h4>"{user.friendGroup}" Friend</h4>
-        <br />
-        <div className={styles.content_row}>
-          <FlexGrowBox>
-            <div style={{ display: 'flex' }}>
-              <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Last Talked</span>
-              <DatePicker selected={dateLastTalked} onChange={date => updateDateLastTalked(date)} />
-            </div>
-            <br />
+        <Row>
+          <div className={styles.paper_wrapper}>
             <NoteList itemList={user.notesList} setItemList={updateUserNotes} />
-          </FlexGrowBox>
-          <div className={styles.content_col} style={{ flexGrow: 1 }}>
-            <FlexGrowBox>
+          </div>
+          <Col>
+            <div className={styles.paper_wrapper}>
               <h3>Basic Info</h3>
-              <p style={{ whiteSpace: 'pre' }}>{user.bioDesc}</p>
-              <div className={styles.content_col}>
+              <Col>
                 {
                   // comma separated list in displayValue - https://stackoverflow.com/questions/47881767/how-to-add-a-comma-in-array-map-after-every-element-except-last-element-in-react
                   Object.keys(user.bioObject).map((key, idx) => {
@@ -154,19 +118,19 @@ export default function UserPage({ userList, setUserList }) {
                   <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Date Met</span>
                   <span>{dateMet.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                 </div>
-              </div>
-            </FlexGrowBox>
-            <FlexGrowBox>
+              </Col>
+            </div>
+            <div className={styles.paper_wrapper}>
               <h3>Contact Info</h3>
+              <div style={{ display: 'flex' }}>
+                <span style={{ flexGrow: 1 }}>Last Talked</span>
+                <DatePicker selected={dateLastTalked} onChange={date => updateDateLastTalked(date)} />
+              </div>
               <ContactList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
-            </FlexGrowBox>
-          </div>
-        </div>
-        <div style={{
-          position: 'absolute',
-          right: '15px',
-          bottom: '15px'
-        }}>
+            </div>
+          </Col>
+        </Row>
+        <div className={styles.absolute_bottom_right}>
           <Link href="/user/delete"><TiDelete className={styles.kc_fab_main_btn} /></Link>
         </div>
       </main>
