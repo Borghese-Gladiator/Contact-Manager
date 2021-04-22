@@ -11,7 +11,7 @@ import { FaDiscord } from 'react-icons/fa';
 
 export default function ItemListContainer({ itemList, setItemList }) {
   return (
-    <div className={styles.song_list}>
+    <div className={styles.root_container}>
       <ItemList itemList={itemList} setItemList={setItemList} />
       <br />
       <AddItem itemList={itemList} setItemList={setItemList} />
@@ -62,13 +62,10 @@ function ItemList({ itemList, setItemList }) {
     <div>
       {itemList.map((item, index) => (
         <div
-          className={styles.contact_item_container}
           key={item.id}
+          className={styles.contact_item_container}
           style={{
             textDecoration: item.isCompleted ? "line-through" : "",
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center'
          }}
         >
           <FaDiscord />
@@ -91,7 +88,7 @@ function DeleteItem({ id, itemList, setItemList }) {
   }
 
   return (
-    <div style={{ margin: '5px' }}>
+    <div>
       <button onClick={deleteItem}>x</button>
     </div>
   )
