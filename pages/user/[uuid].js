@@ -125,6 +125,7 @@ export default function UserPage({ userList, setUserList }) {
               <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Last Talked</span>
               <DatePicker selected={dateLastTalked} onChange={date => updateDateLastTalked(date)} />
             </div>
+            <br />
             <ItemList itemList={user.notesList} setItemList={updateUserNotes} />
           </FlexGrowBox>
           <div className={styles.content_col} style={{ flexGrow: 0.5 }}>
