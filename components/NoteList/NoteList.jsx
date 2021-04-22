@@ -4,7 +4,7 @@ import InlineEdit from '../InlineEdit';
 // generate unique IDs for items
 import { v4 as uuidv4 } from 'uuid';
 // styling
-import styles from './ItemList.module.css'
+import styles from './NoteList.module.css'
 // icons
 import { AiOutlineEnter } from 'react-icons/ai';
 

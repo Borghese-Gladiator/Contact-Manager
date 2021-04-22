@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link';
 // custom components
-import ItemList from '../../components/ItemList';
+import NoteList from '../../components/NoteList';
 import ContactList from '../../components/ContactList';
 // DatePicker package
 import DatePicker from 'react-datepicker'
@@ -128,7 +128,7 @@ export default function UserPage({ userList, setUserList }) {
               <DatePicker selected={dateLastTalked} onChange={date => updateDateLastTalked(date)} />
             </div>
             <br />
-            <ItemList itemList={user.notesList} setItemList={updateUserNotes} />
+            <NoteList itemList={user.notesList} setItemList={updateUserNotes} />
           </FlexGrowBox>
           <div className={styles.content_col} style={{ flexGrow: 1 }}>
             <FlexGrowBox>
