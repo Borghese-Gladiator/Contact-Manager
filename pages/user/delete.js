@@ -19,19 +19,28 @@ export default function Home({ userList, setUserList }) {
         <h1 className={styles.title}>
           Delete Users
         </h1>
-        <div>
-          {
-            userList.map((user, idx) => {
-              return (
-                <div style={{ display: 'flex' }}>
-                  <span>{user.name}</span>
-                  <span>{user.id}</span>
-                  <button><RiDeleteBin7Line onClick={() => deleteUser(user.id)} /></button>
-                </div>
-              )
-            })
-          }
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th style={{ flexGrow: 1 }}>ID</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              userList.map((user, idx) => {
+                return (
+                  <tr>
+                    <td>{user.name}</td>
+                    <td>{user.id}</td>
+                    <td><button><RiDeleteBin7Line onClick={() => deleteUser(user.id)} /></button></td>
+                  </tr>
+                )
+              })
+            }
+          </tbody>
+        </table>
       </main>
 
     </div>
