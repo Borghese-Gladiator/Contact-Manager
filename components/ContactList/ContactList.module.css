@@ -1,0 +1,9 @@
+.contact_item_container > * {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.add_item_form_container {
+  display: flex;
+  align-items: stretch;
+}

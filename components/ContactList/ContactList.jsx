@@ -1,0 +1,98 @@
+import { useRef} from 'react'
+// custom components
+import InlineEdit from '../InlineEdit';
+// generate unique IDs for items
+import { v4 as uuidv4 } from 'uuid';
+// styling
+import styles from './ContactList.module.css'
+// icons
+import { AiOutlineEnter } from 'react-icons/ai';
+import { FaDiscord } from 'react-icons/fa';
+
+export default function ItemListContainer({ itemList, setItemList }) {
+  return (
+    <div className={styles.song_list}>
+      <ItemList itemList={itemList} setItemList={setItemList} />
+      <br />
+      <AddItem itemList={itemList} setItemList={setItemList} />
+    </div>
+  )
+}
+
+function AddItem({ itemList, setItemList }) {
+  const inputRef = useRef();
+  function addItem(event) {
+    event.preventDefault()
+    const text = event.target.elements.addItem.value;
+    const item = {
+      id: uuidv4(),
+      text,
+      done: false
+    };
+    setItemList(itemList.concat(item))
+    inputRef.current.value = "";
+  }
+  return (
+    <form onSubmit={addItem} className={styles.add_item_form_container}>
+      <input name="addItem" placeholder="Write contact" ref={inputRef} style={{flexGrow: 1}} />
+      <button type="submit"><AiOutlineEnter /></button>
+    </form>
+  )
+}
+
+function ItemList({ itemList, setItemList }) {
+  function updateItem(id, newText) {
+    const newNoteList = itemList.map((item, idx) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          text: newText
+        }
+      }
+      return item
+    })
+    setItemList(newNoteList)
+  }
+
+  if (!itemList.length) {
+    return <p>No items left!</p>;
+  }
+
+  return (
+    <div>
+      {itemList.map((item, index) => (
+        <div
+          className={styles.contact_item_container}
+          key={item.id}
+          style={{
+            textDecoration: item.isCompleted ? "line-through" : "",
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center'
+         }}
+        >
+          <FaDiscord />
+          <span style={{ flexGrow: 1 }}>
+            <InlineEdit
+              text={item.text}
+              onSetText={text => updateItem(item.id, text)}
+            />
+          </span>
+          <DeleteItem id={item.id} itemList={itemList} setItemList={setItemList} />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function DeleteItem({ id, itemList, setItemList }) {
+  function deleteItem() {
+    setItemList(itemList.filter((t) => t.id !== id))
+  }
+
+  return (
+    <div style={{ margin: '5px' }}>
+      <button onClick={deleteItem}>x</button>
+    </div>
+  )
+}
