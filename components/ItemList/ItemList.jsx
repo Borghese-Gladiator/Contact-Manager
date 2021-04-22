@@ -12,6 +12,7 @@ export default function ItemListContainer({ itemList, setItemList }) {
   return (
     <div className={styles.song_list}>
       <ItemList itemList={itemList} setItemList={setItemList} />
+      <br />
       <AddItem itemList={itemList} setItemList={setItemList} />
     </div>
   )
@@ -31,8 +32,11 @@ function AddItem({ itemList, setItemList }) {
     inputRef.current.value = "";
   }
   return (
-    <form onSubmit={addItem} className={styles.add_item_form}>
-      <input name="addItem" placeholder="Add item" ref={inputRef} style={{flexGrow: 1}} />
+    <form onSubmit={addItem} className={styles.add_item_form} style={{display: 'flex', alignItems: 'stretch' }}>
+      <textarea id="txtid" name="addItem" rows="4" cols="50" maxlength="200" ref={inputRef} style={{flexGrow: 1}}>
+        A nice day is a nice day.
+        Lao Tseu
+      </textarea>
       <button type="submit"><AiOutlineEnter /></button>
     </form>
   )
@@ -62,9 +66,9 @@ function ItemList({ itemList, setItemList }) {
         <div
           className={styles.song_item}
           key={item.id}
-          style={{ textDecoration: item.isCompleted ? "line-through" : "" }}
+          style={{ textDecoration: item.isCompleted ? "line-through" : "", display: 'flex', }}
         >
-          <span>
+          <span style={{flexGrow: 1, whiteSpace: 'pre' }}>
             <InlineEdit
               text={item.text}
               onSetText={text => updateItem(item.id, text)}
