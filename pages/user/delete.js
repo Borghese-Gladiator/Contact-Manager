@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/DeletePage.module.css'
 // icons
 import { RiDeleteBin7Line } from 'react-icons/ri';
 
@@ -19,7 +19,6 @@ export default function Home({ userList, setUserList }) {
         <h1 className={styles.title}>
           Delete Users
         </h1>
-
         <div>
           {
             userList.map((user, idx) => {
