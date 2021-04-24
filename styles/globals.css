@@ -48,7 +48,8 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 /* Vertical Align text */
-.vertical_align {
+.vertical_align_text {
   display: inline-flex;
   align-items: center;
+  background-color: #dddddd;
 }
