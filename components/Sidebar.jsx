@@ -6,43 +6,13 @@ import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuIte
 import 'react-pro-sidebar/dist/css/styles.css';
 // Icons
 import { CgProfile } from 'react-icons/cg';
-// generate IDs (unique keys for React rendering)
-import { v4 as uuidv4 } from 'uuid';
-
-const getDefaultUser = ({ name, shortBio, friendGroup }) => ({
-  id: uuidv4(),
-  name: name,
-  shortBio: shortBio,
-  bioObject: {
-    age: "25",
-    location: "Belmont, MA, USA",
-    gender: "Male",
-    languages: ["Cantonese", "Mandarin"],
-    occupation: "Student (Master's)",
-    major: "CS (Reinforcement Learning)"
-  },
-  friendGroup: friendGroup,
-  notesList: [
-    { id: uuidv4(), text: "Fall 2022 - going study abroad in Trinity College in Ireland", done: false },
-    { id: uuidv4(), text: "Spring 2021 - peer mentor (not even starting Zoom calls, but paid for like 7~ hours of work a week)", done: false },
-  ],
-  onlineAccountsList: [
-    { id: uuidv4(), text: "Discord - BoxedCube#1111" }
-  ],
-  dateLastTalked: JSON.stringify(new Date()),
-  dateMet: JSON.stringify(new Date())
-})
-
-const tempObj = {
-  name: "Chunlok Lo",
-  shortBio: "Master's CS, Reinforcement Learning specialist",
-  friendGroup: "League of Legends",
-}
 
 function Sidebar({ userList, setUserList }) {
-  const createUser = () => {
-    const newUser = getDefaultUser(tempObj)
-    setUserList(oldArray => [...oldArray, newUser]);
+  const uploadUserList = () => {
+    alert("UPLOAD")
+  }
+  const downloadUserList = () => {
+    alert("DOWNLOAD")
   }
 
   return (
@@ -83,10 +53,11 @@ function Sidebar({ userList, setUserList }) {
           className="sidebar-btn-wrapper"
           style={{
             padding: '20px 24px',
+            display: 'flex'
           }}
         >
           <button
-            onClick={createUser}
+            onClick={uploadUserList}
             style={{
               backgroundColor: '#3c415c',
               color: 'white',
@@ -95,7 +66,20 @@ function Sidebar({ userList, setUserList }) {
               textTransform: 'uppercase'
             }}>
             <span>
-              Create User
+              Upload
+            </span>
+          </button>
+          <button
+            onClick={downloadUserList}
+            style={{
+              backgroundColor: '#3c415c',
+              color: 'white',
+              padding: '1em 1.5em',
+              textDecoration: 'none',
+              textTransform: 'uppercase'
+            }}>
+            <span>
+              Download
             </span>
           </button>
         </div>
