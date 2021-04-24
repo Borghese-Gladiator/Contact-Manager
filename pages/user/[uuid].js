@@ -110,6 +110,10 @@ export default function UserPage({ userList, setUserList }) {
       <Head>
         <title>{user.name} | Contact Manager</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="keywords" content="react, contact, manager" />
+        <meta name="author" content="Borghese-Gladiator" />
+        <meta name="description" content="Quick utility to track people I talked to and how long ago it was. I built this since existing solutions I found were CRM tools (but I'm just talking to people for fun)." />
+        <meta name="audience" content="Everyone" />
       </Head>
       <LazyBackgroundImage src={'/Suisei_Wallpaper.png'} placeholder={"https://via.placeholder.com/1000"}>
         <main className={styles.main}>
