@@ -6,24 +6,28 @@
 }
 
 .absolute_top_right {
+  z-index: 50;
   position: absolute;
   right: 15px;
   top: 15px;
 }
 
 .absolute_top_left {
+  z-index: 50;
   position: absolute;
   left: 15px;
   top: 15px;
 }
 
 .absolute_bottom_right {
+  z-index: 50;
   position: absolute;
   right: 15px;
   bottom: 15px;
 }
 
 .absolute_bottom_left {
+  z-index: 50;
   position: absolute;
   left: 15px;
   bottom: 15px;

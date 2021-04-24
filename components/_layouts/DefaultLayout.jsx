@@ -18,7 +18,7 @@ const DefaultLayout = ({ userList, setUserList, children }) => (
         <span className={"vertical_align"}><TiDelete style={{ fontSize: '30' }} />Create Page</span>
       </Link>
     </AbsoluteMenu>
-    <div style={{ flexGrow: 1, zIndex: -1 }}>
+    <div style={{ flexGrow: 1 }}>
       {children}
     </div>
   </div>
