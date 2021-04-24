@@ -30,7 +30,7 @@ export function getDefaultUser({ name, shortBio, friendGroup }) {
       age: "25",
       location: "Belmont, MA, USA",
       gender: "Male",
-      languages: ["Cantonese", "Mandarin"],
+      languages: "Cantonese, Mandarin",
       occupation: "Student (Master's)",
       major: "CS (Reinforcement Learning)"
     },
