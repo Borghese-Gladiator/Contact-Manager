@@ -9,7 +9,7 @@ import { CgProfile } from 'react-icons/cg';
 // add type checking for arguments
 import PropTypes from 'prop-types';
 
-function Sidebar({ userList, setUserList }) {
+function Sidebar({ userList=[], setUserList }) {
   const uploadUserList = () => {
     alert("UPLOAD")
   }
