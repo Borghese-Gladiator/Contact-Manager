@@ -6,7 +6,7 @@ import AbsoluteMenu from '../AbsoluteMenu';
 import { TiDelete } from 'react-icons/ti';
 import { IoMdPersonAdd } from 'react-icons/io';
 
-const DefaultLayout = ({ userList, setUserList, children }) => (
+const DefaultLayout = ({ userList=[], setUserList, children }) => (
   <div className="root-container">
     <nav className="sidebar">
       <Sidebar userList={userList} setUserList={setUserList} />
