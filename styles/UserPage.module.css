@@ -16,6 +16,12 @@
   */
 }
 
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
 /* Style Wrapper with Colors */
 .paper_wrapper {
   flex-grow: 1;

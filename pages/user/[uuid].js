@@ -21,8 +21,8 @@ const UserNotFound = ({ uuid }) => (
       <title>User Not Found | Installer Site</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <main>
-      <h1>
+    <main className={styles.main}>
+      <h1 className={styles.title}>
         User Not Found
       </h1>
       <p>
