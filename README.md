@@ -1,23 +1,23 @@
-# Next Installer Site
-Next.js UI to let users download EXE files created by Electron Desktop app (separate repo).
-- Next.js is a React framework (known for SSR & serverless functions through Vercel) - I did not use any here (yet), so I am hosting on Netlify
-- `/public` folder holds files available for download (which `<a href={file_name}>` lets users download)
-- `_app.js` runs to getLayout of page before displaying
-- used package `react-pro-sidebar` for Sidebar
-- created pages Home, Download, Resources, & Contact (loosely based things off of Notepad++ installation site)
-- prepared for Netlify deploy (added "export" command to package.json)
+# Contact Manager
+Quick utility to track people I talked to and how long ago it was. I built this since existing solutions I found were CRM tools (but I'm just talking to people for fun).
+- applied InlineEdit on each part of /user/\[uuid\].js page for ease of editing
+- wrote custom styling in module.css files per file (eg: Button, Flexbox, Sidebar)
+- /components/_layouts/ stores default layout & possibly more in the future
+- /hooks/ used in InlineEdit and for localStorage persistence
+
+## Technology Used
+Next.js (React framework) + CSS3 (written by me)
+- DatePicker component -  `react-datepicker`
+- Sidebar component - `react-pro-sidebar`
+- Generate IDs per element, so react keys are unique - `uuid`
 
 ## Installation
-- `npm install` - installs listed packages from package.json into /node_modules/
-- `npm run dev` - runs dev command in package.json - `"next dev"` which runs Next.js's dev server
+- `npm install`
+- `npm run dev`
 
-## File Structure
-- Next.js standard file structure
-  - every JS file in /pages/ is one page that users can navigate to
-  - `/pages/_app.js` is ran right before loading each page
-  - /pages/api/ holds all serverless functions for frontend to hit at `api/<file_name` (uses Node.js under the hood)
-- /components/ holds components & layouts
-- /styles/ holds module.css files (React loads as scoped CSS) && globals.css (normal global CSS for all files to access)
+## Extra
+- /pages/api was not used (did everything in frontend - however, endpoint was written/used at one point - & then deleted)
+
 
 ## Next.js Default README
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
