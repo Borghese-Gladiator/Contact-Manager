@@ -10,15 +10,15 @@ const DefaultLayout = ({ userList, setUserList, children }) => (
     <nav className="sidebar">
       <Sidebar userList={userList} setUserList={setUserList} />
     </nav>
-    <div style={{ flexGrow: 1 }}>
-      <AbsoluteMenu position="top_right">
-        <Link href="/user/delete">
-          <span className={"vertical_align"}><TiDelete style={{ fontSize: '30' }} />Delete Page</span>
-        </Link>
-        <Link href="/user/create">
-          <span className={"vertical_align"}><TiDelete style={{ fontSize: '30' }} />Create Page</span>
-        </Link>
-      </AbsoluteMenu>
+    <AbsoluteMenu position="top_right">
+      <Link href="/user/delete">
+        <span className={"vertical_align"}><TiDelete style={{ fontSize: '30' }} />Delete Page</span>
+      </Link>
+      <Link href="/user/create">
+        <span className={"vertical_align"}><TiDelete style={{ fontSize: '30' }} />Create Page</span>
+      </Link>
+    </AbsoluteMenu>
+    <div style={{ flexGrow: 1, zIndex: -1 }}>
       {children}
     </div>
   </div>
