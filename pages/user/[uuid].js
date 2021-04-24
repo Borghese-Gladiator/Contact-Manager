@@ -10,6 +10,7 @@ import ContactList from '../../components/ContactList';
 import InlineEdit from '../../components/InlineEdit';
 import Row from '../../components/Flexbox/Row';
 import Col from '../../components/Flexbox/Col';
+import AbsoluteMenu from '../../components/AbsoluteMenu';
 // page styling
 import styles from '../../styles/UserPage.module.css'
 // icons
@@ -120,9 +121,20 @@ export default function UserPage({ userList, setUserList }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <AbsoluteMenu position="top_right">
+          <Link href="/user/delete">
+            <span className={styles.vertical_align}><TiDelete style={{ fontSize: '30' }} />Delete Page</span>
+          </Link>
+          <Link href="/user/delete">
+            <span className={styles.vertical_align}><TiDelete style={{ fontSize: '30' }} />Delete Page</span>
+          </Link>
+          <Link href="/user/delete">
+            <span className={styles.vertical_align}><TiDelete style={{ fontSize: '30' }} />Delete Page</span>
+          </Link>
+        </AbsoluteMenu>
         <h1>{user.name}</h1>
         <h4>
-          "<span><InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)}/></span>" Friend</h4>
+          "<span><InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} /></span>" Friend</h4>
         <h4>Days since Last Talk: {dateDifference(new Date(), dateLastTalked)}</h4>
         <Row>
           <div className={styles.paper_wrapper}>
@@ -168,9 +180,6 @@ export default function UserPage({ userList, setUserList }) {
             </div>
           </Col>
         </Row>
-        <div className={styles.absolute_bottom_right}>
-          <Link href="/user/delete"><TiDelete className={styles.kc_fab_main_btn} /></Link>
-        </div>
       </main>
     </div>
   )

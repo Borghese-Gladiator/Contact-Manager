@@ -34,11 +34,6 @@
 }
 
 /* Floating Action Button */
-.absolute_bottom_right {
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
-}
 .kc_fab_main_btn{
   background-color:#F44336;
   width:60px;
@@ -58,4 +53,9 @@
   transform:rotate(45deg);
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+}
+
+.vertical_align {
+  display: inline-flex;
+  align-items: center;
 }
