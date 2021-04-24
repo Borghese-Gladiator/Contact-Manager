@@ -118,8 +118,7 @@ export default function UserPage({ userList, setUserList }) {
       <LazyBackgroundImage src={'/Suisei_Wallpaper.png'} placeholder={"https://via.placeholder.com/1000"}>
         <main className={styles.main}>
           <h1><InlineEdit text={`${user.name}`} onSetText={text => updateUserKey('name', text)} /></h1>
-          <h4>
-            "<span><InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} /></span>" Friend</h4>
+          <h4>"<InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} />" Friend</h4>
           <h4>Days since Last Talk: {dateDifference(new Date(), dateLastTalked)}</h4>
           <Row>
             <div className={styles.paper_wrapper}>
@@ -139,12 +138,10 @@ export default function UserPage({ userList, setUserList }) {
                       return (
                         <div key={`basic_info_${idx}`} style={{ display: 'flex' }}>
                           <span style={{ flexGrow: 1, fontWeight: 'bold' }}>{capitalizeFirstLetter(key)}</span>
-                          <span>
-                            <InlineEdit
-                              text={displayValue === "" ? "N/A" : displayValue}
-                              onSetText={text => updateUserInfo(key, text)}
-                            />
-                          </span>
+                          <InlineEdit
+                            text={displayValue === "" ? "N/A" : displayValue}
+                            onSetText={text => updateUserInfo(key, text)}
+                          />
                         </div>
                       )
                     })
