@@ -9,6 +9,7 @@ import ContactList from '../../components/ContactList';
 import InlineEdit from '../../components/InlineEdit';
 import Row from '../../components/Flexbox/Row';
 import Col from '../../components/Flexbox/Col';
+import LazyBackgroundImage from '../../components/LazyBackgroundImage';
 // page styling
 import styles from '../../styles/UserPage.module.css'
 // utils
@@ -110,56 +111,58 @@ export default function UserPage({ userList, setUserList }) {
         <title>{user.name} | Contact Manager</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <h1><InlineEdit text={`${user.name}`} onSetText={text => updateUserKey('name', text)} /></h1>
-        <h4>
-          "<span><InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} /></span>" Friend</h4>
-        <h4>Days since Last Talk: {dateDifference(new Date(), dateLastTalked)}</h4>
-        <Row>
-          <div className={styles.paper_wrapper}>
-            <NoteList itemList={user.notesList} setItemList={updateUserNotes} />
-          </div>
-          <Col>
+      <LazyBackgroundImage src={'/Suisei_Wallpaper.png'} placeholder={"https://via.placeholder.com/1000"}>
+        <main className={styles.main}>
+          <h1><InlineEdit text={`${user.name}`} onSetText={text => updateUserKey('name', text)} /></h1>
+          <h4>
+            "<span><InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} /></span>" Friend</h4>
+          <h4>Days since Last Talk: {dateDifference(new Date(), dateLastTalked)}</h4>
+          <Row>
             <div className={styles.paper_wrapper}>
-              <h3>Basic Info</h3>
-              <Col>
-                {
-                  // comma separated list in displayValue - https://stackoverflow.com/questions/47881767/how-to-add-a-comma-in-array-map-after-every-element-except-last-element-in-react
-                  Object.keys(user.bioObject).map((key, idx) => {
-                    const displayValue = typeof user.bioObject[key] === "object"
-                      ? user.bioObject[key].map((item, idx) => <span key={`demo_snap_${idx}`}>{(idx ? ', ' : '') + item}</span>)
-                      : user.bioObject[key]
+              <NoteList itemList={user.notesList} setItemList={updateUserNotes} />
+            </div>
+            <Col>
+              <div className={styles.paper_wrapper}>
+                <h3>Basic Info</h3>
+                <Col>
+                  {
+                    // comma separated list in displayValue - https://stackoverflow.com/questions/47881767/how-to-add-a-comma-in-array-map-after-every-element-except-last-element-in-react
+                    Object.keys(user.bioObject).map((key, idx) => {
+                      const displayValue = typeof user.bioObject[key] === "object"
+                        ? user.bioObject[key].map((item, idx) => <span key={`demo_snap_${idx}`}>{(idx ? ', ' : '') + item}</span>)
+                        : user.bioObject[key]
 
-                    return (
-                      <div key={`basic_info_${idx}`} style={{ display: 'flex' }}>
-                        <span style={{ flexGrow: 1, fontWeight: 'bold' }}>{capitalizeFirstLetter(key)}</span>
-                        <span>
-                          <InlineEdit
-                            text={displayValue === "" ? "N/A" : displayValue}
-                            onSetText={text => updateUserInfo(key, text)}
-                          />
-                        </span>
-                      </div>
-                    )
-                  })
-                }
-                <div style={{ display: 'flex' }}>
-                  <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Date Met</span>
-                  <span>{dateMet.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-                </div>
-              </Col>
-            </div>
-            <div className={styles.paper_wrapper}>
-              <h3>Contact Info</h3>
-              <div style={{ display: 'flex' }}>
-                <span style={{ flexGrow: 1 }}>Last Talked</span>
-                <DatePicker selected={dateLastTalked} onChange={date => updateDateLastTalked(date)} />
+                      return (
+                        <div key={`basic_info_${idx}`} style={{ display: 'flex' }}>
+                          <span style={{ flexGrow: 1, fontWeight: 'bold' }}>{capitalizeFirstLetter(key)}</span>
+                          <span>
+                            <InlineEdit
+                              text={displayValue === "" ? "N/A" : displayValue}
+                              onSetText={text => updateUserInfo(key, text)}
+                            />
+                          </span>
+                        </div>
+                      )
+                    })
+                  }
+                  <div style={{ display: 'flex' }}>
+                    <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Date Met</span>
+                    <span>{dateMet.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                  </div>
+                </Col>
               </div>
-              <ContactList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
-            </div>
-          </Col>
-        </Row>
-      </main>
-    </div>
+              <div className={styles.paper_wrapper}>
+                <h3>Contact Info</h3>
+                <div style={{ display: 'flex' }}>
+                  <span style={{ flexGrow: 1 }}>Last Talked</span>
+                  <DatePicker selected={dateLastTalked} onChange={date => updateDateLastTalked(date)} />
+                </div>
+                <ContactList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
+              </div>
+            </Col>
+          </Row>
+        </main>
+      </LazyBackgroundImage>
+    </div >
   )
 }
