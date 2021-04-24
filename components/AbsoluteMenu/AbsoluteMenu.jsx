@@ -1,13 +1,26 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styles from './AbsoluteMenu.module.css'
+// styling
+import styles from './AbsoluteMenu.module.css';
+// hooks
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 // icons
 import { CgMoreVerticalO } from 'react-icons/cg';
 
 const AbsoluteMenu = ({ position, children }) => {
   const [open, setOpen] = useState(false);
+  
+  const wrapperRef = useRef(null);
+
+  // check to see if the user clicked outside of this component
+  useOnClickOutside(wrapperRef, () => {
+    if (open) {
+      setOpen(false)
+    }
+  });
+
   return (
-    <div className={styles[`absolute_${position}`]}>
+    <div className={styles[`absolute_${position}`]} ref={wrapperRef}>
       {!open
         ? <span onClick={() => setOpen(true)}><CgMoreVerticalO className={styles.kc_fab_main_btn} /></span>
         : 
