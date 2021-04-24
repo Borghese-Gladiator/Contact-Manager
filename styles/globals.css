@@ -47,3 +47,8 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+/* Vertical Align text */
+.vertical_align {
+  display: inline-flex;
+  align-items: center;
+}

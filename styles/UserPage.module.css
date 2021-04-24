@@ -32,8 +32,3 @@
   border-radius: 10px;
   box-shadow: 0px 0px 0px 1px #fff inset;
 }
-/* Vertical Align text */
-.vertical_align {
-  display: inline-flex;
-  align-items: center;
-}
