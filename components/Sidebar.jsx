@@ -4,19 +4,15 @@ import Link from 'next/link';
 // code demo reference: https://github.com/azouaoui-med/react-pro-sidebar/blob/master/demo/src/Aside.js
 import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
+// custom components
+import UploadButton from './FileComponents/UploadButton';
+import DownloadButton from './FileComponents/DownloadButton';
 // Icons
 import { CgProfile } from 'react-icons/cg';
 // add type checking for arguments
 import PropTypes from 'prop-types';
 
-function Sidebar({ userList=[], setUserList }) {
-  const uploadUserList = () => {
-    alert("UPLOAD")
-  }
-  const downloadUserList = () => {
-    alert("DOWNLOAD")
-  }
-
+function Sidebar({ userList = [], setUserList }) {
   return (
     <ProSidebar>
       <SidebarHeader>
@@ -35,6 +31,7 @@ function Sidebar({ userList=[], setUserList }) {
           CONTACT MANAGER
         </div>
       </SidebarHeader>
+      
       <SidebarContent>
         <Menu iconShape="square">
           {
@@ -54,36 +51,16 @@ function Sidebar({ userList=[], setUserList }) {
         <div
           className="sidebar-btn-wrapper"
           style={{
-            padding: '20px 24px',
-            display: 'flex'
+            padding: '20px 24px'
           }}
         >
-          <button
-            onClick={uploadUserList}
-            style={{
-              backgroundColor: '#3c415c',
-              color: 'white',
-              padding: '1em 1.5em',
-              textDecoration: 'none',
-              textTransform: 'uppercase'
-            }}>
-            <span>
-              Upload
-            </span>
-          </button>
-          <button
-            onClick={downloadUserList}
-            style={{
-              backgroundColor: '#3c415c',
-              color: 'white',
-              padding: '1em 1.5em',
-              textDecoration: 'none',
-              textTransform: 'uppercase'
-            }}>
-            <span>
-              Download
-            </span>
-          </button>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+            <UploadButton objectList={userList} />
+            <DownloadButton objectList={userList} />
+          </div>
         </div>
       </SidebarFooter>
     </ProSidebar>
