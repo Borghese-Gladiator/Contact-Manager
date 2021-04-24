@@ -20,6 +20,18 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+/* difference between date1 and date2 in days (date2 - date1) */
+/* date1 and date 2 are already javascript date objects */
+function dateDifference(date2, date1) {
+  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+  // Discard the time and time-zone information.
+  const utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+  const utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+  return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+}
+
 const UserNotFound = ({ uuid }) => (
   <div>
     <Head>
@@ -111,6 +123,7 @@ export default function UserPage({ userList, setUserList }) {
         <h1>{user.name}</h1>
         <h4>
           "<span><InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)}/></span>" Friend</h4>
+        <h4>Days since Last Talk: {dateDifference(new Date(), dateLastTalked)}</h4>
         <Row>
           <div className={styles.paper_wrapper}>
             <NoteList itemList={user.notesList} setItemList={updateUserNotes} />
