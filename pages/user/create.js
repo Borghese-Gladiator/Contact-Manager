@@ -24,7 +24,7 @@ function reducer(state, action) {
   }
 }
 
-export default function CreatePage({ userList, setUserList }) {
+export default function CreatePage({ userList=[], setUserList }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const createUsers = () => {
     const tempUserList = []

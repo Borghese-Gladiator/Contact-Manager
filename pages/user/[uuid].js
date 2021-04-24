@@ -32,7 +32,7 @@ const UserNotFound = ({ uuid }) => (
   </div>
 )
 
-export default function UserPage({ userList, setUserList }) {
+export default function UserPage({ userList=[], setUserList }) {
   // access route parameters (uuid is a string )
   const router = useRouter()
   const { uuid } = router.query

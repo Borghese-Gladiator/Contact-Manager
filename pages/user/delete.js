@@ -3,7 +3,7 @@ import styles from '../../styles/DeletePage.module.css'
 // icons
 import { RiDeleteBin7Line } from 'react-icons/ri';
 
-export default function Home({ userList, setUserList }) {
+export default function DeletePage({ userList=[], setUserList }) {
   const deleteUser = (id) => {
     console.log("BLAH")
     setUserList(userList.filter((t) => t.id !== id))
@@ -35,7 +35,7 @@ export default function Home({ userList, setUserList }) {
             {
               userList.map((user, idx) => {
                 return (
-                  <tr>
+                  <tr key={user.id}>
                     <td>{user.name}</td>
                     <td>{user.id}</td>
                     <td><button><RiDeleteBin7Line onClick={() => deleteUser(user.id)} /></button></td>
@@ -46,7 +46,6 @@ export default function Home({ userList, setUserList }) {
           </tbody>
         </table>
       </main>
-
     </div>
   )
 }
