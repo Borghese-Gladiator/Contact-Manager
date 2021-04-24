@@ -2,6 +2,8 @@
 Quick utility to track people I talked to and how long ago it was. I built this since existing solutions I found were CRM tools (but I'm just talking to people for fun).
 - applied InlineEdit on each part of /user/\[uuid\].js page for ease of editing
 - wrote custom styling in module.css files per file (eg: Button, Flexbox, Sidebar)
+- /pages/_app/ holds state & passes -> pages -> components
+- Next.js localStorage workaround in /pages/_app/ since window is not defined on SSR - [https://dev.to/jaklaudiusz/next-js-persistent-state-with-react-hooks-and-localstorage-how-to-make-it-work-3al6](https://dev.to/jaklaudiusz/next-js-persistent-state-with-react-hooks-and-localstorage-how-to-make-it-work-3al6)
 - /components/_layouts/ stores default layout & possibly more in the future
 - /hooks/ used in InlineEdit and for localStorage persistence
 
@@ -19,7 +21,8 @@ Next.js (React framework) + CSS3 (written by me)
 
 ## Extra
 - /pages/api was not used (did everything in frontend - however, endpoint was written/used at one point - & then deleted)
-
+- picked themes from color hunt palette: [https://colorhunt.co/palette/264815](https://colorhunt.co/palette/264815)
+- found background image from: [https://www.reddit.com/r/Hololive/comments/ia940a/hoshimachi_suisei_minimalvector_wallpaper/](https://www.reddit.com/r/Hololive/comments/ia940a/hoshimachi_suisei_minimalvector_wallpaper/)
 
 ## Next.js Default README
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
