@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import Link from 'next/link';
 // DatePicker package
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,11 +9,8 @@ import ContactList from '../../components/ContactList';
 import InlineEdit from '../../components/InlineEdit';
 import Row from '../../components/Flexbox/Row';
 import Col from '../../components/Flexbox/Col';
-import AbsoluteMenu from '../../components/AbsoluteMenu';
 // page styling
 import styles from '../../styles/UserPage.module.css'
-// icons
-import { TiDelete } from 'react-icons/ti';
 
 //capitalize only the first letter of the string. 
 function capitalizeFirstLetter(string) {
@@ -130,17 +126,6 @@ export default function UserPage({ userList, setUserList }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <AbsoluteMenu position="top_right">
-          <Link href="/user/delete">
-            <span className={styles.vertical_align}><TiDelete style={{ fontSize: '30' }} />Delete Page</span>
-          </Link>
-          <Link href="/user/delete">
-            <span className={styles.vertical_align}><TiDelete style={{ fontSize: '30' }} />Delete Page</span>
-          </Link>
-          <Link href="/user/delete">
-            <span className={styles.vertical_align}><TiDelete style={{ fontSize: '30' }} />Delete Page</span>
-          </Link>
-        </AbsoluteMenu>
         <h1><InlineEdit text={`${user.name}`} onSetText={text => updateUserKey('name', text)} /></h1>
         <h4>
           "<span><InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} /></span>" Friend</h4>
