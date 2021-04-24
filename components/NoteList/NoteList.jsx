@@ -1,4 +1,4 @@
-import { useRef} from 'react'
+import { useRef } from 'react'
 // custom components
 import InlineEdit from '../InlineEdit';
 // generate unique IDs for items
@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './NoteList.module.css'
 // icons
 import { AiOutlineEnter } from 'react-icons/ai';
+import { RiDeleteBack2Line } from 'react-icons/ri';
 
 export default function ItemListContainer({ itemList, setItemList }) {
   return (
@@ -33,7 +34,7 @@ function AddItem({ itemList, setItemList }) {
   }
   return (
     <form onSubmit={addItem} className={styles.add_item_form_container}>
-      <textarea id="txtid" name="addItem" rows="4" cols="50" maxLength="200" ref={inputRef} style={{flexGrow: 1}} placeholder="A nice day is a nice day.">
+      <textarea id="txtid" name="addItem" rows="4" cols="50" maxLength="200" ref={inputRef} style={{ flexGrow: 1 }} placeholder="A nice day is a nice day.">
       </textarea>
       <button type="submit"><AiOutlineEnter /></button>
     </form>
@@ -66,7 +67,7 @@ function ItemList({ itemList, setItemList }) {
           className={styles.item_container}
           style={{
             textDecoration: item.isCompleted ? "line-through" : "",
-         }}
+          }}
         >
           <span style={{ flexGrow: 1 }}>
             <InlineEdit
@@ -87,8 +88,6 @@ function DeleteItem({ id, itemList, setItemList }) {
   }
 
   return (
-    <div>
-      <button onClick={deleteItem}>x</button>
-    </div>
+    <button onClick={deleteItem} className={styles.delete_btn}><RiDeleteBack2Line /></button>
   )
 }
