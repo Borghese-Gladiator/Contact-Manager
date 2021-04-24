@@ -21,7 +21,7 @@ export function dateDifference(date2, date1) {
 
 // POTENTIAL SERVER FUNCTIONS
 
-export function getDefaultUser(name, shortBio, friendGroup) {
+export function getDefaultUser({ name, shortBio, friendGroup }) {
   return {
     id: uuidv4(),
     name: name,
