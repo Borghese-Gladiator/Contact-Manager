@@ -15,17 +15,31 @@ const LazyImage = ({ src, children, placeholder }) => {
     imageLoader.onload = () => setSourceLoaded(src)
   }, [sourceLoaded])
 
-  return (
-    <div style={{
-      backgroundImage: `url(${src || placeholder})`,
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      zIndex: -50
-    }}>
-      {children}
-    </div>
-  )
+  if (sourceLoaded === null) {
+    return (
+      <div style={{
+        backgroundImage: `url(${placeholder})`,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        zIndex: -50
+      }}>
+        {children}
+      </div>
+    )
+  } else {
+    return (
+      <div style={{
+        backgroundImage: `url(${src || placeholder})`,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        zIndex: -50
+      }}>
+        {children}
+      </div>
+    )
+  }
 }
 
 LazyImage.propTypes = {
