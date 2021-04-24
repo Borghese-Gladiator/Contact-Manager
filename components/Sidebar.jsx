@@ -27,9 +27,7 @@ const getDefaultUser = ({ name, shortBio, friendGroup }) => ({
     { id: uuidv4(), text: "Spring 2021 - peer mentor (not even starting Zoom calls, but paid for like 7~ hours of work a week)", done: false },
   ],
   onlineAccountsList: [
-    { id: uuidv4(), text: "Discord - BoxedCube#1111" },
-    { id: uuidv4(), text: "Messenger - Chunlok Lo" },
-    { id: uuidv4(), text: "LinkedIn - Chunlok Lo" },
+    { id: uuidv4(), text: "Discord - BoxedCube#1111" }
   ],
   dateLastTalked: JSON.stringify(new Date()),
   dateMet: JSON.stringify(new Date())

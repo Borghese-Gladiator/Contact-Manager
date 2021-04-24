@@ -75,21 +75,8 @@ function ItemList({ itemList, setItemList }) {
               onSetText={text => updateItem(item.id, text)}
             />
           </span>
-          <DeleteItem id={item.id} itemList={itemList} setItemList={setItemList} />
         </div>
       ))}
-    </div>
-  )
-}
-
-function DeleteItem({ id, itemList, setItemList }) {
-  function deleteItem() {
-    setItemList(itemList.filter((t) => t.id !== id))
-  }
-
-  return (
-    <div>
-      <button onClick={deleteItem}>x</button>
     </div>
   )
 }
