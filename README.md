@@ -7,9 +7,11 @@ Quick utility to track people I talked to and how long ago it was. I built this 
 
 ## Technology Used
 Next.js (React framework) + CSS3 (written by me)
+- Icons picked from - `react-icons`
 - DatePicker component -  `react-datepicker`
 - Sidebar component - `react-pro-sidebar`
 - Generate IDs per element, so react keys are unique - `uuid`
+- PropTypes to enforce typing (due to numerous components)
 
 ## Installation
 - `npm install`
