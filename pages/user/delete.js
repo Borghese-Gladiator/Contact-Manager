@@ -12,12 +12,12 @@ export default function Home({ userList, setUserList }) {
   return (
     <div>
       <Head>
-        <title>Home | Contact Manager</title>
+        <title>Delete Users | Contact Manager</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Delete Users
+          Delete User
         </h1>
         <table>
           <thead>
