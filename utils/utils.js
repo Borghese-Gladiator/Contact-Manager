@@ -1,6 +1,7 @@
 // generate IDs (unique keys for React rendering)
 import { v4 as uuidv4 } from 'uuid';
 
+export const storageKey = 'userList'
 
 //capitalize only the first letter of the string. 
 export function capitalizeFirstLetter(string) {
