@@ -11,23 +11,8 @@ import Row from '../../components/Flexbox/Row';
 import Col from '../../components/Flexbox/Col';
 // page styling
 import styles from '../../styles/UserPage.module.css'
-
-//capitalize only the first letter of the string. 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-/* difference between date1 and date2 in days (date2 - date1) */
-/* date1 and date 2 are already javascript date objects */
-function dateDifference(date2, date1) {
-  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-
-  // Discard the time and time-zone information.
-  const utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
-  const utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
-
-  return Math.floor((utc2 - utc1) / _MS_PER_DAY);
-}
+// utils
+import { capitalizeFirstLetter, dateDifference } from '../../utils/utils';
 
 const UserNotFound = ({ uuid }) => (
   <div>

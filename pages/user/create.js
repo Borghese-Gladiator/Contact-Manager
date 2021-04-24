@@ -1,33 +1,9 @@
 import { useReducer } from 'react';
 import Head from 'next/head'
-// generate IDs (unique keys for React rendering)
-import { v4 as uuidv4 } from 'uuid';
 // styling
 import styles from '../../styles/CreatePage.module.css'
-
-const getDefaultUser = ({ name, shortBio, friendGroup }) => ({
-  id: uuidv4(),
-  name: name,
-  shortBio: shortBio,
-  bioObject: {
-    age: "25",
-    location: "Belmont, MA, USA",
-    gender: "Male",
-    languages: ["Cantonese", "Mandarin"],
-    occupation: "Student (Master's)",
-    major: "CS (Reinforcement Learning)"
-  },
-  friendGroup: friendGroup,
-  notesList: [
-    { id: uuidv4(), text: "Fall 2022 - going study abroad in Trinity College in Ireland", done: false },
-    { id: uuidv4(), text: "Spring 2021 - peer mentor (not even starting Zoom calls, but paid for like 7~ hours of work a week)", done: false },
-  ],
-  onlineAccountsList: [
-    { id: uuidv4(), text: "Discord - BoxedCube#1111" }
-  ],
-  dateLastTalked: JSON.stringify(new Date()),
-  dateMet: JSON.stringify(new Date())
-})
+// utils 
+import { getDefaultUser } from '../../utils/utils';
 
 const tempObj = {
   name: "Chunlok Lo",
