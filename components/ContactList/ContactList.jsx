@@ -8,8 +8,10 @@ import styles from './ContactList.module.css'
 // icons
 import { AiOutlineEnter } from 'react-icons/ai';
 import { FaDiscord } from 'react-icons/fa';
+// add type checking for arguments
+import PropTypes from 'prop-types';
 
-export default function ItemListContainer({ itemList, setItemList }) {
+function ItemListContainer({ itemList, setItemList }) {
   return (
     <div className={styles.root_container}>
       <ItemList itemList={itemList} setItemList={setItemList} />
@@ -18,6 +20,13 @@ export default function ItemListContainer({ itemList, setItemList }) {
     </div>
   )
 }
+
+ItemListContainer.propTypes = {
+  itemList: PropTypes.array,
+  setItemList: PropTypes.func,
+};
+
+export default ItemListContainer;
 
 function AddItem({ itemList, setItemList }) {
   const inputRef = useRef();

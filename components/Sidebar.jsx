@@ -6,6 +6,8 @@ import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuIte
 import 'react-pro-sidebar/dist/css/styles.css';
 // Icons
 import { CgProfile } from 'react-icons/cg';
+// add type checking for arguments
+import PropTypes from 'prop-types';
 
 function Sidebar({ userList, setUserList }) {
   const uploadUserList = () => {
@@ -87,5 +89,10 @@ function Sidebar({ userList, setUserList }) {
     </ProSidebar>
   )
 }
+
+Sidebar.propTypes = {
+  userList: PropTypes.array,
+  setUserList: PropTypes.func,
+};
 
 export default Sidebar;

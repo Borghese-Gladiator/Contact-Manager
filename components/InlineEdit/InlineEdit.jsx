@@ -6,10 +6,12 @@ import useOnClickOutside from "../../hooks/useOnClickOutside";
 import DOMPurify from "dompurify";
 // styling
 import styles from './InlineEdit.module.css'
+// add type checking for arguments
+import PropTypes from 'prop-types';
 
-function InlineEdit(props) {
+function InlineEdit({ text, onSetText }) {
   const [isInputActive, setIsInputActive] = useState(false);
-  const [inputValue, setInputValue] = useState(props.text);
+  const [inputValue, setInputValue] = useState(text);
 
   const wrapperRef = useRef(null);
   const textRef = useRef(null);
@@ -17,8 +19,6 @@ function InlineEdit(props) {
 
   const enter = useKeypress("Enter");
   const esc = useKeypress("Escape");
-
-  const { onSetText } = props;
 
   // check to see if the user clicked outside of this component
   useOnClickOutside(wrapperRef, () => {
@@ -37,10 +37,10 @@ function InlineEdit(props) {
 
   const onEsc = useCallback(() => {
     if (esc) {
-      setInputValue(props.text);
+      setInputValue(text);
       setIsInputActive(false);
     }
-  }, [esc, props.text]);
+  }, [esc, text]);
 
   // focus the cursor in the input field on edit start
   useEffect(() => {
@@ -77,7 +77,7 @@ function InlineEdit(props) {
         onClick={handleSpanClick}
         className={`${styles.inline_text_copy} ${!isInputActive ? styles.inline_text_copy_active : styles.inline_text_copy_hidden}`}
       >
-        {props.text}
+        {text}
       </span>
       <input
         ref={inputRef}
@@ -91,5 +91,10 @@ function InlineEdit(props) {
     </span >
   );
 }
+
+InlineEdit.propTypes = {
+  text: PropTypes.string,
+  onSetText: PropTypes.func,
+};
 
 export default InlineEdit;
