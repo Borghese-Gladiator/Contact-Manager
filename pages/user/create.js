@@ -37,7 +37,7 @@ export default function CreatePage({ userList, setUserList }) {
   return (
     <div>
       <Head>
-        <title>Delete Users | Contact Manager</title>
+        <title>Create Users | Contact Manager</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
