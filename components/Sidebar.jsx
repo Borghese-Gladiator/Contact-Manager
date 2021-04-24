@@ -88,14 +88,14 @@ function Sidebar({ userList, setUserList }) {
           }}
         >
           <button
-          onClick={createUser}
-          style={{
-            backgroundColor: 'green',
-            color: 'white',
-            padding: '1em 1.5em',
-            textDecoration: 'none',
-            textTransform: 'uppercase'
-          }}>
+            onClick={createUser}
+            style={{
+              backgroundColor: '#3c415c',
+              color: 'white',
+              padding: '1em 1.5em',
+              textDecoration: 'none',
+              textTransform: 'uppercase'
+            }}>
             <span>
               Create User
             </span>
