@@ -78,20 +78,29 @@ export default function UserPage({ userList, setUserList }) {
     })
     setUserList(newUserList)
   }
+  const updateUserKey = (key, newValue) => {
+    // same methodology as updateUserFriendGroup
+    setUserList(userList.map((tempUser, idx) =>
+      user.id === tempUser.id ? { ...tempUser, [key]: newValue } : tempUser
+    ))
+  }
   const updateUserNotes = (newValue) => {
     // same methodology, different key - notesList
+    // separate function => to pass to <NotesList />
     setUserList(userList.map((tempUser, idx) =>
       user.id === tempUser.id ? { ...tempUser, notesList: newValue } : tempUser
     ))
   }
   const updateUserOnlineAccountsList = (newValue) => {
     // same methodology, different key - onlineAccountsList
+    // separate function => to pass to <ContactList />
     setUserList(userList.map((tempUser, idx) =>
       user.id === tempUser.id ? { ...tempUser, onlineAccountsList: newValue } : tempUser
     ))
   }
   const updateDateLastTalked = (newDate) => {
     // same methodology, stringifies newDate for storing
+    // separate function => to pass to <DatePicker />
     const newUserList = userList.map((tempUser, idx) =>
       user.id === tempUser.id ? { ...tempUser, dateLastTalked: JSON.stringify(newDate) } : tempUser
     )
@@ -132,7 +141,7 @@ export default function UserPage({ userList, setUserList }) {
             <span className={styles.vertical_align}><TiDelete style={{ fontSize: '30' }} />Delete Page</span>
           </Link>
         </AbsoluteMenu>
-        <h1>{user.name}</h1>
+        <h1><InlineEdit text={`${user.name}`} onSetText={text => updateUserKey('name', text)} /></h1>
         <h4>
           "<span><InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} /></span>" Friend</h4>
         <h4>Days since Last Talk: {dateDifference(new Date(), dateLastTalked)}</h4>
