@@ -32,7 +32,7 @@ const UserNotFound = ({ uuid }) => (
   </div>
 )
 
-export default function UserPage({ userList=[], setUserList }) {
+export default function UserPage({ userList = [], setUserList }) {
   // access route parameters (uuid is a string )
   const router = useRouter()
   const { uuid } = router.query
@@ -117,9 +117,11 @@ export default function UserPage({ userList=[], setUserList }) {
       </Head>
       <LazyBackgroundImage src={'/Suisei_Wallpaper.png'} placeholder={"https://via.placeholder.com/1000"}>
         <main className={styles.main}>
-          <h1><InlineEdit text={`${user.name}`} onSetText={text => updateUserKey('name', text)} /></h1>
-          <h4>"<InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} />" Friend</h4>
-          <h4>Days since Last Talk: {dateDifference(new Date(), dateLastTalked)}</h4>
+          <div style={{ marginLeft: '30px' }}>
+            <h1><InlineEdit text={`${user.name}`} onSetText={text => updateUserKey('name', text)} /></h1>
+            <h4>"<InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} />" Friend</h4>
+            <h4>Days since Last Talk: {dateDifference(new Date(), dateLastTalked)}</h4>
+          </div>
           <Row>
             <div className={styles.paper_wrapper}>
               <NoteList itemList={user.notesList} setItemList={updateUserNotes} />
