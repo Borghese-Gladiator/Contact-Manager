@@ -117,11 +117,9 @@ export default function UserPage({ userList = [], setUserList }) {
       </Head>
       <LazyBackgroundImage src={'/Suisei_Wallpaper.png'} placeholder={"https://via.placeholder.com/1000"}>
         <main className={styles.main}>
-          <div style={{ marginLeft: '30px' }}>
             <h1><InlineEdit text={`${user.name}`} onSetText={text => updateUserKey('name', text)} /></h1>
             <h4>"<InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} />" Friend</h4>
             <h4>Days since Last Talk: {dateDifference(new Date(), dateLastTalked)}</h4>
-          </div>
           <Row>
             <div className={styles.paper_wrapper}>
               <NoteList itemList={user.notesList} setItemList={updateUserNotes} />
@@ -138,28 +136,28 @@ export default function UserPage({ userList = [], setUserList }) {
                         : user.bioObject[key]
 
                       return (
-                        <div key={`basic_info_${idx}`} style={{ display: 'flex' }}>
+                        <Row key={`basic_info_${idx}`}>
                           <span style={{ flexGrow: 1, fontWeight: 'bold' }}>{capitalizeFirstLetter(key)}</span>
                           <InlineEdit
                             text={displayValue === "" ? "N/A" : displayValue}
                             onSetText={text => updateUserInfo(key, text)}
                           />
-                        </div>
+                        </Row>
                       )
                     })
                   }
-                  <div style={{ display: 'flex' }}>
+                  <Row>
                     <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Date Met</span>
                     <span>{dateMet.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-                  </div>
+                  </Row>
                 </Col>
               </div>
               <div className={styles.paper_wrapper}>
                 <h3>Contact Info</h3>
-                <div style={{ display: 'flex' }}>
+                <Row>
                   <span style={{ flexGrow: 1 }}>Last Talked</span>
                   <DatePicker selected={dateLastTalked} onChange={date => updateDateLastTalked(date)} />
-                </div>
+                </Row>
                 <ContactList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
               </div>
             </Col>
