@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5 {
   margin-bottom: 5px;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 1000px) {
+@media only screen and (min-width: 0px) and (max-width: 1200px) {
   .sidebar { display: none; }  /* hide it on small screens */
 }
 
