@@ -1,4 +1,4 @@
-import { storageKey } from '../../../utils/utils';
+import { storageKey } from '../../utils/utils';
 import styles from './UploadButton.module.css';
 
 // Styling input type file button: https://stackoverflow.com/questions/572768/styling-an-input-type-file-button

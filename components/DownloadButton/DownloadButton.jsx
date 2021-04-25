@@ -1,5 +1,5 @@
 import styles from './DownloadButton.module.css';
-import { storageKey } from '../../../utils/utils';
+import { storageKey } from '../../utils/utils';
 
 export default function DownloadButton() {
   const downloadTxtFile = () => {
