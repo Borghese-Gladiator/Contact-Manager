@@ -22,7 +22,8 @@ const LazyImage = ({ src, children, placeholder }) => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        zIndex: -50
+        zIndex: -50,
+        height: '100vh'
       }}>
         {children}
       </div>
@@ -34,7 +35,8 @@ const LazyImage = ({ src, children, placeholder }) => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        zIndex: -50
+        zIndex: -50,
+        height: '100vh'
       }}>
         {children}
       </div>

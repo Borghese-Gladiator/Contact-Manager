@@ -41,3 +41,8 @@
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
+
+.item_list_container {
+  overflow-y: auto;
+  max-height: 49vh;
+}

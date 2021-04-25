@@ -68,7 +68,7 @@ function ItemList({ itemList, setItemList }) {
   }
 
   return (
-    <div>
+    <div className={styles.item_list_container}>
       {itemList.map((item, index) => (
         <div
           key={item.id}
