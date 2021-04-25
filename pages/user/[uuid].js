@@ -4,8 +4,8 @@ import Head from 'next/head'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 // custom components
-import NoteList from '../../components/NoteList';
-import ContactList from '../../components/ContactList';
+import NoteList from '../../components/ListComponents/NoteList';
+import ContactList from '../../components/ListComponents/ContactList';
 import InlineEdit from '../../components/InlineEdit';
 import Row from '../../components/Flexbox/Row';
 import Col from '../../components/Flexbox/Col';
