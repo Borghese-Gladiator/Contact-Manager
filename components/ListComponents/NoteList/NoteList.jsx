@@ -43,8 +43,7 @@ function AddItem({ itemList, setItemList }) {
   }
   return (
     <form onSubmit={addItem} className={styles.add_item_form_container}>
-      <textarea id="txtid" name="addItem" rows="4" cols="50" maxLength="200" ref={inputRef} style={{ flexGrow: 1 }} placeholder="A nice day is a nice day.">
-      </textarea>
+      <input name="addItem" placeholder="Write note" ref={inputRef} style={{flexGrow: 1, minHeight: '50px' }} />
       <button type="submit"><AiOutlineEnter /></button>
     </form>
   )
