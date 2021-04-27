@@ -20,6 +20,9 @@ const DefaultLayout = ({ userList=[], setUserList, children }) => (
       <Link href="/user/delete">
         <a className={styles.vertical_align_text}><TiDelete style={{ fontSize: '30' }} />Delete Page</a>
       </Link>
+      <Link href="/user/mass_create">
+        <a className={styles.vertical_align_text}><IoMdPersonAdd style={{ fontSize: '30' }} />Mass Create</a>
+      </Link>
     </AbsoluteMenu>
     <div style={{ flexGrow: 1 }}>
       {children}
