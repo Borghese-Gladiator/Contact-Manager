@@ -28,12 +28,12 @@ export function getDefaultUser({ name, shortBio, friendGroup }) {
     name: name,
     shortBio: shortBio,
     bioObject: {
-      age: "25",
-      location: "Belmont, MA, USA",
+      age: "",
+      location: "",
       gender: "Male",
-      languages: "Cantonese, Mandarin",
-      occupation: "Student (Master's)",
-      major: "CS (Reinforcement Learning)"
+      languages: "",
+      occupation: "",
+      major: "CS"
     },
     friendGroup: friendGroup,
     notesList: [
@@ -41,7 +41,7 @@ export function getDefaultUser({ name, shortBio, friendGroup }) {
       { id: uuidv4(), text: "Spring 2021 - peer mentor (not even starting Zoom calls, but paid for like 7~ hours of work a week)", done: false },
     ],
     onlineAccountsList: [
-      { id: uuidv4(), text: "Discord - BoxedCube#1111" }
+      { id: uuidv4(), text: "Discord - Blah#1111" }
     ],
     dateLastTalked: JSON.stringify(new Date()),
     dateMet: JSON.stringify(new Date())
