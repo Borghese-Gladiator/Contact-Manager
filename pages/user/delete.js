@@ -5,7 +5,6 @@ import { RiDeleteBin7Line } from 'react-icons/ri';
 
 export default function DeletePage({ userList=[], setUserList }) {
   const deleteUser = (id) => {
-    console.log("BLAH")
     setUserList(userList.filter((t) => t.id !== id))
   }
 
