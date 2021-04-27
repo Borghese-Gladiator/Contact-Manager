@@ -2,7 +2,6 @@ import { useReducer } from 'react';
 import Head from 'next/head'
 // custom components
 import Row from '../../components/Row';
-import Col from '../../components/Col';
 // styling
 import styles from '../../styles/CreatePage.module.css'
 // utils 
@@ -46,7 +45,7 @@ export default function CreatePage({ userList = [], setUserList }) {
           <br />
           <Row>
             <label htmlFor="shortBio" style={{ flexGrow: 1 }}>Short Bio:</label>
-            <input type="text" id="shortBio" name="shortBio" placeholder="Interactive Studio CEO from Argentina" />
+            <input type="text" id="shortBio" name="shortBio" placeholder="Interactiva Studio CEO from Argentina" />
           </Row>
           <br />
           <Row>
@@ -67,9 +66,6 @@ export default function CreatePage({ userList = [], setUserList }) {
             <span>Create User</span>
           </button>
         </form>
-        <br />
-        <div>
-        </div>
       </main>
 
     </div >
