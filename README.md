@@ -1,7 +1,8 @@
 # Contact Manager
 Quick utility to track people I talked to and how long ago it was. I built this since existing solutions I found were CRM tools (but I'm just talking to people for fun).
-- applied InlineEdit on each part of /user/\[uuid\].js page for ease of editing
 - wrote custom styling in module.css files per file (eg: Button, Flexbox, Sidebar)
+
+## File Structure
 - /pages/_app/ holds state & passes -> pages -> components
 - Next.js localStorage workaround in /pages/_app/ since window is not defined on SSR - [https://dev.to/jaklaudiusz/next-js-persistent-state-with-react-hooks-and-localstorage-how-to-make-it-work-3al6](https://dev.to/jaklaudiusz/next-js-persistent-state-with-react-hooks-and-localstorage-how-to-make-it-work-3al6)
 - /components/_layouts/ stores default layout & possibly more in the future
@@ -14,6 +15,7 @@ Next.js (React framework) + CSS3 (written by me)
 - Sidebar component - `react-pro-sidebar`
 - Generate IDs per element, so react keys are unique - `uuid`
 - PropTypes to enforce typing (due to numerous components)
+- applied InlineEdit component on each part of /user/\[uuid\].js page for ease of editing
 
 ## Installation
 - `npm install`
