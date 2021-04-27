@@ -39,7 +39,7 @@ const useSortableData = (items, config = null) => {
   return { users: sortedItems, requestSort, sortConfig };
 };
 
-const ProductTable = ({ userList }) => {
+const ProductTable = ({ userList, deleteUser }) => {
   const { users, requestSort, sortConfig } = useSortableData(userList);
   return (
     <table className={styles.table_root}>

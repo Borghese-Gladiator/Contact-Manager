@@ -28,7 +28,7 @@ export default function DeletePage({ userList=[], setUserList }) {
         <h1 className={styles.title}>
           Delete User
         </h1>
-        <UserTable userList={userList} />
+        <UserTable userList={userList} deleteUser={deleteUser} />
       </main>
     </div>
   )
