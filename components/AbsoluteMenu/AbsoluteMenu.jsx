@@ -19,13 +19,14 @@ const AbsoluteMenu = ({ position, children }) => {
     }
   });
 
-  const absoluteAlignClassName = `absolute_${position}`;
-  const contentAlignClassName = position.includes("right") ? styles.left_align_content : "";
+  const absoluteAlignClassName = `absolute_${position}`; // change to match module classNames
+  const contentAlignRightClassName = position.includes("right") ? styles.left_align_content : ""; // show content right of dropdown
+  const contentAlignUpClassName = position.includes("top") ? styles.up_align_content : ""; // show content above dropdown
 
   return (
     <div className={`${styles[absoluteAlignClassName]} ${styles.dropdown}`} ref={wrapperRef}>
       <button className={styles.dropbtn}><CgMoreVerticalO /></button>
-      <div className={`${styles.dropdown_content} ${contentAlignClassName}`}>
+      <div className={`${styles.dropdown_content} ${contentAlignRightClassName} ${contentAlignUpClassName}`}>
         {children}
       </div>
     </div>
