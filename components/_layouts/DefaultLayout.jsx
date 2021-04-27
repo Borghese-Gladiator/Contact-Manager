@@ -5,18 +5,20 @@ import AbsoluteMenu from '../AbsoluteMenu';
 // icons
 import { TiDelete } from 'react-icons/ti';
 import { IoMdPersonAdd } from 'react-icons/io';
+// styling
+import styles from './DefaultLayout.module.css';
 
 const DefaultLayout = ({ userList=[], setUserList, children }) => (
-  <div className="root-container">
-    <nav className="sidebar">
+  <div className={styles.root_container}>
+    <nav className={styles.sidebar}>
       <Sidebar userList={userList} setUserList={setUserList} />
     </nav>
     <AbsoluteMenu position="top_right">
       <Link href="/user/create">
-        <span className={"vertical_align_text"}><IoMdPersonAdd style={{ fontSize: '30' }} />Create Page</span>
+        <a className={styles.vertical_align_text}><IoMdPersonAdd style={{ fontSize: '30' }} />Create Page</a>
       </Link>
       <Link href="/user/delete">
-        <span className={"vertical_align_text"}><TiDelete style={{ fontSize: '30' }} />Delete Page</span>
+        <a className={styles.vertical_align_text}><TiDelete style={{ fontSize: '30' }} />Delete Page</a>
       </Link>
     </AbsoluteMenu>
     <div style={{ flexGrow: 1 }}>
