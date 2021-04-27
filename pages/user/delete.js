@@ -2,6 +2,8 @@ import Head from 'next/head'
 import styles from '../../styles/DeletePage.module.css'
 // icons
 import { RiDeleteBin7Line } from 'react-icons/ri';
+// utils
+import { dateDifference } from '../../utils/utils';
 
 export default function DeletePage({ userList=[], setUserList }) {
   const deleteUser = (id) => {
@@ -26,17 +28,22 @@ export default function DeletePage({ userList=[], setUserList }) {
           <thead>
             <tr>
               <th>Name</th>
-              <th style={{ flexGrow: 1 }}>ID</th>
+              <th>ID</th>
+              <th>Group</th>
+              <th style={{ flexGrow: 1 }}>Last Talked (Days)</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {
               userList.map((user, idx) => {
+                const dateLastTalked = new Date(JSON.parse(user.dateLastTalked))
                 return (
                   <tr key={user.id}>
                     <td>{user.name}</td>
                     <td>{user.id}</td>
+                    <td>{user.friendGroup}</td>
+                    <td>{dateDifference(new Date(), dateLastTalked)}</td>
                     <td><button><RiDeleteBin7Line onClick={() => deleteUser(user.id)} /></button></td>
                   </tr>
                 )
