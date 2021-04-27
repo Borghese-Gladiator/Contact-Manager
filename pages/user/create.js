@@ -1,37 +1,27 @@
 import { useReducer } from 'react';
 import Head from 'next/head'
+// custom components
+import Row from '../../components/Row';
+import Col from '../../components/Col';
 // styling
 import styles from '../../styles/CreatePage.module.css'
 // utils 
 import { getDefaultUser } from '../../utils/utils';
 
-const tempObj = {
-  name: "Chunlok Lo",
-  shortBio: "Master's CS, Reinforcement Learning specialist",
-  friendGroup: "League of Legends",
-}
+const defaultName = "Adrian Chase"
+const shortBio = "Interactive Studio CEO from Argentina"
+const friendGroup = "UMass Amherst"
 
-const initialState = { count: 0 };
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'increment':
-      return { count: state.count + 1 };
-    case 'decrement':
-      return { count: state.count - 1 };
-    default:
-      throw new Error();
-  }
-}
-
-export default function CreatePage({ userList=[], setUserList }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const createUsers = () => {
-    const tempUserList = []
-    for (let i = 0; i < state.count; i++) {
-      tempUserList.push(getDefaultUser(tempObj))
+export default function CreatePage({ userList = [], setUserList }) {
+  const createUser = (e) => {
+    e.preventDefault();
+    const tempObj = {
+      name: e.target.name.value === "" ? defaultName : e.target.name.value,
+      shortBio: e.target.shortBio.value === "" ? shortBio : e.target.shortBio.value,
+      friendGroup: e.target.friendGroup.value === "" ? friendGroup : e.target.friendGroup.value,
     }
-    setUserList(oldArray => [...oldArray, ...tempUserList]);
+    console.log(tempObj)
+    setUserList(oldArray => [...oldArray, getDefaultUser(tempObj)]);
   }
 
   return (
@@ -48,17 +38,25 @@ export default function CreatePage({ userList=[], setUserList }) {
         <h1 className={styles.title}>
           Create User
         </h1>
-        <div>
-          Count: {state.count}
-          <div>
-            <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
-            <button onClick={() => dispatch({ type: 'increment' })}>+</button>
-          </div>
-        </div>
-        <br />
-        <div>
+        <form onSubmit={createUser} style={{ width: '280px' }}>
+          <Row>
+            <label htmlFor="name" style={{ flexGrow: 1 }}>Name:</label>
+            <input type="text" id="name" name="name" placeholder="Adrian Chase" />
+          </Row>
+          <br />
+          <Row>
+            <label htmlFor="shortBio" style={{ flexGrow: 1 }}>Short Bio:</label>
+            <input type="text" id="shortBio" name="shortBio" placeholder="Interactive Studio CEO from Argentina" />
+          </Row>
+          <br />
+          <Row>
+            <label htmlFor="friendGroup" style={{ flexGrow: 1 }}>Friend Group:</label>
+            <input type="text" id="friendGroup" name="friendGroup" placeholder="UMass Amherst" />
+          </Row>
+          <br />
+
           <button
-            onClick={createUsers}
+            type="submit"
             style={{
               backgroundColor: '#3c415c',
               color: 'white',
@@ -66,11 +64,14 @@ export default function CreatePage({ userList=[], setUserList }) {
               textDecoration: 'none',
               textTransform: 'uppercase'
             }}>
-            <span>Create {state.count} Users</span>
+            <span>Create User</span>
           </button>
+        </form>
+        <br />
+        <div>
         </div>
       </main>
 
-    </div>
+    </div >
   );
 }
