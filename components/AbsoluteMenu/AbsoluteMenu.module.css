@@ -1,39 +1,43 @@
-.menuContainer {
+.dropdown {
+  z-index: 50;
+  position: absolute;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown_content {
+  display: block;
+}
+
+.dropdown_content a {
+  /* vertically center text and icon */
   display: flex;
-  flex-direction: column;
+  align-items: center;
+
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+.dropdown_content a:hover {
+  background-color: #ddd;
+}
+.dropdown_content a:focus {
+  transform:scale(0.98);
+}
+
+.dropbtn {
+  /* center icon */
+  display: flex;
   justify-content: center;
-  align-items: flex-end;
-}
-
-.absolute_top_right {
-  z-index: 50;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-}
-
-.absolute_top_left {
-  z-index: 50;
-  position: absolute;
-  left: 15px;
-  top: 15px;
-}
-
-.absolute_bottom_right {
-  z-index: 50;
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
-}
-
-.absolute_bottom_left {
-  z-index: 50;
-  position: absolute;
-  left: 15px;
-  bottom: 15px;
-}
-
-.kc_fab_main_btn{
+  align-items: center;
+  /* */
   width:60px;
   height:60px;
   border-radius:100%;
@@ -46,9 +50,28 @@
   transition:.3s;  
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-.kc_fab_main_btn:focus {
-  transform:scale(1.1);
-  transform:rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
+.dropbtn:hover {
+  background-color: #b4a5a5;
+}
+
+/* move button to corner */
+.absolute_top_right {
+  right: 15px;
+  top: 15px;
+}
+.absolute_top_left {
+  left: 15px;
+  top: 15px;
+}
+.absolute_bottom_right {
+  right: 15px;
+  bottom: 15px;
+}
+.absolute_bottom_left {
+  left: 15px;
+  bottom: 15px;
+}
+.left_align_content {
+  right: 0;
+  left: auto;
 }

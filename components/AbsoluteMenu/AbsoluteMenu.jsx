@@ -9,7 +9,7 @@ import { CgMoreVerticalO } from 'react-icons/cg';
 
 const AbsoluteMenu = ({ position, children }) => {
   const [open, setOpen] = useState(false);
-  
+
   const wrapperRef = useRef(null);
 
   // check to see if the user clicked outside of this component
@@ -19,16 +19,15 @@ const AbsoluteMenu = ({ position, children }) => {
     }
   });
 
+  const absoluteAlignClassName = `absolute_${position}`;
+  const contentAlignClassName = position.includes("right") ? styles.left_align_content : "";
+
   return (
-    <div className={styles[`absolute_${position}`]} ref={wrapperRef}>
-      {!open
-        ? <span onClick={() => setOpen(true)}><CgMoreVerticalO className={styles.kc_fab_main_btn} /></span>
-        : 
-        <div className={styles.menuContainer}>
-          <span onClick={() => setOpen(false)}><CgMoreVerticalO className={styles.kc_fab_main_btn} /></span>
-          {children}
-        </div>
-      }
+    <div className={`${styles[absoluteAlignClassName]} ${styles.dropdown}`} ref={wrapperRef}>
+      <button className={styles.dropbtn}><CgMoreVerticalO /></button>
+      <div className={`${styles.dropdown_content} ${contentAlignClassName}`}>
+        {children}
+      </div>
     </div>
   )
 };
