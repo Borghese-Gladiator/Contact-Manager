@@ -1,9 +1,13 @@
 .root_container {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
+}
+
+.sidebar {
+  overflow-y: auto;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 1200px) {
