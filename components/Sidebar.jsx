@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 // custom components
-import UploadButton from './FileComponents/UploadButton';
-import DownloadButton from './FileComponents/DownloadButton';
+import UploadButton from './UploadButton';
+import DownloadButton from './DownloadButton';
 // Icons
 import { CgProfile } from 'react-icons/cg';
 // add type checking for arguments
