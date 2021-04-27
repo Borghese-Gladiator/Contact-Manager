@@ -71,6 +71,7 @@
   left: 15px;
   bottom: 15px;
 }
+/* change how content is aligned */
 .left_align_content {
   right: 0;
   left: auto;
