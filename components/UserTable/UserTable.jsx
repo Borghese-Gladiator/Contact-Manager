@@ -79,7 +79,7 @@ const ProductTable = ({ userList, deleteUser }) => {
               <td>{user.id}</td>
               <td>{user.friendGroup}</td>
               <td>{dateDifference(new Date(), dateLastTalked)}</td>
-              <td><button><RiDeleteBin7Line onClick={() => deleteUser(user.id)} /></button></td>
+              <td><button onClick={() => deleteUser(user.id)} ><RiDeleteBin7Line /></button></td>
             </tr>
           )
         })}
