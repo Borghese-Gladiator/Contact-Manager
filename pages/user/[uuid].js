@@ -13,7 +13,7 @@ import LazyBackgroundImage from '../../src/components/LazyBackgroundImage';
 // page styling
 import styles from '../../styles/UserPage.module.css'
 // utils
-import { capitalizeFirstLetter, dateDifference } from '../../utils/utils';
+import { capitalizeFirstLetter, dateDifference } from '../../src/utils/utils';
 
 const UserNotFound = ({ uuid }) => (
   <div>
