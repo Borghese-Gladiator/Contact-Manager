@@ -7,8 +7,7 @@ import { getDefaultUser } from '../../utils/utils';
 
 const tempObj = {
   name: "Chunlok Lo",
-  shortBio: "Master's CS, Reinforcement Learning specialist",
-  friendGroup: "League of Legends",
+  shortBio: "Badminton, Master's Comp Sci",
 }
 
 const initialState = { count: 0 };

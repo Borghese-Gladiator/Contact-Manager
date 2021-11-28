@@ -48,11 +48,6 @@ export default function CreatePage({ userList = [], setUserList }) {
             <input type="text" id="shortBio" name="shortBio" placeholder="Interactiva Studio CEO from Argentina" />
           </Row>
           <br />
-          <Row>
-            <label htmlFor="friendGroup" style={{ flexGrow: 1 }}>Friend Group:</label>
-            <input type="text" id="friendGroup" name="friendGroup" placeholder="UMass Amherst" />
-          </Row>
-          <br />
 
           <button
             type="submit"
