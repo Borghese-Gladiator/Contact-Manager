@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import styles from '../../styles/DeletePage.module.css'
 // custom components
-import UserTable from '../../components/UserTable';
+import UserTable from '../../src/components/UserTable';
 // icons
 import { RiDeleteBin7Line } from 'react-icons/ri';
 // utils
-import { dateDifference } from '../../utils/utils';
+import { dateDifference } from '../../src/utils/utils';
 
 export default function DeletePage({ userList=[], setUserList }) {
   const deleteUser = (id) => {

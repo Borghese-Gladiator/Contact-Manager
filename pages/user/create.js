@@ -1,15 +1,14 @@
 import { useReducer } from 'react';
 import Head from 'next/head'
 // custom components
-import Row from '../../components/Row';
+import Row from '../../src/components/Row';
 // styling
 import styles from '../../styles/CreatePage.module.css'
 // utils 
-import { getDefaultUser } from '../../utils/utils';
+import { getDefaultUser } from '../../src/utils/utils';
 
 const defaultName = "Adrian Chase"
 const shortBio = "Interactive Studio CEO from Argentina"
-const friendGroup = "UMass Amherst"
 
 export default function CreatePage({ userList = [], setUserList }) {
   const createUser = (e) => {
@@ -17,7 +16,6 @@ export default function CreatePage({ userList = [], setUserList }) {
     const tempObj = {
       name: e.target.name.value === "" ? defaultName : e.target.name.value,
       shortBio: e.target.shortBio.value === "" ? shortBio : e.target.shortBio.value,
-      friendGroup: e.target.friendGroup.value === "" ? friendGroup : e.target.friendGroup.value,
     }
     console.log(tempObj)
     setUserList(oldArray => [...oldArray, getDefaultUser(tempObj)]);

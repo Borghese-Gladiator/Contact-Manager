@@ -3,7 +3,7 @@ import Head from 'next/head'
 // styling
 import styles from '../../styles/CreatePage.module.css'
 // utils 
-import { getDefaultUser } from '../../utils/utils';
+import { getDefaultUser } from '../../src/utils/utils';
 
 const tempObj = {
   name: "Chunlok Lo",

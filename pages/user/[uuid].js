@@ -4,12 +4,12 @@ import Head from 'next/head'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 // custom components
-import NoteList from '../../components/NoteList';
-import ContactList from '../../components/ContactList';
-import InlineEdit from '../../components/InlineEdit';
-import Row from '../../components/Row';
-import Col from '../../components/Col';
-import LazyBackgroundImage from '../../components/LazyBackgroundImage';
+import NoteList from '../../src/components/NoteList';
+import ContactList from '../../src/components/ContactList';
+import InlineEdit from '../../src/components/InlineEdit';
+import Row from '../../src/components/Row';
+import Col from '../../src/components/Col';
+import LazyBackgroundImage from '../../src/components/LazyBackgroundImage';
 // page styling
 import styles from '../../styles/UserPage.module.css'
 // utils
