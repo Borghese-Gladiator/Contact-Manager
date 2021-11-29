@@ -1,9 +1,0 @@
-/* Flexbox columns */
-.custom_col {
-  display: flex;
-  flex-direction: column;
-}
-.custom_col > div {
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
