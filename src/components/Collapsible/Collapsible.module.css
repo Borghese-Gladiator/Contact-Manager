@@ -1,0 +1,40 @@
+.collapsible_content_edonec {
+  overflow: hidden;
+  transition: height 0.2s ease-in-out;
+
+}
+.title_text_edonec {
+  display: block;
+  font-size: 1em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+.collapsible_header_edonec {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 20px 2px 20px;
+}
+.collapsible_content_padding-edonec {
+  padding: 20px 20px 20px 20px;
+}
+.collapsible_icon_button_edonec {
+  cursor: pointer;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.collapsible_card_edonec {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.collapsible_card_edonec:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
