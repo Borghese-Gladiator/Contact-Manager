@@ -40,6 +40,7 @@ const useSortableData = (items, config = null) => {
 };
 
 const ProductTable = ({ userList, deleteUser }) => {
+  const dateToday = new Date();
   const { users, requestSort, sortConfig } = useSortableData(userList);
   return (
     <table className={styles.table_root}>
@@ -51,13 +52,13 @@ const ProductTable = ({ userList, deleteUser }) => {
             </button>
           </th>
           <th>
-            <button onClick={() => requestSort('id')}>
-              ID
+            <button onClick={() => requestSort('shortDesc')}>
+              Desc
             </button>
           </th>
           <th>
-            <button onClick={() => requestSort('friendGroup')}>
-              Group
+            <button onClick={() => requestSort('placeLastTalked')}>
+              Last Talked Place
             </button>
           </th>
           <th style={{ flexGrow: 1 }}>
@@ -77,8 +78,7 @@ const ProductTable = ({ userList, deleteUser }) => {
             <tr key={user.id}>
               <td>{user.name}</td>
               <td>{user.id}</td>
-              <td>{user.friendGroup}</td>
-              <td>{dateDifference(new Date(), dateLastTalked)}</td>
+              <td>{dateDifference(dateToday, dateLastTalked)}</td>
               <td><button onClick={() => deleteUser(user.id)} ><RiDeleteBin7Line /></button></td>
             </tr>
           )

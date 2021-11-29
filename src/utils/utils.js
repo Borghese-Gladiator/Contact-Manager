@@ -8,7 +8,7 @@ export const storageKey = 'userList'
  * @param str
  */
 export function truncateDescription(str) {
-  return str.length > 10 ? str.substring(0, 7) + "..." : str;
+  return str.length > 20 ? str.substring(0, 20) + "..." : str;
 }
 
 /**
