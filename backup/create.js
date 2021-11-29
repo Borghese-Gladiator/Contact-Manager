@@ -1,7 +1,5 @@
 import { useReducer } from 'react';
 import Head from 'next/head'
-// custom components
-import Row from '../../src/components/Row';
 // styling
 import styles from '../../styles/CreatePage.module.css'
 // utils 

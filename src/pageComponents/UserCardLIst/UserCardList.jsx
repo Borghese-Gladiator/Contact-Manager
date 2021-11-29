@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styles from './UserCardList.module.css';
 // custom
 import AbsoluteBtn from '../../components/AbsoluteBtn';
-import Row from '../../components/Row';
 import Card from '../../components/Card';
 // icons
 import { AiFillDelete } from 'react-icons/ai';
@@ -17,11 +16,11 @@ function UserCardList({ userList, deleteUser }) {
 
   return (
     <>
-      <Row style={{ justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <button>Sort by Date Added</button>
         <button>Sort by Date Last Talked</button>
         <button>Sort by Alphabetical</button>
-      </Row>
+      </div>
       {
         isEmptySelectedUserList
           ? <></>

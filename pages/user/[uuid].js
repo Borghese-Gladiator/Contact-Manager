@@ -5,8 +5,6 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 // custom components
 import InlineEdit from '../../src/components/InlineEdit';
-import Row from '../../src/components/Row';
-import Col from '../../src/components/Col';
 import LazyBackgroundImage from '../../src/components/LazyBackgroundImage';
 import NoteList from '../../src/pageComponents/NoteList';
 import ContactList from '../../src/pageComponents/ContactList';
@@ -120,7 +118,7 @@ export default function UserPage({ userList = [], setUserList }) {
             <h1><InlineEdit text={`${user.name}`} onSetText={text => updateUserKey('name', text)} /></h1>
             <h4>"<InlineEdit text={`${user.friendGroup}`} onSetText={text => updateUserFriendGroup(text)} />" Friend</h4>
             <h4>Days since Last Talk: {dateDifference(new Date(), dateLastTalked)}</h4>
-          <Row>
+          <div style={{ display: "flex" }}>
             <div className={styles.paper_wrapper}>
               <NoteList itemList={user.notesList} setItemList={updateUserNotes} />
             </div>
@@ -136,32 +134,32 @@ export default function UserPage({ userList = [], setUserList }) {
                         : user.bioObject[key]
 
                       return (
-                        <Row key={`basic_info_${idx}`}>
+                        <div style={{ display: "flex" }} key={`basic_info_${idx}`}>
                           <span style={{ flexGrow: 1, fontWeight: 'bold' }}>{capitalizeFirstLetter(key)}</span>
                           <InlineEdit
                             text={displayValue === "" ? "N/A" : displayValue}
                             onSetText={text => updateUserInfo(key, text)}
                           />
-                        </Row>
+                        </div>
                       )
                     })
                   }
-                  <Row>
+                  <div style={{ display: "flex" }}>
                     <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Date Met</span>
                     <span>{dateMet.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-                  </Row>
+                  </div>
                 </Col>
               </div>
               <div className={styles.paper_wrapper}>
                 <h3>Contact Info</h3>
-                <Row>
+                <div style={{ display: "flex" }}>
                   <span style={{ flexGrow: 1 }}>Last Talked</span>
                   <DatePicker selected={dateLastTalked} onChange={date => updateDateLastTalked(date)} />
-                </Row>
+                </div>
                 <ContactList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
               </div>
             </Col>
-          </Row>
+          </div>
         </main>
       </LazyBackgroundImage>
     </div >

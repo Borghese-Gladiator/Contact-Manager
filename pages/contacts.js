@@ -4,8 +4,6 @@ import styles from '../styles/ContactPage.module.css'
 // custom components
 import UserCardList from '../src/pageComponents/UserCardLIst';
 import UserTable from '../src/pageComponents/UserTable';
-import Row from '../src/components/Row';
-import Card from '../src/components/Card';
 // icons
 import { BiTable } from 'react-icons/bi';
 import { BsCardHeading } from 'react-icons/bs';
@@ -32,13 +30,13 @@ export default function ContactsPage({ userList = [], setUserList }) {
         <h1 className={styles.title}>
           Contacts
         </h1>
-        <Row>
+        <div style={{ display: "flex" }}>
           <div style={{ flex: 1 }} />
           <div style={{ alignSelf: "flex-end" }}>
             <button onClick={toggleTableView}><BiTable />Table</button>
             <button onClick={toggleCardView}><BsCardHeading />Cards</button>
           </div>
-        </Row>
+        </div>
         {
           isTableView
             ? <UserTable userList={userList} deleteUser={deleteUser} />
