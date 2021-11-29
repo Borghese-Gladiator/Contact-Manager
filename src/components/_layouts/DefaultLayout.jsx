@@ -1,6 +1,6 @@
 // Routing w/ Next.js
 import Link from 'next/link';
-import Sidebar from '../Sidebar';
+import Sidebar from './Sidebar';
 import AbsoluteMenu from '../AbsoluteMenu';
 // icons
 import { TiDelete } from 'react-icons/ti';
