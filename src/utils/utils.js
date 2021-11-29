@@ -51,6 +51,7 @@ export function generateUserObject({ name, shortBio }) {
       { id: uuidv4(), text: "Fall 2022 - going study abroad in Trinity College in Ireland", done: false },
       { id: uuidv4(), text: "Spring 2021 - peer mentor (not even starting Zoom calls, but paid for like 7~ hours of work a week)", done: false },
     ],
-    dateLastTalked: JSON.stringify(new Date())
+    dateLastTalked: JSON.stringify(new Date()),
+    placeLastTalked: "Boston Badminton"
   }
 }
