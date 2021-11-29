@@ -122,10 +122,10 @@ export default function UserPage({ userList = [], setUserList }) {
             <div className={styles.paper_wrapper}>
               <NoteList itemList={user.notesList} setItemList={updateUserNotes} />
             </div>
-            <Col>
+            <div style={{ display: "flex", flexDirection: "column"}}>
               <div className={styles.paper_wrapper}>
                 <h3>Basic Info</h3>
-                <Col>
+                <div style={{ display: "flex", flexDirection: "column"}}>
                   {
                     // comma separated list in displayValue - https://stackoverflow.com/questions/47881767/how-to-add-a-comma-in-array-map-after-every-element-except-last-element-in-react
                     Object.keys(user.bioObject).map((key, idx) => {
@@ -148,7 +148,7 @@ export default function UserPage({ userList = [], setUserList }) {
                     <span style={{ flexGrow: 1, fontWeight: 'bold' }}>Date Met</span>
                     <span>{dateMet.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                   </div>
-                </Col>
+                </div>
               </div>
               <div className={styles.paper_wrapper}>
                 <h3>Contact Info</h3>
@@ -158,7 +158,7 @@ export default function UserPage({ userList = [], setUserList }) {
                 </div>
                 <ContactList itemList={user.onlineAccountsList} setItemList={updateUserOnlineAccountsList} />
               </div>
-            </Col>
+            </div>
           </div>
         </main>
       </LazyBackgroundImage>
