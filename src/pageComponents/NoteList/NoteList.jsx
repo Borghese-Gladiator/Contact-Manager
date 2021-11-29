@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 // custom components
-import InlineEdit from '../InlineEdit';
+import InlineEdit from '../../components/InlineEdit';
 // generate unique IDs for items
 import { v4 as uuidv4 } from 'uuid';
 // styling
