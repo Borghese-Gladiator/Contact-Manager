@@ -5,12 +5,10 @@
 }
 .title_text_edonec {
   display: block;
-  font-size: 1em;
   margin-block-start: 0.83em;
   margin-block-end: 0.83em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  font-weight: bold;
 }
 .collapsible_header_edonec {
   display: flex;

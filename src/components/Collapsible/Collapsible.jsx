@@ -29,7 +29,7 @@ function Collapsible({ header, children }) {
       <div className={styles.collapsible_card_edonec}>
         <div>
           <div className={styles.collapsible_header_edonec}>
-            <div className={styles.title_text_edonec}>{header}</div>
+            <h5 className={styles.title_text_edonec}>{header}</h5>
             <button
               type="button"
               className={styles.collapsible_icon_button_edonec}

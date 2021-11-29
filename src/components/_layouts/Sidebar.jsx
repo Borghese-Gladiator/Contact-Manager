@@ -41,7 +41,7 @@ function Sidebar({ userList = [], setUserList }) {
             <Link href={'/contacts'}>Contacts</Link>
           </MenuItem>
         </Menu>
-        <Collapsible header="Contacts">
+        <Collapsible header="CONTACTS">
           <Menu iconShape="square">
             {
               userList.map((user, idx) => {
