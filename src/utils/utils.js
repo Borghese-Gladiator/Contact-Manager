@@ -3,13 +3,27 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const storageKey = 'userList'
 
-//capitalize only the first letter of the string. 
-export function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+/**
+ * Shorten descriptions and use ellipsis if too long
+ * @param str
+ */
+export function truncateDescription(str) {
+  return str.length > 10 ? str.substring(0, 7) + "..." : str;
 }
 
-/* difference between date1 and date2 in days (date2 - date1) */
-/* date1 and date 2 are already javascript date objects */
+/**
+ * Capitalize only the first letter of the string
+ * @param str
+ */
+export function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+/**
+ * Calculate difference between two JS Date objects
+ * @param date2
+ * @param date1
+ */
 export function dateDifference(date2, date1) {
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
@@ -22,28 +36,21 @@ export function dateDifference(date2, date1) {
 
 // POTENTIAL SERVER FUNCTIONS
 
-export function getDefaultUser({ name, shortBio, friendGroup }) {
+/**
+ * Create user with added values
+ * @param name
+ * @param shortBio - description of who this is
+ */
+export function generateUserObject({ name, shortBio }) {
   return {
     id: uuidv4(),
     name: name,
     shortBio: shortBio,
-    bioObject: {
-      age: "",
-      location: "",
-      gender: "Male",
-      languages: "",
-      occupation: "",
-      major: "CS"
-    },
-    friendGroup: friendGroup,
+    contactMethod: "Text",
     notesList: [
       { id: uuidv4(), text: "Fall 2022 - going study abroad in Trinity College in Ireland", done: false },
       { id: uuidv4(), text: "Spring 2021 - peer mentor (not even starting Zoom calls, but paid for like 7~ hours of work a week)", done: false },
     ],
-    onlineAccountsList: [
-      { id: uuidv4(), text: "Discord - Blah#1111" }
-    ],
-    dateLastTalked: JSON.stringify(new Date()),
-    dateMet: JSON.stringify(new Date())
+    dateLastTalked: JSON.stringify(new Date())
   }
 }
