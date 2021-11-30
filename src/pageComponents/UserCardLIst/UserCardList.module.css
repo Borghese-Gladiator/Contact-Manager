@@ -1,0 +1,24 @@
+.add_btn {
+  /* 96 + 2*107 px margin = 310px => same size as song-list: max-width(300px) + 5px padding*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 107px;
+  margin-right: 107px;
+
+  text-decoration: none; 
+  border: none; 
+  cursor: pointer; 
+  outline: none; 
+  transition: 0.2s all; 
+  
+  padding: 12px 40px; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  background-color: green; 
+  color: #fff; 
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
