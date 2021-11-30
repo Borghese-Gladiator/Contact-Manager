@@ -1,0 +1,17 @@
+.root_container {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  /* Theming */
+  background: #e0e6eb;
+}
+
+.sidebar {
+  overflow-y: auto;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1200px) {
+  .sidebar { display: none; }  /* hide it on small screens */
+}
