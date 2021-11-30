@@ -4,6 +4,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
+  /* Theming */
+  background: #e0e6eb;
 }
 
 .sidebar {
