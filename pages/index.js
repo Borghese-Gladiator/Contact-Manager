@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import styles from '../styles/DashboardPage.module.css';
 
-export default function Home({  userList=[], setUserList }) {
+export default function Dashboard({  userList=[], setUserList }) {
   return (
     <div>
       <Head>
-        <title>Home | Contact Manager</title>
+        <title>Dashboard | Contact Manager</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="keywords" content="react, contact, manager" />
         <meta name="author" content="Borghese-Gladiator" />
@@ -13,15 +13,10 @@ export default function Home({  userList=[], setUserList }) {
         <meta name="audience" content="Everyone" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Contacts Manager
-        </h1>
-
-        <p className={styles.description}>
-          Write notes on people after you talk
-        </p>
+        <div>
+          BLAH
+        </div>
       </main>
-
     </div>
   )
 }
