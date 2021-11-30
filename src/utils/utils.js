@@ -8,7 +8,7 @@ export const storageKey = 'userList'
  * @param str
  */
 export function truncateDescription(str) {
-  return str.length > 20 ? str.substring(0, 20) + "..." : str;
+  return str.length > 30 ? str.substring(0, 30) + "..." : str;
 }
 
 /**
@@ -46,7 +46,7 @@ export function generateUserObject({ name, shortBio }) {
     id: uuidv4(),
     name: name,
     shortBio: shortBio,
-    contactMethod: "Text",
+    contactMethod: "Text 777-777-7777",
     notesList: [
       { id: uuidv4(), text: "Fall 2022 - going study abroad in Trinity College in Ireland", done: false },
       { id: uuidv4(), text: "Spring 2021 - peer mentor (not even starting Zoom calls, but paid for like 7~ hours of work a week)", done: false },
