@@ -6,10 +6,11 @@
   align-items: stretch;
   /* Theming */
   background: #e0e6eb;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .sidebar {
-  overflow-y: auto;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 1200px) {
