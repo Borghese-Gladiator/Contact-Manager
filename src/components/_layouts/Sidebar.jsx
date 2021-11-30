@@ -35,7 +35,7 @@ function Sidebar({ userList = [], setUserList }) {
       <SidebarContent>
         <Menu iconShape="square">
           <MenuItem icon={<CgProfile />}>
-            <Link href={'/dashboard'}>Dashboard</Link>
+            <Link href={'/'}>Dashboard</Link>
           </MenuItem>
           <MenuItem icon={<CgProfile />}>
             <Link href={'/contacts'}>Contacts</Link>
