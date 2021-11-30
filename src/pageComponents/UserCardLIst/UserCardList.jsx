@@ -5,16 +5,28 @@ import AbsoluteBtn from '../../components/AbsoluteBtn';
 import Card from '../../components/Card';
 // icons
 import { AiFillDelete } from 'react-icons/ai';
+import { BsPlusCircle } from 'react-icons/bs';
 // utils
 import { dateDifference, truncateDescription } from '../../utils/utils';
 
 const dateTodayObj = new Date();
 // const dateLastTalkedString = dateMet.toLocaleDateString('us-US', { year: 'numeric', month: 'short', day: 'numeric' })
 
+const AddUserCard = () => {
+  const addUser = () => console.log("ADD USER MODAL");
+  return (
+    <Card className={styles.add_btn} onClick={addUser}>
+      <BsPlusCircle />
+    </Card>
+  )
+}
+
 function UserCardList({ userList, deleteUserList }) {
+  console.log(userList);
   const [checkedState, setCheckedState] = useState(
     new Array(userList.length).fill(false)
   );
+  console.log(checkedState);
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
@@ -23,10 +35,9 @@ function UserCardList({ userList, deleteUserList }) {
     console.log(checkedState)
   };
 
-  let isEmptySelectedIdList = checkedState.includes(true);
+  let noCheckedItems = !checkedState.includes(true);
   useEffect(() => {
-    console.log(checkedState)
-    isEmptySelectedIdList = checkedState.includes(true);
+    noCheckedItems = !checkedState.includes(true);
   }, [checkedState])
 
   return (
@@ -37,13 +48,14 @@ function UserCardList({ userList, deleteUserList }) {
         <button>Sort by Alphabetical</button>
       </div>
       {
-        isEmptySelectedIdList
+        noCheckedItems
           ? <></>
           :
           <AbsoluteBtn position="bottom_right" onClick={() => deleteUserList(selectedIdList)}>
             <AiFillDelete style={{ fontSize: 20 }} />
           </AbsoluteBtn>
       }
+      <div>
       {
         userList.map(({ id, name, shortBio, dateLastTalked, placeLastTalked, contactMethod }, idx) => {
           // Parse string date into date object
@@ -52,7 +64,7 @@ function UserCardList({ userList, deleteUserList }) {
           const daysText = daysSinceLastTalk === 1 ? "day" : "days";
           const truncatedText = truncateDescription(shortBio);
           return (
-            <Card key={`user_card_${idx}`} onClick={() => handleCardClick(id)}>
+            <Card key={`user_card_${idx}`} onClick={() => handleOnChange(idx)}>
               <input
                 type="checkbox"
                 checked={checkedState[idx]}
@@ -69,6 +81,8 @@ function UserCardList({ userList, deleteUserList }) {
           )
         })
       }
+      </div>
+      <AddUserCard />
     </>
   );
 };
