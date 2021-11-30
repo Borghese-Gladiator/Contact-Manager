@@ -1,30 +1,57 @@
 # Contact Manager
-Quick utility to track people I talked to and how long ago it was. I built this since existing solutions I found were CRM tools (but I'm just talking to people for fun).
-- wrote custom styling in module.css files per file (eg: Button, Flexbox, Sidebar)
+CRM but for general social relationships rather than converting prospects to sales. Track who I met, where I met, and some notes if I want.
 
-## File Structure
-- /pages/_app/ holds state & passes -> pages -> components
-- Next.js localStorage workaround in /pages/_app/ since window is not defined on SSR - [https://dev.to/jaklaudiusz/next-js-persistent-state-with-react-hooks-and-localstorage-how-to-make-it-work-3al6](https://dev.to/jaklaudiusz/next-js-persistent-state-with-react-hooks-and-localstorage-how-to-make-it-work-3al6)
-- /components/_layouts/ stores default layout & possibly more in the future
-- /hooks/ used in InlineEdit and for localStorage persistence
+## Table of Contents
+- [Features](#features)
+- [Technology](#technology)
+- [Installation](#installation)
+- [Notes](#notes)
+- [Next.js README](#next.js-default-readme)
 
-## Technology Used
-Next.js (React framework) + CSS3 (written by me)
-- Icons picked from - `react-icons`
-- DatePicker component -  `react-datepicker`
-- Sidebar component - `react-pro-sidebar`
-- Generate IDs per element, so react keys are unique - `uuid`
-- PropTypes to enforce typing (due to numerous components)
-- applied InlineEdit component on each part of /user/\[uuid\].js page for ease of editing
+## Features
+Track who, where, and when I talked to people.
+- Displays analytics in a dashboard
+- Displays contacts in tabular or card form
+- Get email reminders for people who I have not messaged in a long time
+- Jot down personal notes after a conversation
+
+#### Purpose
+I graduated college, but had trouble staying in touch with college friends
+- Existing CRM solutions were geared towards sales and difficult to use for beginners
+- Social Media apps were focused on messaging, but I wanted notes from real life meetups.
+  - Could not find note functionality in WeChat, WhatsApp, Line, Facebook, Messenger, Discord, Signal
+  - Tried Keep Notes, Standard Notes, & EZNotes but those note apps quickly grow cluttered
+
+## Technology
+- Next.js - React framework with page-based routing, SSR, etc.
+- PWA - used next-pwa, _document.js to create Progressive Web App. ()
+- react-icons - icon library
+- react-datepicker - date picker component
+- react-pro-sidebar - Sidebar component
+- prop-types - enforce typing of props in my custom components
+- Vercel - JAM stack to deploy content for free (JAM = JavaScript, APIs, and HTML markup)
 
 ## Installation
 - `npm install`
 - `npm run dev`
 
-## Extra
+## Notes
+- Wrote project w/o component library, but ultimately decided against (& used TailwindCSS)
+  - Wrote numerous components custom with CSS Modules inside /src/components
+    - Scrapped my Row & Col components
 - /pages/api was not used (did everything in frontend - however, endpoint was written/used at one point - & then deleted)
 - picked themes from color hunt palette: [https://colorhunt.co/palette/264815](https://colorhunt.co/palette/264815)
 - found background image from: [https://www.reddit.com/r/Hololive/comments/ia940a/hoshimachi_suisei_minimalvector_wallpaper/](https://www.reddit.com/r/Hololive/comments/ia940a/hoshimachi_suisei_minimalvector_wallpaper/)
+
+#### File Structure
+In Next.js, all files in /pages become routes for actual pages where the filename is the route name.
+- /pages/_app/ holds state & passes -> pages -> components
+- Next.js localStorage workaround in /pages/_app/ since window is not defined on SSR - [https://dev.to/jaklaudiusz/next-js-persistent-state-with-react-hooks-and-localstorage-how-to-make-it-work-3al6](https://dev.to/jaklaudiusz/next-js-persistent-state-with-react-hooks-and-localstorage-how-to-make-it-work-3al6)
+- /components/_layouts/ stores default layout & possibly more in the future
+- /hooks/ used in InlineEdit and for localStorage persistence
+
+#### References
+- https://www.freecodecamp.org/news/how-to-work-with-multiple-checkboxes-in-react/
 
 ## Next.js Default README
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
