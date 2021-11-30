@@ -1,11 +1,9 @@
 import styles from './Card.module.css';
 
-function Card({ children }) {
+function Card({ children, onClick }) {
   return (
-    <div className={styles.card}>
-      <div className={styles.card_body}>
-        {children}
-      </div>
+    <div className={styles.card} onClick={onClick}>
+      {children}
     </div>
   )
 }
