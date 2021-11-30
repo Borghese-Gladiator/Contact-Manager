@@ -1,6 +1,6 @@
 .main {
   padding: 5rem 1rem;
-  flex: 1;
+  /* Align Content */
   display: flex;
   flex-direction: column;
   align-items: stretch;
