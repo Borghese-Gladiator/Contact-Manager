@@ -15,6 +15,9 @@ export default function ContactsPage({ userList = [], setUserList }) {
   const deleteUser = (id) => {
     setUserList(userList.filter((t) => t.id !== id))
   }
+  const deleteUserList = (idList) => {
+    setUserList(userList.filter((user) => !idList.includes(user.id) ))
+  }
 
   return (
     <div>
@@ -40,7 +43,7 @@ export default function ContactsPage({ userList = [], setUserList }) {
         {
           isTableView
             ? <UserTable userList={userList} deleteUser={deleteUser} />
-            : <UserCardList userList={userList} deleteUser={deleteUser}></UserCardList>
+            : <UserCardList userList={userList} deleteUserList={deleteUserList} />
         }
       </main>
     </div>
