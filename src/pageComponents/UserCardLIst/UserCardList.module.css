@@ -1,24 +1,58 @@
-.add_btn {
-  /* 96 + 2*107 px margin = 310px => same size as song-list: max-width(300px) + 5px padding*/
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 107px;
-  margin-right: 107px;
+.card_list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
 
-  text-decoration: none; 
-  border: none; 
-  cursor: pointer; 
-  outline: none; 
-  transition: 0.2s all; 
-  
-  padding: 12px 40px; 
-  border-radius: 5px; 
-  font-size: 16px; 
+.card {
+  flex: 1 1 30%; /*grow | shrink | basis */
+  height: 10em;
+
+  width: 16em;
+  margin: 1em;
+  padding: 1.2em;
+
+  border-radius: 0.6em;
+  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
+
+  transition: all ease 200ms;
+
+  overflow: hidden;
+  cursor: pointer;
+
+  background: #fff;
+}
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
+}
+.active_card {
+  background-color: #3c415c; 
+}
+
+.add_btn {
   background-color: green; 
   color: #fff; 
-  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
 
+  width: 8em;
+  margin: 1em;
+  padding: 1.2em;
+  border-radius: 0.6em;
+  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
+
+  transition: all ease 200ms;
+
+  /* Self Align to center */
+  align-self: center;
+
+  /* Align Content */
   display: flex;
   justify-content: center;
   align-items: center;
-} 
+}
+
+.add_btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
+}
