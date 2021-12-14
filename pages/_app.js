@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
-import '../styles/globals.css'
-import DefaultLayout from '../src/components/_layouts/DefaultLayout'
+import { useState, useEffect } from 'react';
+import DefaultLayout from '../src/components/_layouts/DefaultLayout';
 import { storageKey } from '../src/utils/utils';
+import '../styles/globals.css';
+import 'antd/dist/antd.css';
 
 function MyApp({ Component, pageProps }) {
   const [isInitialized, setIsInitialized] = useState(false);
