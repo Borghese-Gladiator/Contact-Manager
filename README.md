@@ -5,22 +5,16 @@ CRM but for general social relationships rather than converting prospects to sal
 - [Features](#features)
 - [Technology](#technology)
 - [Installation](#installation)
+- [Purpose](#purpose)
 - [Notes](#notes)
 - [Next.js README](#next.js-default-readme)
 
 ## Features
 Track who, where, and when I talked to people.
-- Displays analytics in a dashboard
-- Displays contacts in tabular or card form
-- Get email reminders for people who I have not messaged in a long time
+- Displays contacts in tabular or card form w/ how long ago & where I talked to people
 - Jot down personal notes after a conversation
-
-#### Purpose
-I graduated college, but had trouble staying in touch with college friends
-- Existing CRM solutions were geared towards sales and difficult to use for beginners
-- Social Media apps were focused on messaging, but I wanted notes from real life meetups.
-  - Could not find note functionality in WeChat, WhatsApp, Line, Facebook, Messenger, Discord, Signal
-  - Tried Keep Notes, Standard Notes, & EZNotes but those note apps quickly grow cluttered
+- Displays analytics of places in a dashboard
+- Sort contacts to see people I have not talked to in a long time
 
 ## Technology
 - Next.js - React framework with page-based routing, SSR, etc.
@@ -35,10 +29,32 @@ I graduated college, but had trouble staying in touch with college friends
 - `npm install`
 - `npm run dev`
 
+#### Purpose
+I graduated college, but had trouble staying in touch with college friends
+- Existing CRM solutions were geared towards sales and difficult to use for beginners
+- Social Media apps were focused on messaging, but I wanted notes from real life meetups.
+  - Could not find note functionality in WeChat, WhatsApp, Line, Facebook, Messenger, Discord, Signal
+  - Tried Keep Notes, Standard Notes, & EZNotes but those note apps quickly grow cluttered
+
 ## Notes
-- Wrote project w/o component library, but ultimately decided against (& used TailwindCSS)
+
+- Flow of this project was:
+  - Created Next.js project
+  - Wrote all components from scratch
+  - Created bad lookiing UI and stopped
+  - Major refactor and added PropTypes to components & created /backup
+  - Implemented some features but stopped
+  - After creating /pageComponents folder, decided to use component library and remove most features
+#### Ant Design
+- great documentation - got up and running fast due to good code to copy paste
+- forms are kind of clunky - React gives errors when using them and there's a roundabout solution - https://github.com/ant-design/ant-design/issues/25150
+
+#### Takeaways
+- ALWAYS use a component library. Initially thought I would be "pro" and write it myself, but that is a mistake.
+  - Wrote project w/o component library, but ultimately decided against (& used TailwindCSS)
   - Wrote numerous components custom with CSS Modules inside /src/components
     - Scrapped my Row & Col components
+  - Ant Design is REALLLY good
 - /pages/api was not used (did everything in frontend - however, endpoint was written/used at one point - & then deleted)
 - picked themes from color hunt palette: [https://colorhunt.co/palette/264815](https://colorhunt.co/palette/264815)
 - found background image from: [https://www.reddit.com/r/Hololive/comments/ia940a/hoshimachi_suisei_minimalvector_wallpaper/](https://www.reddit.com/r/Hololive/comments/ia940a/hoshimachi_suisei_minimalvector_wallpaper/)
@@ -52,6 +68,7 @@ In Next.js, all files in /pages become routes for actual pages where the filenam
 
 #### References
 - https://www.freecodecamp.org/news/how-to-work-with-multiple-checkboxes-in-react/
+- Referencedd to fix Ant Design form issue w/ React keys - https://github.com/ant-design/ant-design/issues/25150
 
 ## Next.js Default README
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
