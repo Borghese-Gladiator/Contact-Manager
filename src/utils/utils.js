@@ -4,6 +4,17 @@ import { v4 as uuidv4 } from 'uuid';
 export const storageKey = 'userList'
 
 /**
+ * 
+ */
+export function getDateText(dateLastTalked) {
+  const today = new Date();
+  const lastTalk = new Date(JSON.parse(dateLastTalked));
+  const numDaysDiff = dateDifference(today, lastTalk);
+  const daysText = numDaysDiff === 1 ? "day" : "days";
+  return `${numDaysDiff} ${daysText} ago`
+}
+
+/**
  * Shorten descriptions and use ellipsis if too long
  * @param str
  */
