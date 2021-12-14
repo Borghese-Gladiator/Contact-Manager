@@ -82,23 +82,20 @@ function AddUserModal({ userList, setUserList }) {
           autoComplete="off"
           {...formItemLayout}
         >
-          <Form.Item label="Name">
-            <Form.Item
-              noStyle
-              name="Name"
-              rules={[{ required: true, message: 'Please input the name!' }]}
-            >
-              <Input />
-            </Form.Item>
+          <Form.Item
+            label="Name"
+            name="name"
+            rules={[{ required: true, message: 'Please input the name!' }]}
+          >
+            <Input />
           </Form.Item>
-          <Form.Item label="Place Last Talked" >
-            <Form.Item
-              noStyle
-              name="Place"
-              rules={[{ required: true, message: 'Please input the place you last talked!' }]}
-            >
-              <Input />
-            </Form.Item>
+
+          <Form.Item
+            label="Place Last Talked"
+            name="place"
+            rules={[{ required: true, message: 'Please input  the place you last talked!' }]}
+          >
+            <Input />
           </Form.Item>
 
           <Form.Item label={`Date Last Talked`}>
@@ -179,8 +176,8 @@ export default function ContactsPage({ userList = [], setUserList }) {
         <div style={{ display: "flex" }}>
           <div style={{ flex: 1 }} />
           <div style={{ alignSelf: "flex-end" }}>
-            <button onClick={toggleTableView}><BiTable />Table</button>
-            <button onClick={toggleCardView}><BsCardHeading />Cards</button>
+            <Button onClick={toggleTableView} type={`${isTableView ? "primary" : ""}`}><BiTable />Table</Button>
+            <Button onClick={toggleCardView} type={`${isTableView ? "" : "primary"}`}><BsCardHeading />Cards</Button>
           </div>
         </div>
         <MyRows userList={userList} />
