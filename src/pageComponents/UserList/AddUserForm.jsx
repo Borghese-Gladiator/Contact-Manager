@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { DatePicker, message, Row, Col, Typography, Card, Space, Tooltip, Button, Modal, Form, Input } from 'antd';
+import moment from 'moment';
 
-function AddUserForm() {
-  // DATE PICKER
-  const [date, setDate] = useState(null);
-  const handleChange = value => {
-    message.info(`Selected Date: ${value ? value.format('YYYY-MM-DD') : 'None'}`);
-    setDate(value);
-  };
+const worker = {
+  dateLastTalked: moment()
+};
+
+function AddUserForm({ addUser }) {
   // FORM 
   const formItemLayout = {
     labelCol: {
@@ -21,6 +20,15 @@ function AddUserForm() {
   };
   const onFinish = (values) => {
     console.log('Success:', values);
+    const { name, placeLastTalked, dateLastTalked, bio, contact } = values;
+    const newUser = {
+      name,
+      placeLastTalked,
+      dateLastTalked,
+      bio: bio === null ? "": bio,
+      contact: contact === null ? "": contact,
+    }
+    addUser(newUser)
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -32,6 +40,7 @@ function AddUserForm() {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
+      initialValues={{ dateLastTalked: moment() }}
       {...formItemLayout}
     >
       <Form.Item
@@ -44,19 +53,30 @@ function AddUserForm() {
 
       <Form.Item
         label="Place Last Talked"
-        name="place"
-        rules={[{ required: true, message: 'Please input  the place you last talked!' }]}
+        name="placeLastTalked"
+        rules={[{ required: true, message: 'Please input the place you last talked!' }]}
+      >
+        <Input />
+      </Form.Item>
+      
+      <Form.Item label="Date Last Talked" name="dateLastTalked" hasFeedback>
+        <DatePicker style={{ width: '100%' }} showToday />
+      </Form.Item>
+
+      <Form.Item
+        label="Short Bio"
+        name="bio"
+        rules={[{ required: false }]}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        label={`Date Last Talked`}
-        name="Date"
-        rules={[{ required: true, message: 'Please input the date you last talked!' }]}
+        label="Contact Info"
+        name="contact"
+        rules={[{ required: false }]}
       >
-        <DatePicker onChange={handleChange} />
-        <Button type="link" onClick={() => console.log("Changed to today's date")}>Today</Button>
+        <Input />
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

@@ -34,21 +34,21 @@ function Sidebar({ userList = [], setUserList }) {
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape="square">
-          <MenuItem icon={<CgProfile />}>
+          <MenuItem key="dashboard-link" icon={<CgProfile />}>
             <Link href={'/'}>Dashboard</Link>
           </MenuItem>
-          <MenuItem icon={<CgProfile />}>
+          <MenuItem key="contacts-link" icon={<CgProfile />}>
             <Link href={'/contacts'}>Contacts</Link>
           </MenuItem>
         </Menu>
         <Collapsible header="CONTACTS">
           <Menu iconShape="square">
             {
-              userList.map((user, idx) => {
-                const link = `/user/${user.id}`
+              userList.map(({ id, name }, idx) => {
+                const link = `/user/${id}`
                 return (
-                  <MenuItem key={user.id} icon={<CgProfile />}>
-                    <Link href={link}>{user.name}</Link>
+                  <MenuItem key={`menu-item-${idx}`} icon={<CgProfile />}>
+                    <Link href={link}>{name}</Link>
                   </MenuItem>
                 )
               })

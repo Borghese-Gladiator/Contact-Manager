@@ -1,10 +1,23 @@
 // generate IDs (unique keys for React rendering)
 import { v4 as uuidv4 } from 'uuid';
+import moment from 'moment';
 
 export const storageKey = 'userList'
 
 /**
- * 
+ * @param momentDate - Moment date object
+ * @return string to display time of last talk
+ */
+ export function getMomentText(momentDateLastTalked) {
+  const today = new moment();
+  const daysDiff = today.diff(momentDateLastTalked, 'days')
+  const daysText = daysDiff === 1 ? "day" : "days";
+  return `${daysDiff} ${daysText} ago`
+}
+
+
+/**
+ * @param dateLastTalked - JavaScript date object
  */
 export function getDateText(dateLastTalked) {
   const today = new Date();
