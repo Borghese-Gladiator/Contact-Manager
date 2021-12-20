@@ -1,13 +1,14 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from "antd";
 import styles from './AbsoluteBtn.module.css';
 
 function AbsoluteBtn({ position, onClick, children}) {
   const absoluteAlignClassName = `absolute_${position}`;
 
   return (
-    <div className={`${styles[absoluteAlignClassName]} ${styles.dropdown}`}>
-      <button className={styles.dropbtn}>{children}</button>
+    <div className={`${styles[absoluteAlignClassName]} ${styles.dropdown}`} onClick={onClick}>
+      <Button className={styles.dropbtn}>{children}</Button>
     </div>
   )
 }

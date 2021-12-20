@@ -1,7 +1,10 @@
-import { useState } from 'react';
+/** 
+ * User List Page
+*/
 import Head from 'next/head'
-import styles from '../styles/ContactPage.module.css'
+import { useState } from 'react';
 import { Button } from "antd"
+import styles from '../styles/UserListPage.module.css'
 // custom components
 import UserList from '../src/pageComponents/UserList';
 import UserTable from '../src/pageComponents/UserTable';

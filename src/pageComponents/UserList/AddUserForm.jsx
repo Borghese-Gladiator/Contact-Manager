@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DatePicker, message, Row, Col, Typography, Card, Space, Tooltip, Button, Modal, Form, Input } from 'antd';
+import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
 
 const worker = {
@@ -22,6 +23,7 @@ function AddUserForm({ addUser }) {
     console.log('Success:', values);
     const { name, placeLastTalked, dateLastTalked, bio, contact } = values;
     const newUser = {
+      id: uuidv4(),
       name,
       placeLastTalked,
       dateLastTalked,
