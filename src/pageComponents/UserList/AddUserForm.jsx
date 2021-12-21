@@ -7,7 +7,7 @@ const worker = {
   dateLastTalked: moment()
 };
 
-function AddUserForm({ addUser }) {
+function AddUserForm({ createUser }) {
   // FORM 
   const formItemLayout = {
     labelCol: {
@@ -27,10 +27,11 @@ function AddUserForm({ addUser }) {
       name,
       placeLastTalked,
       dateLastTalked,
+      notesList: [],
       bio: bio === null ? "": bio,
       contact: contact === null ? "": contact,
     }
-    addUser(newUser)
+    createUser(newUser)
   };
 
   const onFinishFailed = (errorInfo) => {

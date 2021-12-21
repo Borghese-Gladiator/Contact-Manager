@@ -7,6 +7,7 @@ const { Text } = Typography;
 // Custom Components
 import AddUserModal from "./AddUserModal";
 import AbsoluteBtn from "../../components/AbsoluteBtn";
+import NoteList from "../../components/NoteList";
 // Utils
 import { getMomentText } from "../../utils/utils";
 // Icons
@@ -15,9 +16,16 @@ import { DeleteOutlined, ExportOutlined } from '@ant-design/icons';
 import styles from "../../../styles/UserListPage.module.css"
 
 function UserList({ userList, setUserList }) {
-  const [selectedUsers, setSelectedUsers] = useState([])
-  const addUser = (newUser) => {
+  const [selectedUserIds, setSelectedUserIds] = useState([])
+  // CRUD operations
+  const createUser = (newUser) => {
     setUserList([...userList, newUser])
+  }
+  const updateUserKey = (userId, key, newValue) => {
+    setUserList(userList.map((tempUser, idx) => 
+      // searches list for matching ID && if found, sets key to newValue
+      userId === tempUser.id ? { ...tempUser, [key]: newValue } : tempUser
+    ))
   }
   const deleteUser = (id) => {
     setUserList(userList.filter((t) => t.id !== id))
@@ -25,18 +33,25 @@ function UserList({ userList, setUserList }) {
   const deleteUserList = (idList) => {
     setUserList(userList.filter((user) => !idList.includes(user.id)))
   }
+  // Handle clicks
   const handleCardClick = (id) => {
-    setSelectedUsers([...selectedUsers, id])
+    if (selectedUserIds.includes(id)) {
+      // remove if present
+      setSelectedUserIds(selectedUserIds.filter(userId => userId !== id))
+    } else {
+      // add if not present
+      setSelectedUserIds([...selectedUserIds, id])
+    }
   }
   const handleDeleteBtnClick = () => {
-    setSelectedUsers([])
-    deleteUserList(selectedUsers)
+    setSelectedUserIds([])
+    deleteUserList(selectedUserIds)
   }
   return (
     <>
       <Row gutter={[8, 8]}>
         {
-          userList.map(({ id, name, dateLastTalked, placeLastTalked, contactMethod }, idx) => {
+          userList.map(({ id, name, dateLastTalked, placeLastTalked, contactMethod, notesList }, idx) => {
             const dateText = getMomentText(dateLastTalked);
             const placeText = `${placeLastTalked}`
             return (
@@ -45,22 +60,23 @@ function UserList({ userList, setUserList }) {
                   title={name}
                   bordered={false}
                   extra={<a href={`/user/${id}`}><ExportOutlined style={{fontSize:20}} /></a>}
-                  className={`${selectedUsers.includes(id) ? styles.active_card : ""}`}
+                  className={`${selectedUserIds.includes(id) ? styles.active_card : ""}`}
                 >
                   <Space direction="vertical">
                     <Text>{dateText}</Text>
                     <Text>{placeText}</Text>
                   </Space>
+                  <NoteList itemList={notesList} setItemList={(newVal) => updateUserKey(id, 'notesList', newVal)} />
                 </Card>
               </Col>
             )
           })
         }
         <Col key={`add-user-btn`} md={3} style={{display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <AddUserModal addUser={addUser} />
+          <AddUserModal createUser={createUser} />
         </Col>
       </Row>
-      {selectedUsers.length === 0
+      {selectedUserIds.length === 0
       ? <></>
       : <AbsoluteBtn position="bottom_right" onClick={handleDeleteBtnClick}>
           <DeleteOutlined style={{ fontSize: 20 }} />

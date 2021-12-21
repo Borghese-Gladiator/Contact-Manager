@@ -5,7 +5,7 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 
 import AddUserForm from "./AddUserForm";
 
-function AddUserModal({ addUser }) {
+function AddUserModal({ createUser }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -27,7 +27,7 @@ function AddUserModal({ addUser }) {
         onCancel={handleCancel}
         okButtonProps={{ style: { display: 'none' } }}
       >
-        <AddUserForm addUser={addUser} />
+        <AddUserForm createUser={createUser} />
       </Modal>
     </>
   );
