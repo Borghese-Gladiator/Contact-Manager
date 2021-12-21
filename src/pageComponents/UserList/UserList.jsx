@@ -57,6 +57,7 @@ function UserList({ userList, setUserList }) {
             return (
               <Col key={`user-card-${idx}`} md={6} onClick={() => handleCardClick(id)}>
                 <Card
+                  size="small"
                   title={name}
                   bordered={false}
                   extra={<a href={`/user/${id}`}><ExportOutlined style={{fontSize:20}} /></a>}
