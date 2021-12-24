@@ -9,6 +9,7 @@ function Collapsible({ header, children }) {
   const handleFilterOpening = () => {
     setIsOpen((prev) => !prev);
   };
+  
   useEffect(() => {
     if (!height || !isOpen || !ref.current) return undefined;
     // @ts-ignore
@@ -20,10 +21,12 @@ function Collapsible({ header, children }) {
       resizeObserver.disconnect();
     };
   }, [height, isOpen]);
+  
   useEffect(() => {
     if (isOpen) setHeight(ref.current?.getBoundingClientRect().height);
     else setHeight(0);
   }, [isOpen]);
+
   return (
     <>
       <div className={styles.collapsible_card_edonec}>
@@ -35,7 +38,7 @@ function Collapsible({ header, children }) {
               className={styles.collapsible_icon_button_edonec}
               onClick={handleFilterOpening}
             >
-              {isOpen ? <AiFillCaretDown style={{color: "white"}} /> : <AiFillCaretUp style={{color: "white"}} />}
+              {isOpen ? <AiFillCaretUp style={{color: "white"}} /> : <AiFillCaretDown style={{color: "white"}} /> }
             </button>
           </div>
         </div>
