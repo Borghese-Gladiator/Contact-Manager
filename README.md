@@ -37,14 +37,18 @@ I graduated college, but had trouble staying in touch with college friends
   - Tried Keep Notes, Standard Notes, & EZNotes but those note apps quickly grow cluttered
 
 ## Notes
-
-- Flow of this project was:
+Flow of this project was:
   - Created Next.js project
   - Wrote all components from scratch
   - Created bad lookiing UI and stopped
   - Major refactor and added PropTypes to components & created /backup
   - Implemented some features but stopped
   - After creating /pageComponents folder, decided to use component library and remove most features
+  - Implement card view from scratch
+  - Add as Next.js PWA => fix problems using Lighthouse
+  - Implement table view from scratch
+  - Implement analytics page
+
 #### Ant Design
 - great documentation - got up and running fast due to good code to copy paste
 - forms are kind of clunky - React gives errors when using them and there's a roundabout solution - https://github.com/ant-design/ant-design/issues/25150
