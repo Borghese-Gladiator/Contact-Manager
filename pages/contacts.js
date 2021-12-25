@@ -34,9 +34,6 @@ export default function ContactsPage({ userList = [], setUserList }) {
         <meta name="audience" content="Everyone" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Contacts
-        </h1>
         <div style={{ display: "flex" }}>
           <div style={{ flex: 1 }} />
           <div style={{ alignSelf: "flex-end" }}>

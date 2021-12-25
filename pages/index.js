@@ -1,11 +1,21 @@
-import Head from 'next/head';
-import styles from '../styles/DashboardPage.module.css';
+import { useEffect } from 'react'
 
-export default function Dashboard({  userList=[], setUserList }) {
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { Row, Button, Space } from "antd"
+
+import styles from '../styles/UserListPage.module.css'
+
+export default function HomePage({ userList=[], setUserList }) {
+  const router = useRouter()
+  useEffect(() => {
+    router.push("/contacts")
+  }, []);
+
   return (
     <div>
       <Head>
-        <title>Dashboard | Contact Manager</title>
+        <title>Home | Contact Manager</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="keywords" content="react, contact, manager" />
         <meta name="author" content="Borghese-Gladiator" />
@@ -13,9 +23,12 @@ export default function Dashboard({  userList=[], setUserList }) {
         <meta name="audience" content="Everyone" />
       </Head>
       <main className={styles.main}>
-        <div>
-          BLAH
-        </div>
+        <Space />
+        <Row justify="center">
+          <Button type="primary" onClick="location.href='/contacts'">Contacts</Button>
+          <Button onClick="location.href='/dashboard'">Dashboard</Button>
+        </Row>
+        <Space />
       </main>
     </div>
   )
