@@ -36,7 +36,7 @@ function UserList({ userList, setUserList }) {
   // Handle clicks
   const handleDateSortBtnClick = () => {
     const sortedUserList = [].concat(userList)
-      .sort((a, b) => new Date(a.dateLastTalked) > new Date(b.dateLastTalked) ? 1 : -1)
+      .sort((a, b) => new Date(a.dateLastTalked) < new Date(b.dateLastTalked) ? 1 : -1)
     setUserList(sortedUserList)
   }
   const handleNameSortBtnClick = () => {
@@ -94,8 +94,8 @@ function UserList({ userList, setUserList }) {
       {selectedUserIds.length === 0
         ? <></>
         : <AbsoluteBtn position="bottom_right" onClick={handleDeleteBtnClick}>
-          <DeleteOutlined style={{ fontSize: 20 }} />
-        </AbsoluteBtn>
+            <DeleteOutlined style={{ fontSize: 20 }} />
+          </AbsoluteBtn>
       }
     </Space>
   )
