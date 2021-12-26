@@ -1,19 +1,18 @@
-.checkbox {
-  display: none;
-  z-index: 50;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.my_card {
-  
-}
-
-.my_card:hover + .checkbox {
-  display: block;
-}
-
 .active_card {
-  background-color: #3c415c;
+  color: #fff;
+  border-color: #ff4d4f;
+  background: #ff4d4f;
+}
+
+.my_checkbox {
+  position: absolute;
+  z-index: 40;
+  left: -5px;
+  top: -10px;
+  cursor: pointer;
+}
+
+.my_checkbox > input:checked {
+  border: 1px solid #41B883;
+  background-color: red;
 }

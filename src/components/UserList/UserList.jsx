@@ -7,7 +7,6 @@ const { Panel } = Collapse;
 const { Text } = Typography;
 // Custom Components
 import AddUserModal from "./AddUserModal";
-import AbsoluteBtn from "../../components/AbsoluteBtn";
 import NoteList from "../../components/NoteList";
 // Utils
 import { getMomentText } from "../../utils/utils";
@@ -75,9 +74,7 @@ function UserList({ userList, setUserList }) {
             const placeText = `${placeLastTalked}`
             return (
               <Col key={`user-card-${idx}`} md={6}  className={`${styles.my_card}`}>
-              <div className={styles.checkbox}>
-                <Checkbox onChange={() => handleCheckboxClick(id)} />
-              </div>
+                <Checkbox onChange={() => handleCheckboxClick(id)} className={styles.my_checkbox} />
                 <div>
                   <Card
                     size="small"
@@ -111,9 +108,21 @@ function UserList({ userList, setUserList }) {
       {selectedUserIds.length === 0
         ? <></>
         :
-        <AbsoluteBtn position="bottom_right" onClick={handleDeleteBtnClick}>
-          <DeleteOutlined style={{ fontSize: 20 }} />
-        </AbsoluteBtn>
+        <Button onClick={handleDeleteBtnClick} 
+          icon={<DeleteOutlined style={{fontSize: 30}}/>}
+          size="large"
+          type="primary"
+          danger
+          shape="round"
+          style={{
+            position: "absolute",
+            padding: "1rem",
+            height: "auto",
+            width: "auto",
+            bottom: 30,
+            right: 30
+          }}
+        />
       }
     </Space>
   )
