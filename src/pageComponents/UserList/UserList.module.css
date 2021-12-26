@@ -1,0 +1,19 @@
+.checkbox {
+  display: none;
+  z-index: 50;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.my_card {
+  
+}
+
+.my_card:hover + .checkbox {
+  display: block;
+}
+
+.active_card {
+  background-color: #3c415c;
+}
