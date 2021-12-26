@@ -58,24 +58,19 @@ export function dateDifference(date2, date1) {
   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
 }
 
-// POTENTIAL SERVER FUNCTIONS
-
 /**
  * Create user with added values
  * @param name
  * @param shortBio - description of who this is
  */
-export function generateUserObject({ name, shortBio }) {
+export function generateUserObject({ name, placeLastTalked, dateLastTalked, bio, contact }) {
   return {
     id: uuidv4(),
     name: name,
-    shortBio: shortBio,
-    contactMethod: "Text 777-777-7777",
-    notesList: [
-      { id: uuidv4(), text: "Fall 2022 - going study abroad in Trinity College in Ireland", done: false },
-      { id: uuidv4(), text: "Spring 2021 - peer mentor (not even starting Zoom calls, but paid for like 7~ hours of work a week)", done: false },
-    ],
-    dateLastTalked: JSON.stringify(new Date()),
-    placeLastTalked: "Boston Badminton"
+    placeLastTalked,
+    dateLastTalked,
+    notesList: ["Example note"],
+    bio: bio === null ? "": bio,
+    contact: contact === null ? "": contact,
   }
 }

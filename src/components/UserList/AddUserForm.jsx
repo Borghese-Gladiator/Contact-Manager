@@ -1,14 +1,8 @@
-import { useState } from "react";
 import { DatePicker, Button, Form, Input } from 'antd';
-import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
-
-const worker = {
-  dateLastTalked: moment()
-};
+import { generateUserObject } from "../../utils/utils";
 
 function AddUserForm({ createUser }) {
-  // FORM 
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -22,15 +16,8 @@ function AddUserForm({ createUser }) {
   const onFinish = (values) => {
     console.log('Success:', values);
     const { name, placeLastTalked, dateLastTalked, bio, contact } = values;
-    const newUser = {
-      id: uuidv4(),
-      name,
-      placeLastTalked,
-      dateLastTalked,
-      notesList: [],
-      bio: bio === null ? "": bio,
-      contact: contact === null ? "": contact,
-    }
+    const newUser = generateUserObject(values)
+    console.log(newUser)
     createUser(newUser)
   };
 

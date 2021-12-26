@@ -11,7 +11,7 @@ import NoteList from "../../components/NoteList";
 // Utils
 import { getMomentText } from "../../utils/utils";
 // Icons
-import { DeleteOutlined, ExportOutlined } from '@ant-design/icons';
+import { DeleteOutlined, ExportOutlined, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 // Styling
 import styles from "./UserList.module.css"
 
@@ -20,8 +20,13 @@ function callback(key) {
 }
 
 function UserList({ userList, setUserList }) {
+  // Sort Order
+  const [sortDateUp, setSortDateUp] = useState(true);
+  const [sortNameUp, setSortNameUp] = useState(true);
+  const toggleSortDate = () => setSortDateUp(!sortDateUp);
+  const toggleSortName = () => setSortNameUp(!sortNameUp);
+  // Selected UserCards for deletion
   const [selectedUserIds, setSelectedUserIds] = useState([])
-
   // CRUD operations
   const createUser = (newUser) => {
     setUserList([...userList, newUser])
@@ -40,13 +45,19 @@ function UserList({ userList, setUserList }) {
   }
   // Handle clicks
   const handleDateSortBtnClick = () => {
-    const sortedUserList = [].concat(userList)
-      .sort((a, b) => new Date(a.dateLastTalked) < new Date(b.dateLastTalked) ? 1 : -1)
+    const sortFunc = sortDateUp
+      ? (a, b) => new Date(a.dateLastTalked) < new Date(b.dateLastTalked) ? 1 : -1
+      : (a, b) => new Date(a.dateLastTalked) > new Date(b.dateLastTalked) ? 1 : -1
+    const sortedUserList = [].concat(userList).sort(sortFunc)
+    toggleSortDate();
     setUserList(sortedUserList)
   }
   const handleNameSortBtnClick = () => {
-    const sortedUserList = [].concat(userList)
-      .sort((a, b) => a.name.localeCompare(b.name))
+    const sortFunc = sortNameUp
+      ? (a, b) => a.name.localeCompare(b.name)
+      : (a, b) => b.name.localeCompare(a.name)
+    const sortedUserList = [].concat(userList).sort(sortFunc)
+    toggleSortName();
     setUserList(sortedUserList)
   }
   function handleCheckboxClick(id) {
@@ -66,8 +77,8 @@ function UserList({ userList, setUserList }) {
   return (
     <Space direction="vertical">
       <Row justify="center">
-        <Button onClick={handleDateSortBtnClick}>Sort by Date Last Talked</Button>
-        <Button onClick={handleNameSortBtnClick}>Sort by Name</Button>
+        <Button onClick={handleDateSortBtnClick}>Sort by Date Last Talked {sortDateUp ? <ArrowUpOutlined /> : <ArrowDownOutlined />}</Button>
+        <Button onClick={handleNameSortBtnClick}>Sort by Name {sortNameUp ? <ArrowUpOutlined /> : <ArrowDownOutlined />}</Button>
       </Row>
       <Row gutter={[8, 8]}>
         {
@@ -77,7 +88,6 @@ function UserList({ userList, setUserList }) {
             return (
               <Col key={`user-card-${idx}`} sm={12} md={8} lg={6} xl={4}>
                 <Checkbox onChange={() => handleCheckboxClick(id)} className={styles.my_checkbox} />
-                <div>
                   <Card
                     size="small"
                     title={name}
@@ -98,7 +108,6 @@ function UserList({ userList, setUserList }) {
                       </Panel>
                     </Collapse>
                   </Card>
-                </div>
               </Col>
             )
           })
