@@ -6,7 +6,6 @@
   align-items: stretch;
   /* Theming */
   background: #e0e6eb;
-  overflow-y: hidden;
   overflow-x: hidden;
 }
 
