@@ -6,8 +6,8 @@ import { useState } from 'react';
 import { Button } from "antd"
 import styles from '../styles/UserListPage.module.css'
 // custom components
-import UserList from '../src/pageComponents/UserList';
-import UserTable from '../src/pageComponents/UserTable';
+import UserList from '../src/components/UserList';
+import UserTable from '../src/components/UserTable';
 // icons
 import { BiTable } from 'react-icons/bi';
 import { BsCardHeading } from 'react-icons/bs';
