@@ -75,7 +75,7 @@ function UserList({ userList, setUserList }) {
             const dateText = getMomentText(dateLastTalked);
             const placeText = `${placeLastTalked}`
             return (
-              <Col key={`user-card-${idx}`} md={6} className={`${styles.my_card}`}>
+              <Col key={`user-card-${idx}`} sm={12} md={8} lg={6} xl={4}>
                 <Checkbox onChange={() => handleCheckboxClick(id)} className={styles.my_checkbox} />
                 <div>
                   <Card
