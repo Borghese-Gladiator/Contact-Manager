@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 // custom components
-import Collapsible from '../Collapsible';
 import UploadButton from '../UploadButton';
 import DownloadButton from '../DownloadButton';
 // Icons
@@ -41,20 +40,18 @@ function Sidebar({ userList = [], setUserList }) {
             <Link href={'/contacts'}>Contacts</Link>
           </MenuItem>
         </Menu>
-        <Collapsible header="CONTACTS">
-          <Menu iconShape="square">
-            {
-              userList.map(({ id, name }, idx) => {
-                const link = `/user/${id}`
-                return (
-                  <MenuItem key={`menu-item-${idx}`} icon={<CgProfile />}>
-                    <Link href={link}>{name}</Link>
-                  </MenuItem>
-                )
-              })
-            }
-          </Menu>
-        </Collapsible>
+        <Menu iconShape="square">
+          {
+            userList.map(({ id, name }, idx) => {
+              const link = `/user/${id}`
+              return (
+                <MenuItem key={`menu-item-${idx}`} icon={<CgProfile />}>
+                  <Link href={link}>{name}</Link>
+                </MenuItem>
+              )
+            })
+          }
+        </Menu>
       </SidebarContent>
 
       <SidebarFooter style={{ textAlign: 'center' }}>
