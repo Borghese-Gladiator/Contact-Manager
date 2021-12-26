@@ -58,6 +58,21 @@ export function dateDifference(date2, date1) {
   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
 }
 
+export function createApptItem(date) {
+  return {
+    id: uuidv4(),
+    date: date,
+    dateText: getDateText(date)
+  }
+}
+
+export function createNoteItem(text) {
+  return {
+    id: uuidv4(),
+    text: text
+  }
+}
+
 /**
  * Create user with added values
  * @param name
@@ -66,10 +81,11 @@ export function dateDifference(date2, date1) {
 export function generateUserObject({ name, placeLastTalked, dateLastTalked, bio, contact }) {
   return {
     id: uuidv4(),
-    name: name,
+    name,
     placeLastTalked,
     dateLastTalked,
-    notesList: ["Example note"],
+    notesList: [],
+    apptList: [],
     bio: bio === null ? "": bio,
     contact: contact === null ? "": contact,
   }
