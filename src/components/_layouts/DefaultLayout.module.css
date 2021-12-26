@@ -10,9 +10,6 @@
   overflow-x: hidden;
 }
 
-.sidebar {
-}
-
 @media only screen and (min-width: 0px) and (max-width: 1200px) {
   .sidebar { display: none; }  /* hide it on small screens */
 }
