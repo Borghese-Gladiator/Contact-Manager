@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 // Next.js Routing
 import Link from 'next/link';
 // Ant Design components
-import { Row, Col, Checkbox, Button, Typography, Card, Space, Collapse } from 'antd';
+import { Row, Col, Checkbox, Button, Typography, Card, Space, Collapse, Popconfirm, message } from 'antd';
 const { Panel } = Collapse;
 const { Text } = Typography;
 // Custom Components
@@ -21,6 +21,7 @@ function callback(key) {
 
 function UserList({ userList, setUserList }) {
   const [selectedUserIds, setSelectedUserIds] = useState([])
+
   // CRUD operations
   const createUser = (newUser) => {
     setUserList([...userList, newUser])
@@ -61,6 +62,7 @@ function UserList({ userList, setUserList }) {
     setSelectedUserIds([])
     deleteUserList(selectedUserIds)
   }
+
   return (
     <Space direction="vertical">
       <Row justify="center">
@@ -73,7 +75,7 @@ function UserList({ userList, setUserList }) {
             const dateText = getMomentText(dateLastTalked);
             const placeText = `${placeLastTalked}`
             return (
-              <Col key={`user-card-${idx}`} md={6}  className={`${styles.my_card}`}>
+              <Col key={`user-card-${idx}`} md={6} className={`${styles.my_card}`}>
                 <Checkbox onChange={() => handleCheckboxClick(id)} className={styles.my_checkbox} />
                 <div>
                   <Card
@@ -108,21 +110,29 @@ function UserList({ userList, setUserList }) {
       {selectedUserIds.length === 0
         ? <></>
         :
-        <Button onClick={handleDeleteBtnClick} 
-          icon={<DeleteOutlined style={{fontSize: 30}}/>}
-          size="large"
-          type="primary"
-          danger
-          shape="round"
-          style={{
-            position: "absolute",
-            padding: "1rem",
-            height: "auto",
-            width: "auto",
-            bottom: 30,
-            right: 30
-          }}
-        />
+        <Popconfirm
+          title={`Are you sure to delete ${selectedUserIds.length} task?`}
+          onConfirm={() => { message.success('Deleted successfully'); handleDeleteBtnClick(); }}
+          onCancel={() => message.error('Delete cancelled')}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button
+            icon={<DeleteOutlined style={{ fontSize: 30 }} />}
+            size="large"
+            type="primary"
+            danger
+            shape="round"
+            style={{
+              position: "absolute",
+              padding: "1rem",
+              height: "auto",
+              width: "auto",
+              bottom: 30,
+              right: 30
+            }}
+          />
+        </Popconfirm>
       }
     </Space>
   )
