@@ -7,7 +7,7 @@ const { Panel } = Collapse;
 const { Text } = Typography;
 // Custom Components
 import AddUserModal from "./AddUserModal";
-import NoteList from "../../components/NoteList";
+import CardNotes from "../CardNotes";
 // Utils
 import { getMomentText } from "../../utils/utils";
 // Icons
@@ -104,7 +104,7 @@ function UserList({ userList, setUserList }) {
                         <p>APPOINTMENTS</p>
                       </Panel>
                       <Panel header="Notes" key="2">
-                        <NoteList itemList={notesList} setItemList={(newVal) => updateUserKey(id, 'notesList', newVal)} />
+                        <CardNotes itemList={notesList} setItemList={(newVal) => updateUserKey(id, 'notesList', newVal)} />
                       </Panel>
                     </Collapse>
                   </Card>
@@ -112,7 +112,7 @@ function UserList({ userList, setUserList }) {
             )
           })
         }
-        <Col key={`add-user-btn`} md={3} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <Col key={`add-user-btn`} md={4} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <AddUserModal createUser={createUser} />
         </Col>
       </Row>
