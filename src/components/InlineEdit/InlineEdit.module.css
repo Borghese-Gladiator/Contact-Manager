@@ -1,0 +1,27 @@
+/* InlineEdit component - overlays title over input element */
+/* these make sure it can work in any text element */
+.inline_text_copy_active,
+.inline_text_input_active {
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  padding: 0;
+  background: none;
+  border: none;
+  border-bottom: 1px dashed #999999;
+  outline: none;
+}
+
+.inline_text_copy_active {
+  cursor: pointer;
+}
+
+.inline_text_copy_hidden,
+.inline_text_input_hidden {
+  display: none;
+}
+
+.inline_text_input_active {
+  border-bottom: 1px solid #666666;
+  text-align: left;
+}
