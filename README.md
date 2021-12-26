@@ -49,6 +49,23 @@ Flow of this project was:
   - Implement table view from scratch
   - Implement analytics page
 
+#### To DO
+- make card responsive => DONE
+- fix sort to opposite sort => DONE
+- write new NoteList => DONE
+- fix PWA - add service worker => DONE
+- redo mobile format on top right buttons & two UserCards per row
+- add appts to UserCard page
+- fix uuid page to be mobile friendly
+- write UserTable page
+- populate dashboard page w/ content
+- add service worker content
+- fix bug of clicking on checkbox very fast results in card lighting up but checkbox being unchecked
+- upgrade next.js version from 10.1.3 (known security vulnerabilities)
+- get 100 score on [https://www.webpagetest.org/](https://www.webpagetest.org/)
+- fix Y scroll bar appearing on all content
+- write new custom sidebar using Ant Design
+
 #### Ant Design
 - great documentation - got up and running fast due to good code to copy paste
 - forms are kind of clunky - React gives errors when using them and there's a roundabout solution - https://github.com/ant-design/ant-design/issues/25150
