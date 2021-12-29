@@ -99,7 +99,7 @@ function UserList({ userList, setUserList }) {
                       <Text>{dateText}</Text>
                       <Text>{placeText}</Text>
                     </Space>
-                    <Collapse defaultActiveKey={['1']} onChange={callback}>
+                    <Collapse defaultActiveKey={[]} onChange={callback}>
                       <Panel header="Appointments" key="1">
                         <p>APPOINTMENTS</p>
                       </Panel>
