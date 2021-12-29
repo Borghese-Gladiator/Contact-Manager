@@ -62,7 +62,7 @@ function NoteList({ itemList, setItemList }) {
       >
         {itemList.map(({ id, text }, idx) => {
           return (
-            <Input key={`note-item-${id}`} defaultValue={text} onPressEnter={(e) => handleUpdate(e, id)} />
+            <Input key={`note-item-${id}`} defaultValue={text} onChange={(e) => handleUpdate(e, id)} />
           )
         })}
         <Text onClick={handleAdd}>
