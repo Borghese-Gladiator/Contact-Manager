@@ -9,7 +9,6 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 import { createNoteItem } from "../../utils/utils";
 
 function NoteList({ itemList, setItemList }) {
-  // <Input addonAfter={<DeleteOutlined />} placeholder={item} enterButton />
   // Modal Visibility
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
