@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Typography, Input, Modal, Space } from 'antd';
+import { Card, Typography, Input, Modal, Space } from 'antd';
 const { Search } = Input;
 const { Text } = Typography;
 
@@ -37,12 +37,10 @@ function NoteList({ itemList, setItemList }) {
         : item
     }))
   }
-
-  console.log(itemList)
-
   return (
-    <div>
-      <Space direction="vertical" onClick={showModal}>
+    <>
+    <Card hoverable  onClick={showModal}>
+      <Space direction="vertical" style={{ cursor: 'pointer' }}>
         {itemList.length <= 0 && <Text>No notes here!</Text>}
         {itemList.map(({ id, text }, idx) => {
           return (
@@ -50,6 +48,7 @@ function NoteList({ itemList, setItemList }) {
           )
         })}
       </Space>
+    </Card>
       <Modal
         title="View Notes"
         visible={isModalVisible}
@@ -70,7 +69,7 @@ function NoteList({ itemList, setItemList }) {
           <PlusCircleOutlined /> List Item
         </Text>
       </Modal>
-    </div>
+      </>
   )
 }
 
