@@ -1,8 +1,22 @@
+import Head from 'next/head';
 // generate IDs (unique keys for React rendering)
 import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
 
 export const storageKey = 'userList'
+
+export function getMetaWithTitle(title) {
+  return (
+    <Head>
+      <title>{title}</title>
+      <link rel="icon" href="/favicon.ico" />
+      <meta name="keywords" content="react, contact, manager" />
+      <meta name="author" content="Borghese-Gladiator" />
+      <meta name="description" content="Quick utility to track people I talked to and how long ago it was. I built this since existing solutions I found were CRM tools" />
+      <meta name="audience" content="Everyone" />
+    </Head>
+  )
+}
 
 /**
  * @param momentDate - Moment date object

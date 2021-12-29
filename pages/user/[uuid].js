@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
-import Head from 'next/head'
+import moment from 'moment';
+
 import { DatePicker, Space, Typography } from 'antd';
 const { Title, Text } = Typography;
 // Custom components
@@ -8,14 +9,11 @@ import NoteList from "../../src/components/NoteList";
 // Styles
 import styles from '../../styles/UserPage.module.css';
 // Utils
-import moment from 'moment';
+import { getMetaWithTitle } from "../src/utils/utils";
 
 const UserNotFound = ({ uuid }) => (
   <div>
-    <Head>
-      <title>User Not Found | Installer Site</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+    { getMetaWithTitle("User Not Found | Contact Manager") }
     <main className={styles.main}>
       <h1 className={styles.title}>
         User Not Found
@@ -50,14 +48,7 @@ export default function UserPage({ userList = [], setUserList }) {
 
   return (
     <div>
-      <Head>
-        <title>Contact Page - {user.name} | Contact Manager</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="keywords" content="react, contact, manager" />
-        <meta name="author" content="Borghese-Gladiator" />
-        <meta name="description" content="Quick utility to track people I talked to and how long ago it was. I built this since existing solutions I found were CRM tools (but I'm just talking to people for fun)." />
-        <meta name="audience" content="Everyone" />
-      </Head>
+      { getMetaWithTitle(`Contact Page - ${user.name} | Contact Manager`) }
       <main className={styles.main}>
         <Title><InlineEdit text={`${user.name}`} onSetText={text => updateUserKey('name', text)} /></Title>
         <Title level={4}>Last met at: <InlineEdit text={`${user.placeLastTalked}`} onSetText={text => updateUserKey('placeLastTalked', text)} /></Title>

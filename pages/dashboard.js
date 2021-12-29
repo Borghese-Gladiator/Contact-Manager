@@ -1,19 +1,10 @@
-import { useEffect } from 'react'
-import Head from 'next/head';
-
-import { Space, Row, Button } from "antd"
+import { Space, Row, Button } from "antd";
+import { getMetaWithTitle } from "../src/utils/utils";
 
 export default function DashboardPage({ userList=[], setUserList }) {
   return (
     <div>
-      <Head>
-        <title>Dashboard | Contact Manager</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="keywords" content="react, contact, manager" />
-        <meta name="author" content="Borghese-Gladiator" />
-        <meta name="description" content="Quick utility to track people I talked to and how long ago it was. I built this since existing solutions I found were CRM tools (but I'm just talking to people for fun)." />
-        <meta name="audience" content="Everyone" />
-      </Head>
+      { getMetaWithTitle("Dashboard | Contact Manager")}
       <main>
         <Space />
         <Row justify="center">
