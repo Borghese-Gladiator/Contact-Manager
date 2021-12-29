@@ -9,7 +9,7 @@ import NoteList from "../../src/components/NoteList";
 // Styles
 import styles from '../../styles/UserPage.module.css';
 // Utils
-import { getMetaWithTitle } from "../src/utils/utils";
+import { getMetaWithTitle } from "../../src/utils/utils";
 
 const UserNotFound = ({ uuid }) => (
   <div>
