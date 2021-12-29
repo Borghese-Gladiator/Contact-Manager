@@ -39,16 +39,16 @@ function NoteList({ itemList, setItemList }) {
   }
   return (
     <>
-    <Card hoverable  onClick={showModal}>
-      <Space direction="vertical" style={{ cursor: 'pointer' }}>
-        {itemList.length <= 0 && <Text>No notes here!</Text>}
-        {itemList.map(({ id, text }, idx) => {
-          return (
-            <Text key={`note-item-${id}`}>{text}</Text>
-          )
-        })}
-      </Space>
-    </Card>
+      <Card hoverable onClick={showModal}>
+        <Space direction="vertical" style={{ cursor: 'pointer' }}>
+          {itemList.length <= 0 && <Text>No notes here!</Text>}
+          {itemList.map(({ id, text }, idx) => {
+            return (
+              <Text key={`note-item-${id}`}>{text}</Text>
+            )
+          })}
+        </Space>
+      </Card>
       <Modal
         title="View Notes"
         visible={isModalVisible}
@@ -69,7 +69,7 @@ function NoteList({ itemList, setItemList }) {
           <PlusCircleOutlined /> List Item
         </Text>
       </Modal>
-      </>
+    </>
   )
 }
 
