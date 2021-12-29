@@ -45,20 +45,24 @@ Flow of this project was:
   - Implemented some features but stopped
   - After creating /pageComponents folder, decided to use component library and remove most features
   - Implement card view from scratch
+  - Add appts page
   - Add as Next.js PWA => fix problems using Lighthouse
   - Implement table view from scratch
   - Implement analytics page
 
 #### To DO
 - make card responsive => DONE
-- fix sort to opposite sort => DONE
+- fix sort to opposite sort on second click => DONE
 - write new NoteList => DONE
 - fix PWA - add service worker => DONE
-- redo mobile format on top right buttons & two UserCards per row
-- add appts to UserCard page
+- remove table option in contacts.js - archive code => DONE
+- fix bug - x btn on CardNotes not closing => DONE
+- make CardNotes look clickable => DONE
+- Rewrite meta description - have one common one in utils sent to head of everywhere => DONE
+- add appt list to UserCard page
 - fix uuid page to be mobile friendly
 - write UserTable page
-- populate dashboard page w/ content
+- populate dashboard page w/ content - analytics like place ranking, num people met over time
 - add service worker content
 - fix bug of clicking on checkbox very fast results in card lighting up but checkbox being unchecked
 - upgrade next.js version from 10.1.3 (known security vulnerabilities)
