@@ -18,6 +18,9 @@ function NoteList({ itemList, setItemList }) {
   const handleOk = () => {
     setIsModalVisible(false);
   };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   // CRUD Notes
   const handleAdd = () => {
@@ -51,6 +54,7 @@ function NoteList({ itemList, setItemList }) {
         title="View Notes"
         visible={isModalVisible}
         onOk={handleOk}
+        onCancel={handleCancel}
         cancelButtonProps={{
           style: {
             display: "none",
