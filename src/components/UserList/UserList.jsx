@@ -15,10 +15,6 @@ import { DeleteOutlined, ExportOutlined, ArrowUpOutlined, ArrowDownOutlined } fr
 // Styling
 import styles from "./UserList.module.css"
 
-function callback(key) {
-  console.log(key);
-}
-
 function UserList({ userList, setUserList }) {
   // Sort Order
   const [sortDateUp, setSortDateUp] = useState(true);
@@ -99,7 +95,7 @@ function UserList({ userList, setUserList }) {
                       <Text>{dateText}</Text>
                       <Text>{placeText}</Text>
                     </Space>
-                    <Collapse defaultActiveKey={[]} onChange={callback}>
+                    <Collapse defaultActiveKey={[]}>
                       <Panel header="Appointments" key="1">
                         <p>APPOINTMENTS</p>
                       </Panel>
