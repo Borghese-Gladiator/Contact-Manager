@@ -50,16 +50,18 @@ function ApptNotesList({ appointment, setAppointment }) {
 
   return (
     <>
-      <Card hoverable onClick={showModal}>
+      <div>
         {appointment === null
           ? <Text>No appointments!</Text>
           :
           <Row justify="center" align="middle">
             <Col xs={22}>
-              <Space direction="vertical" style={{ cursor: 'pointer' }}>
-                <Text>Meet Location: <Text strong>{appointment.location}</Text></Text>
-                <Text>Date: <Text strong>{appointment.dateString}</Text></Text>
-              </Space>
+              <Card hoverable onClick={showModal}>
+                <Space direction="vertical" style={{ cursor: 'pointer' }}>
+                  <Text>Meet Location: <Text strong>{appointment.location}</Text></Text>
+                  <Text>Date: <Text strong>{appointment.dateString}</Text></Text>
+                </Space>
+              </Card>
             </Col>
             <Col xs={2}>
               <Popconfirm
@@ -79,7 +81,7 @@ function ApptNotesList({ appointment, setAppointment }) {
             </Col>
           </Row>
         }
-      </Card>
+      </div>
       <Modal
         title="Set Appointment"
         visible={isModalVisible}
@@ -96,7 +98,7 @@ function ApptNotesList({ appointment, setAppointment }) {
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
-          initialValues={{ dateLastTalked: moment() }}
+          initialValues={{ location: appointment === null ? "" : appointment.location, date: appointment === null ? "" : moment(appointment.date) }}
           {...formItemLayout}
         >
           <Form.Item
