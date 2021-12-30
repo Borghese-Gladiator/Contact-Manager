@@ -59,15 +59,11 @@ Flow of this project was:
 - fix bug - x btn on CardNotes not closing => DONE
 - make CardNotes look clickable => DONE
 - Rewrite meta description - have one common one in utils sent to head of everywhere => DONE
-- add appt list to UserCard page
-- fix uuid page to be mobile friendly
-- populate dashboard page w/ content - analytics like place ranking, num people met over time
-- add service worker content
-- fix bug of clicking on checkbox very fast results in card lighting up but checkbox being unchecked
-- upgrade next.js version from 10.1.3 (known security vulnerabilities)
-- get 100 score on [https://www.webpagetest.org/](https://www.webpagetest.org/)
-- fix Y scroll bar appearing on all content
-- write new custom sidebar using Ant Design
+- add appointment to card in UserList => DONE
+	- click on form - Form for location, DatePicker for date => DONE
+	- display location & dateString => DONE
+	- have checkbox to mark as complete (can also click on item) => DONE, used popconfirm to delete instead
+- write home page with Title, Two link buttons => DONE
 
 #### Ant Design
 - great documentation - got up and running fast due to good code to copy paste
