@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-import { Card, Typography, Input, Modal, Space, DatePicker, Form, Button
- } from 'antd';
-const { Title, Text } = Typography;
+import {
+  Card, Space, Typography, Row, Col, Input, Modal, DatePicker, Form, Button, Popconfirm,
+} from 'antd';
+const { Text } = Typography;
+import { DeleteOutlined } from '@ant-design/icons';
 
 import moment from 'moment';
-import { createApptItem } from "../../utils/utils";
 
 function ApptNotesList({ appointment, setAppointment }) {
   // Modal Visibility
@@ -19,7 +20,6 @@ function ApptNotesList({ appointment, setAppointment }) {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
   // Form modal
   const formItemLayout = {
     labelCol: {
@@ -43,20 +43,42 @@ function ApptNotesList({ appointment, setAppointment }) {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
+  // Delete Appointment
+  const handleDeleteBtnClick = () => {
+    setAppointment(null);
+  }
 
   return (
     <>
       <Card hoverable onClick={showModal}>
-        <Space direction="vertical" style={{ cursor: 'pointer' }}>
-          {appointment === null
-            ? <Text>No appointments!</Text>
-            :
-            <>
-              <Text>Meet Location: <Text strong>{appointment.location}</Text></Text>
-              <Text>Date: <Text strong>{appointment.dateString}</Text></Text>
-            </>
-          }
-        </Space>
+        {appointment === null
+          ? <Text>No appointments!</Text>
+          :
+          <Row justify="center" align="middle">
+            <Col xs={22}>
+              <Space direction="vertical" style={{ cursor: 'pointer' }}>
+                <Text>Meet Location: <Text strong>{appointment.location}</Text></Text>
+                <Text>Date: <Text strong>{appointment.dateString}</Text></Text>
+              </Space>
+            </Col>
+            <Col xs={2}>
+              <Popconfirm
+                title={`Are you sure to delete this appointment?`}
+                onConfirm={() => { message.success('Deleted successfully'); handleDeleteBtnClick(); }}
+                onCancel={() => message.error('Delete cancelled')}
+                okText="Yes"
+                cancelText="No"
+              >
+                <Button
+                  icon={<DeleteOutlined />}
+                  size="small"
+                  type="primary"
+                  danger
+                />
+              </Popconfirm>
+            </Col>
+          </Row>
+        }
       </Card>
       <Modal
         title="Set Appointment"
