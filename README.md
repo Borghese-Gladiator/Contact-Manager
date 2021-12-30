@@ -61,7 +61,6 @@ Flow of this project was:
 - Rewrite meta description - have one common one in utils sent to head of everywhere => DONE
 - add appt list to UserCard page
 - fix uuid page to be mobile friendly
-- write UserTable page
 - populate dashboard page w/ content - analytics like place ranking, num people met over time
 - add service worker content
 - fix bug of clicking on checkbox very fast results in card lighting up but checkbox being unchecked
