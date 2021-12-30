@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-import { Card, Typography, Input, Modal, Space, DatePicker } from 'antd';
-const { Text } = Typography;
+import { Card, Typography, Input, Modal, Space, DatePicker, Form, Button
+ } from 'antd';
+const { Title, Text } = Typography;
 
 import moment from 'moment';
 import { createApptItem } from "../../utils/utils";
@@ -19,55 +20,46 @@ function ApptNotesList({ appointment, setAppointment }) {
     setIsModalVisible(false);
   };
 
-
-  // CRUD Notes
-  const handleAdd = () => {
-    const date = new Date()
-    setItemList([...itemList, createApptItem("", date)])
-  }
-  const handleUpdate = (e, id) => {
-    const text = e.target.value
-    setItemList(itemList.map((item) => {
-      return item.id === id
-        ? {
-          ...item,
-          text: text
-        }
-        : item
-    }))
-  }
-  const handleLocationChange = (e) => {
-    const location = e.target.value
+  // Form modal
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 8 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 16 },
+    },
+  };
+  const onFinish = (values) => {
+    console.log('Success:', values);
+    const { location, date } = values;
     setAppointment({
-      ...appointment,
+      date: date,
+      dateString: date.format('YYYY-MM-DD'),
       location: location
     })
-  }
-  const handleDateChange = (date, dateString) => {
-    console.log(date, dateString);
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
 
-    setAppointment({
-      ...appointment,
-      date: date,
-      dateString: dateString
-    })
-  }
   return (
     <>
       <Card hoverable onClick={showModal}>
         <Space direction="vertical" style={{ cursor: 'pointer' }}>
           {appointment === null
             ? <Text>No appointments!</Text>
-            : 
+            :
             <>
-              <Text>Meet Location: {appointment.location}</Text>
-              <Text>Date: {appointment.dateString}</Text>
+              <Text>Meet Location: <Text strong>{appointment.location}</Text></Text>
+              <Text>Date: <Text strong>{appointment.dateString}</Text></Text>
             </>
           }
         </Space>
       </Card>
       <Modal
-        title="View Appointment"
+        title="Set Appointment"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -77,8 +69,34 @@ function ApptNotesList({ appointment, setAppointment }) {
           },
         }}
       >
-        <Input placeholder="Location" onChange={handleLocationChange} />
-        <DatePicker defaultPickerValue={moment()} onChange={handleDateChange} />
+        <Form
+          name="basic"
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+          initialValues={{ dateLastTalked: moment() }}
+          {...formItemLayout}
+        >
+          <Form.Item
+            label="Location"
+            name="location"
+            rules={[{ required: true, message: 'Please input the location!' }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Date"
+            name="date"
+            rules={[{ required: true, message: 'Please input the date!' }]}
+          >
+            <DatePicker style={{ width: '100%' }} showToday />
+          </Form.Item>
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
       </Modal>
     </>
   )
