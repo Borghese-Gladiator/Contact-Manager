@@ -64,6 +64,7 @@ Flow of this project was:
 	- display location & dateString => DONE
 	- have checkbox to mark as complete (can also click on item) => DONE, used popconfirm to delete instead
 - write home page with Title, Two link buttons => DONE
+- write appointments page for list of meetings w/ people => DONE
 
 #### Ant Design
 - great documentation - got up and running fast due to good code to copy paste
