@@ -7,21 +7,17 @@ const { Title, Text } = Typography;
 import styles from '../styles/UserListPage.module.css'
 import { getMetaWithTitle } from "../src/utils/utils";
 
-export default function HomePage({ userList=[], setUserList }) {
-  const router = useRouter()
-  useEffect(() => {
-    router.push("/contacts")
-  }, []);
-
+export default function HomePage({ userList = [], setUserList }) {
   return (
     <div>
       {getMetaWithTitle("Home | Contact Manager")}
       <main className={styles.main}>
-        <Title style={{textAlign: "center"}}>Contact Manager</Title>
-        <Text style={{textAlign: "center"}}>Personal CRM - Quick utility to track people I talked to and how long ago it was.</Text>
+        <Title style={{ textAlign: "center" }}>Contact Manager</Title>
+        <Text style={{ textAlign: "center" }}>Personal CRM - Quick utility to track people I talked to and how long ago it was.</Text>
         <Row justify="center">
           <Button type="primary" href="/contacts">Contacts</Button>
           <Button href="/dashboard">Dashboard</Button>
+          <Button type="dashed" href="/appointments">Appointments</Button>
         </Row>
         <Space />
       </main>
