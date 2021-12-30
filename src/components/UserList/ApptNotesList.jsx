@@ -52,7 +52,10 @@ function ApptNotesList({ appointment, setAppointment }) {
     <>
       <div>
         {appointment === null
-          ? <Text onClick={showModal}>No appointments!</Text>
+          ?
+          <Card hoverable onClick={showModal}>
+            <Text>No appointments!</Text>
+          </Card>
           :
           <Row justify="center" align="middle">
             <Col xs={22}>
