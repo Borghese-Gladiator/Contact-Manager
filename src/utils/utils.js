@@ -93,13 +93,15 @@ export function createNoteItem(text) {
  * @param shortBio - description of who this is
  */
 export function generateUserObject({ name, placeLastTalked, dateLastTalked, bio, contact }) {
+  // notesList: [ { id, text }]
+  // appointment: { date, location }
   return {
     id: uuidv4(),
     name,
     placeLastTalked,
     dateLastTalked,
     notesList: [],
-    apptList: [],
+    appointment: null,
     bio: bio === null ? "": bio,
     contact: contact === null ? "": contact,
   }

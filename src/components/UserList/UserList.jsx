@@ -7,7 +7,8 @@ const { Panel } = Collapse;
 const { Text } = Typography;
 // Custom Components
 import AddUserModal from "./AddUserModal";
-import CardNotes from "../CardNotes";
+import ApptNotesList from "./ApptNotesList";
+import CardNotesList from "./CardNotesList";
 // Utils
 import { getMomentText } from "../../utils/utils";
 // Icons
@@ -78,32 +79,32 @@ function UserList({ userList, setUserList }) {
       </Row>
       <Row gutter={[8, 8]}>
         {
-          userList.map(({ id, name, dateLastTalked, placeLastTalked, contactMethod, notesList }, idx) => {
+          userList.map(({ id, name, dateLastTalked, placeLastTalked, contactMethod, appointment, notesList }, idx) => {
             const dateText = getMomentText(dateLastTalked);
             const placeText = `${placeLastTalked}`
             return (
               <Col key={`user-card-${idx}`} sm={12} md={8} lg={6} xl={4}>
                 <Checkbox onChange={() => handleCheckboxClick(id)} className={styles.my_checkbox} />
-                  <Card
-                    size="small"
-                    title={name}
-                    bordered={false}
-                    extra={<a href={`/user/${id}`}><ExportOutlined style={{ fontSize: 20 }} /></a>}
-                    className={` ${selectedUserIds.includes(id) ? styles.active_card : ""}`}
-                  >
-                    <Space direction="vertical" size={0}>
-                      <Text>{dateText}</Text>
-                      <Text>{placeText}</Text>
-                    </Space>
-                    <Collapse defaultActiveKey={[]}>
-                      <Panel header="Appointments" key="1">
-                        <p>APPOINTMENTS</p>
-                      </Panel>
-                      <Panel header="Notes" key="2">
-                        <CardNotes itemList={notesList} setItemList={(newVal) => updateUserKey(id, 'notesList', newVal)} />
-                      </Panel>
-                    </Collapse>
-                  </Card>
+                <Card
+                  size="small"
+                  title={name}
+                  bordered={false}
+                  extra={<a href={`/user/${id}`}><ExportOutlined style={{ fontSize: 20 }} /></a>}
+                  className={` ${selectedUserIds.includes(id) ? styles.active_card : ""}`}
+                >
+                  <Space direction="vertical" size={0}>
+                    <Text>{dateText}</Text>
+                    <Text>{placeText}</Text>
+                  </Space>
+                  <Collapse defaultActiveKey={[]}>
+                    <Panel header="Appointments" key="1">
+                      <ApptNotesList appointment={appointment} setAppointment={(newVal) => updateUserKey(id, 'appointment', newVal)}/>
+                    </Panel>
+                    <Panel header="Notes" key="2">
+                      <CardNotesList itemList={notesList} setItemList={(newVal) => updateUserKey(id, 'notesList', newVal)} />
+                    </Panel>
+                  </Collapse>
+                </Card>
               </Col>
             )
           })
