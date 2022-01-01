@@ -45,8 +45,8 @@ export function getDateText(dateLastTalked) {
  * Shorten descriptions and use ellipsis if too long
  * @param str
  */
-export function truncateDescription(str) {
-  return str.length > 30 ? str.substring(0, 30) + "..." : str;
+export function truncateStr(str, num=30) {
+  return str.length > num ? str.substring(0, num) + "..." : str;
 }
 
 /**

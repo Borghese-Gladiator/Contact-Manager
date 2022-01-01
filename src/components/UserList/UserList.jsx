@@ -1,20 +1,11 @@
-import { useEffect, useState } from 'react';
-// Next.js Routing
-import Link from 'next/link';
+import { useState } from 'react';
 // Ant Design components
-import { Row, Col, Checkbox, Button, Typography, Card, Space, Collapse, Popconfirm, message } from 'antd';
-const { Panel } = Collapse;
-const { Text } = Typography;
+import { Row, Col, Button, Space, Popconfirm, message } from 'antd';
 // Custom Components
+import UserCard from "./UserCard";
 import AddUserModal from "./AddUserModal";
-import ApptNotesList from "./ApptNotesList";
-import CardNotesList from "./CardNotesList";
-// Utils
-import { getMomentText } from "../../utils/utils";
 // Icons
-import { DeleteOutlined, ExportOutlined, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
-// Styling
-import styles from "./UserList.module.css"
+import { DeleteOutlined, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 
 function UserList({ userList, setUserList }) {
   // Sort Order
@@ -70,7 +61,6 @@ function UserList({ userList, setUserList }) {
     setSelectedUserIds([])
     deleteUserList(selectedUserIds)
   }
-
   return (
     <Space direction="vertical">
       <Row justify="center">
@@ -79,35 +69,11 @@ function UserList({ userList, setUserList }) {
       </Row>
       <Row gutter={[8, 8]}>
         {
-          userList.map(({ id, name, dateLastTalked, placeLastTalked, contactMethod, appointment, notesList }, idx) => {
-            const dateText = getMomentText(dateLastTalked);
-            const placeText = `${placeLastTalked}`
-            return (
-              <Col key={`user-card-${idx}`} sm={12} md={8} lg={6}>
-                <Checkbox onChange={() => handleCheckboxClick(id)} className={styles.my_checkbox} />
-                <Card
-                  size="small"
-                  title={name}
-                  bordered={false}
-                  extra={<a href={`/user/${id}`}><ExportOutlined style={{ fontSize: 20 }} /></a>}
-                  className={` ${selectedUserIds.includes(id) ? styles.active_card : ""}`}
-                >
-                  <Space direction="vertical" size={0}>
-                    <Text>{dateText}</Text>
-                    <Text>{placeText}</Text>
-                  </Space>
-                  <Collapse defaultActiveKey={[]}>
-                    <Panel header="Appointments" key="1">
-                      <ApptNotesList appointment={appointment} setAppointment={(newVal) => updateUserKey(id, 'appointment', newVal)}/>
-                    </Panel>
-                    <Panel header="Notes" key="2">
-                      <CardNotesList itemList={notesList} setItemList={(newVal) => updateUserKey(id, 'notesList', newVal)} />
-                    </Panel>
-                  </Collapse>
-                </Card>
-              </Col>
-            )
-          })
+          userList.map((user, idx) =>
+            <Col key={`user-card-${idx}`} sm={12} md={8} lg={6}>
+              <UserCard user={user} handleCheckboxClick={handleCheckboxClick} updateUserKey={updateUserKey} selectedUserIds={selectedUserIds} />
+            </Col>
+          )
         }
         <Col key={`add-user-btn`} md={4} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <AddUserModal createUser={createUser} />
