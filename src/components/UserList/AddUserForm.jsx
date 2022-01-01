@@ -1,8 +1,9 @@
-import { DatePicker, Button, Form, Input } from 'antd';
+import { DatePicker, Button, Form, Input, Space, message } from 'antd';
 import moment from 'moment';
 import { generateUserObject } from "../../utils/utils";
 
 function AddUserForm({ createUser }) {
+  const [form] = Form.useForm();
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -14,19 +15,20 @@ function AddUserForm({ createUser }) {
     },
   };
   const onFinish = (values) => {
-    console.log('Success:', values);
     const { name, placeLastTalked, dateLastTalked, bio, contact } = values;
     const newUser = generateUserObject(values)
-    console.log(newUser)
     createUser(newUser)
+    message.info(`"${name}" was added`)
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
+    message.error(`Failed to add - ${errorInfo}`)
   };
   return (
     <Form
       name="basic"
+      form={form}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
@@ -48,7 +50,7 @@ function AddUserForm({ createUser }) {
       >
         <Input />
       </Form.Item>
-      
+
       <Form.Item label="Date Last Talked" name="dateLastTalked" hasFeedback>
         <DatePicker style={{ width: '100%' }} showToday />
       </Form.Item>
@@ -70,11 +72,16 @@ function AddUserForm({ createUser }) {
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
+        <Space>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+          <Button onClick={() => form.resetFields()}>
+            Clear
+          </Button>
+        </Space>
       </Form.Item>
-    </Form>
+    </Form >
   )
 }
 
